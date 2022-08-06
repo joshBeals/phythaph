@@ -1,0 +1,46 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateAdminTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('admins', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique()->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+
+            $table->string('gender', 20)->nullable();
+            $table->string('phone', 20)->nullable();
+
+            $table->boolean('is_blocked')->nullable()->default(0);
+            $table->tinyInteger("must_change_password")->default(0)->nullable();
+
+            $table->rememberToken();
+            $table->timestamps();
+        });
+
+        // Set the user increment to high number
+        DB::unprepared("ALTER TABLE admins AUTO_INCREMENT = 1800;");
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('admins');
+    }
+}
