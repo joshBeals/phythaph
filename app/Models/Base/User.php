@@ -12,7 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use Laravel\Passport\HasApiTokens;
+// use Laravel\Passport\HasApiTokens;
 
 /**
  * Should be best refered to as UserBase
@@ -20,7 +20,7 @@ use Laravel\Passport\HasApiTokens;
  */
 abstract class User extends Authenticatable implements Decoratable
 {
-    use HasFactory, HasApiTokens, Notifiable, DbUpdate, Logger;
+    use HasFactory, Notifiable, DbUpdate, Logger;
 
     const AVATAR_THUMBS = [
         'thumb_350' => [350, 350],
