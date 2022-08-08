@@ -63,6 +63,7 @@ class AdminCrudController extends CrudController
         CRUD::field('name');
         CRUD::field('email');
         CRUD::field('password');
+        CRUD::field('password_confirmation');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

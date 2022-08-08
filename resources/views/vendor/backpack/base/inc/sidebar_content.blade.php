@@ -14,3 +14,18 @@
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('admin') }}'><i class='nav-icon la la-users'></i> Admins</a></li>
     </ul>
 </li>
+
+<!-- <li class="nav-item nav-dropdown">
+    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-lg la-shopping-bag"></i> Pawn</a>
+    <ul class="nav-dropdown-items">
+        
+    </ul>
+</li> -->
+
+<li class="nav-item nav-dropdown">
+    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-lg la-shopping-cart"></i> Products</a>
+    <ul class="nav-dropdown-items">
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('category') }}'><i class='nav-icon la la-archive'></i> Categories</a></li>
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('requirement') }}'><i class='nav-icon la la-question'></i> Requirements</a></li>
+    </ul>
+</li>
