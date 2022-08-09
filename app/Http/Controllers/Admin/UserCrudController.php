@@ -44,6 +44,7 @@ class UserCrudController extends CrudController
         CRUD::column('first_name');
         CRUD::column('last_name');
         CRUD::column('email');
+        CRUD::column('account_type');
         CRUD::column('created_at');
         $this->crud->addFilter(
             [
@@ -79,6 +80,7 @@ class UserCrudController extends CrudController
         CRUD::field('last_name');
         CRUD::field('email');
         CRUD::field('password');
+        CRUD::field('account_type')->type('enum');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

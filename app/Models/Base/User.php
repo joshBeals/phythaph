@@ -33,7 +33,7 @@ abstract class User extends Authenticatable implements Decoratable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'phone',
+        'first_name', 'last_name', 'email', 'password', 'account_type',
     ];
 
     /**

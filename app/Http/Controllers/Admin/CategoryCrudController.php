@@ -17,7 +17,7 @@ class CategoryCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -60,9 +60,43 @@ class CategoryCrudController extends CrudController
     {
         CRUD::setValidation(CategoryRequest::class);
 
-        CRUD::field('name');
+        CRUD::field('name')->size(6);
+        CRUD::field('type')->type('enum')->size(6);
         CRUD::field('description');
-        CRUD::field('type');
+        $this->crud->addField([
+            'name' => 'requirements',
+            'label' => 'Requirements',
+            'type' => 'repeatable',
+            'new_item_label' => 'Add Requirement',
+            'max_rows' => 20,
+            'subfields' => [
+                [
+                    'name' => 'name',
+                    'type' => 'text',
+                    'label' => 'Requirement',
+                ],
+                [
+                    'name' => 'field',
+                    'type' => 'select_from_array',
+                    'label' => 'Field',
+                    'options' => ['text' => 'Text', 'dropdown' => 'Dropdown']
+                ],
+                // [ 
+                //     'name' => 'options',
+                //     'label' => 'Options',
+                //     'type' => 'repeatable',
+                //     'new_item_label' => 'Add Option',
+                //     'max_rows' => 10,
+                //     'subfields' => [
+                //         [
+                //             'name' => 'name',
+                //             'type' => 'text',
+                //             'label' => 'Option',
+                //         ],
+                //     ],
+                // ]
+            ],
+        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
