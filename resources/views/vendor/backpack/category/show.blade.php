@@ -31,36 +31,39 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
 <div class="row mt-5">
     <div class="col-6">
         <div class="card">
-            <div class="card-header">Product Information</div>
+            <div class="card-header">Category Information</div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-12">
-                        <p class="m-0 p-0">Product Category</p>
-                        <p><strong>{{ $data->category->name }}</strong></p>
-                    </div>
-                    @foreach(json_decode($data->features) as $key => $value)
                     <div class="col-md-6">
-                        <p class="m-0 p-0">{{ $key }}</p>
-                        <p><strong>{{ $value }}</strong></p>
-                    </div>
-                    @endforeach
-                    <div class="col-md-6">
-                        <p class="m-0 p-0">Market Price (New)</p>
-                        <p><strong>{{ $data->market_price_new ?? '-' }}</strong></p>
+                        <p class="m-0 p-0">Category Name</p>
+                        <p><strong>{{ $data->name }}</strong></p>
                     </div>
                     <div class="col-md-6">
-                        <p class="m-0 p-0">Market Price (Imported)</p>
-                        <p><strong>{{ $data->market_price_imported ?? '-' }}</strong></p>
+                        <p class="m-0 p-0">Category Type</p>
+                        <p><strong>{{ Helper::titleCase($data->type) }}</strong></p>
                     </div>
                     <div class="col-md-6">
-                        <p class="m-0 p-0">Market Price (Locally USed)</p>
-                        <p><strong>{{ $data->market_price_local ?? '-' }}</strong></p>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="m-0 p-0">Market Price (Computer Village)</p>
-                        <p><strong>{{ $data->market_price_computer_village ?? '-' }}</strong></p>
+                        <p class="m-0 p-0">Category Description</p>
+                        <p><strong>{{ $data->description ?? '-' }}</strong></p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">Category Requirements</div>
+            <div class="card-body">
+                @foreach($data->requirements as $req)
+                    <div class="row">
+                    @foreach($req as $key => $value)
+                        <div class="col-6">
+                            <p class="m-0 p-0">{{ Helper::titleCase($key) }}</p>
+                            <p><strong>{{ Helper::titleCase($value) }}</strong></p>
+                        </div>
+                    @endforeach
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

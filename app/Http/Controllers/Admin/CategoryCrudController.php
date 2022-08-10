@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\CategoryRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
 /**
  * Class CategoryCrudController
@@ -17,7 +18,8 @@ class CategoryCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    // use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    
+    use ShowOperation {show as traitShow;}
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -114,5 +116,16 @@ class CategoryCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    public function show($id)
+    {
+        // custom logic before
+        $content = $this->traitShow($id);
+
+        $this->data['entry']->decorate();
+        // cutom logic after
+        return view("backpack::category.show", $this->data);
+
     }
 }
