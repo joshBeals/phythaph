@@ -23,4 +23,9 @@ class Category extends Model
     protected $casts = [
         'requirements' => 'array',
     ];
+
+    public function research_produsts()
+    {
+        return $this->hasMany(ResearchProduct::class);
+    }
 }
