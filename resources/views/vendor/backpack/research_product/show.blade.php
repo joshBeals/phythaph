@@ -44,6 +44,15 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                         <p><strong>{{ $value }}</strong></p>
                     </div>
                     @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">Product Pricing</div>
+            <div class="card-body">
+                <div class="row">
                     <div class="col-md-6">
                         <p class="m-0 p-0">Market Price (New)</p>
                         <p><strong>{{ Helper::formatToCurrency($data->market_price_new) }}</strong></p>
@@ -64,7 +73,6 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
             </div>
         </div>
     </div>
-
 </div>
 @endsection
 
