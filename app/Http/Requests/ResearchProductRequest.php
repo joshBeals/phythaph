@@ -25,7 +25,12 @@ class ResearchProductRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'category_id' => 'required',
+            'market_price_new' => 'required',
+            'market_price_imported' => 'required',
+            'market_price_local' => 'required',
+            'market_price_computer_village' => 'required',
+            'features' => 'required',
         ];
     }
 

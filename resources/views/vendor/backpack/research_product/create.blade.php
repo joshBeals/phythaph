@@ -35,7 +35,7 @@ $categories = \App\Models\Category::get();
 
 		@include('crud::inc.grouped_errors')
   		<div class="mt-4"></div>
-		<form id="form" method="post"
+		<form id="myform" method="post"
 			action="{{ url($crud->route) }}"
 			@if ($crud->hasUploadFields('create'))
 			enctype="multipart/form-data"
@@ -45,14 +45,32 @@ $categories = \App\Models\Category::get();
   			<div class="bg-white p-3">
 				<div class="form-group">
 					<label for="category">Product Category</label>
-					<input type="hidden" name="features" id="features">
 					<select id="category" name="category_id" class="form-control" required>
 						<option value="">Select Category</option>	
 						@foreach($categories as $category)
 							<option value="{{ $category->id }}">{{ $category->name }}</option>
 						@endforeach
 					</select>
+					<input type="hidden" name="features" id="features">
 					<div id="formFields" class="row mt-3"></div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="">Market Price (New)</label>
+						<input type="text" name="market_price_new" class="form-control">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="">Market Price (Imported)</label>
+						<input type="text" name="market_price_imported" class="form-control">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="">Market Price (Local)</label>
+						<input type="text" name="market_price_local" class="form-control">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="">Market Price (Computer Village)</label>
+						<input type="text" name="market_price_computer_village" class="form-control">
+					</div>
 				</div>
 			</div>
 			@include('crud::inc.form_save_buttons')
@@ -70,7 +88,7 @@ var categories = @json($categories);
 
 (function($) {
     var categoryDropdown = $("#category"),
-	form = $("#form"),
+	form = $("#myform"),
 	formFields = $("#formFields"),
 	fields = $(".field");
 

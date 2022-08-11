@@ -11,6 +11,15 @@ class ResearchProduct extends Model
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'category_id',
+        'features',
+        'market_price_new',
+        'market_price_imported',
+        'market_price_local',
+        'market_price_computer_village',
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');

@@ -14,10 +14,10 @@ class AddPriceColumnsToResearchProductsTable extends Migration
     public function up()
     {
         Schema::table('research_products', function (Blueprint $table) {
-            $table->string('market_price_new')->nullable()->after('features');
-            $table->string('market_price_imported')->nullable()->after('market_price_new');
-            $table->string('market_price_local')->nullable()->after('market_price_imported');
-            $table->string('market_price_computer_village')->nullable()->after('market_price_local');
+            $table->double('market_price_new', 15, 2)->default(0)->nullable()->after('features');
+            $table->double('market_price_imported', 15, 2)->default(0)->nullable()->after('market_price_new');
+            $table->double('market_price_local', 15, 2)->default(0)->nullable()->after('market_price_imported');
+            $table->double('market_price_computer_village', 15, 2)->default(0)->nullable()->after('market_price_local');
         });
     }
 

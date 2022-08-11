@@ -235,6 +235,7 @@ return [
         
         // Custom
         'Helper' => \App\Classes\Helper::class,
+        'GlobalVars' => \App\Classes\GlobalVars::class,
 
     ],
 

@@ -46,19 +46,19 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                     @endforeach
                     <div class="col-md-6">
                         <p class="m-0 p-0">Market Price (New)</p>
-                        <p><strong>{{ $data->market_price_new ?? '-' }}</strong></p>
+                        <p><strong>{{ Helper::formatToCurrency($data->market_price_new) }}</strong></p>
                     </div>
                     <div class="col-md-6">
                         <p class="m-0 p-0">Market Price (Imported)</p>
-                        <p><strong>{{ $data->market_price_imported ?? '-' }}</strong></p>
+                        <p><strong>{{ Helper::formatToCurrency($data->market_price_imported) }}</strong></p>
                     </div>
                     <div class="col-md-6">
                         <p class="m-0 p-0">Market Price (Locally USed)</p>
-                        <p><strong>{{ $data->market_price_local ?? '-' }}</strong></p>
+                        <p><strong>{{ Helper::formatToCurrency($data->market_price_local) }}</strong></p>
                     </div>
                     <div class="col-md-6">
                         <p class="m-0 p-0">Market Price (Computer Village)</p>
-                        <p><strong>{{ $data->market_price_computer_village ?? '-' }}</strong></p>
+                        <p><strong>{{ Helper::formatToCurrency($data->market_price_computer_village) }}</strong></p>
                     </div>
                 </div>
             </div>

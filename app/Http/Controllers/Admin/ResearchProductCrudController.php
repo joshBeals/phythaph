@@ -16,10 +16,9 @@ use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 class ResearchProductCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     
-    use CreateOperation {store as traitStore;}
     use CreateOperation {create as traitCreate;}
     use ShowOperation {show as traitShow;}
 
@@ -32,7 +31,7 @@ class ResearchProductCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\ResearchProduct::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/research-product');
-        CRUD::setEntityNameStrings('research product', 'research products');
+        CRUD::setEntityNameStrings('research item', 'research items');
     }
 
     /**
@@ -68,6 +67,8 @@ class ResearchProductCrudController extends CrudController
     {
         CRUD::setValidation(ResearchProductRequest::class);
 
+        CRUD::field('category_id');
+        CRUD::field('features');
         CRUD::field('market_price_new');
         CRUD::field('market_price_imported');
         CRUD::field('market_price_local');
@@ -80,6 +81,12 @@ class ResearchProductCrudController extends CrudController
          */
     }
 
+    public function create()
+    {
+        $this->traitCreate();
+        return view("backpack::research_product.create", $this->data);
+    }
+
     /**
      * Define what happens when the Update operation is loaded.
      * 
@@ -89,12 +96,6 @@ class ResearchProductCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
-    }
-
-    public function create()
-    {
-        $this->traitCreate();
-        return view("backpack::research_product.create", $this->data);
     }
 
     public function show($id)
