@@ -16,7 +16,7 @@ class CreateResearchProducts extends Migration
         Schema::create('research_products', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id');
-            $table->json('features')->nullable();
+            $table->longtext('features')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

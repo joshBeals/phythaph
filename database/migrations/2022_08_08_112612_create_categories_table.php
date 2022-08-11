@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->enum('type', ['pawn', 'sell'])->nullable()->default('pawn');
-            $table->json('requirements')->nullable();
+            $table->longtext('requirements')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
