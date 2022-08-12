@@ -4,5 +4,6 @@
 chmod -R 777 /app/storage/
 touch /app/storage/logs/system.log
 php /app/artisan migrate
+php /app/artisan scribe:generate
 #php /app/artisan migrate --force
 #php /app/artisan package:discover
