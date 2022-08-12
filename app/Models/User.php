@@ -11,10 +11,10 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends UserBase implements JWTSubject
+class User extends UserBase implements MustVerifyEmail, JWTSubject
 {
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
+    use SoftDeletes;
 
     
     public function getJWTIdentifier() {
@@ -29,4 +29,13 @@ class User extends UserBase implements JWTSubject
     public function getJWTCustomClaims() {
         return [];
     }   
+
+    public function decorate()
+    {
+
+        Parent::decorate();
+
+        return $this;
+
+    }
 }

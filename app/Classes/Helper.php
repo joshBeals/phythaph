@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\UrlWindow;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\URL;
@@ -129,6 +130,22 @@ class Helper
         }
         return response()->json($resp, (int) $code);
 
+    }
+
+    /**
+     * Throw exceptions in a sane way
+     *
+     * @param \Throwable $e
+     * @return object
+     */
+    public static function apiException(\Throwable $e)
+    {
+        Log::error($e);
+
+        if (config('app.debug')) {
+            return Helper::apiFail($e->getMessage() ?? 'Something went wrong, Please contact support!');
+        }
+        return Helper::apiFail('Something went wrong, Please contact support!');
     }
 
     public static function successApiOrRoute(array $api, $route = null)
