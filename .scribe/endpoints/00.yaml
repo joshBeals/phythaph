@@ -1,0 +1,198 @@
+name: 'Auth APIs'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/register
+    metadata:
+      title: 'Register new user'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      first_name:
+        name: first_name
+        description: ''
+        required: true
+        example: aut
+        type: string
+        custom: []
+      last_name:
+        name: last_name
+        description: ''
+        required: true
+        example: soluta
+        type: string
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: true
+        example: totam
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: quae
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+             "success": true,
+             "message": "Registration Successful",
+             "data": {
+                [UserData]
+             }
+        headers: []
+        description: '200, Ok'
+      -
+        status: 400
+        content: |-
+          {
+             "success": false,
+             "message": "Registration Failed"
+           }
+        headers: []
+        description: '400, Registration Failed'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/login
+    metadata:
+      title: 'User Login'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: ''
+        required: true
+        example: optio
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: voluptatum
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+             "success": true,
+             "message": "Login Successful",
+             "data": {
+                "user": {
+                    ...
+                },
+                "token": jwt_token
+             }
+        headers: []
+        description: '200, Ok'
+      -
+        status: 400
+        content: |-
+          {
+             "success": false,
+             "message": "Invalid Credentials"
+           }
+        headers: []
+        description: '400, Invalid Credentials'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/auth/email/verify/{id}'
+    metadata:
+      title: 'Email Verification'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the verify.'
+        required: true
+        example: similique
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 400
+        content: '{"status":false,"success":false,"message":"Invalid\/Expired url provided."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/auth/email/resend/{id}'
+    metadata:
+      title: 'Resend Verification Email'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the resend.'
+        required: true
+        example: voluptatem
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+             "success": true,
+             "message": "Email verification link sent on your email!",
+             }
+        headers: []
+        description: '200, Ok'
+      -
+        status: 400
+        content: |-
+          {
+             "success": false,
+             "message": "Email already verified!"
+           }
+        headers: []
+        description: '400, Email already verified!'
+    responseFields: []

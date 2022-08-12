@@ -1,0 +1,229 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "Phythaph",
+        "_postman_id": "c6d86ab0-2a20-4e7f-ac2d-c9d8616ce048",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth APIs",
+            "description": "",
+            "item": [
+                {
+                    "name": "Register new user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"first_name\":\"aut\",\"last_name\":\"soluta\",\"email\":\"totam\",\"password\":\"quae\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n   \"success\": true,\n   \"message\": \"Registration Successful\",\n   \"data\": {\n      [UserData]\n   }",
+                            "name": "Ok"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n   \"success\": false,\n   \"message\": \"Registration Failed\"\n }",
+                            "name": "Registration Failed"
+                        }
+                    ]
+                },
+                {
+                    "name": "User Login",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"optio\",\"password\":\"voluptatum\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n   \"success\": true,\n   \"message\": \"Login Successful\",\n   \"data\": {\n      \"user\": {\n          ...\n      },\n      \"token\": jwt_token\n   }",
+                            "name": "Ok"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n   \"success\": false,\n   \"message\": \"Invalid Credentials\"\n }",
+                            "name": "Invalid Credentials"
+                        }
+                    ]
+                },
+                {
+                    "name": "Email Verification",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/email\/verify\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/email\/verify\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "similique",
+                                    "description": "The ID of the verify."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 400,
+                            "body": "{\"status\":false,\"success\":false,\"message\":\"Invalid\\\/Expired url provided.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Resend Verification Email",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/email\/resend\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/email\/resend\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "voluptatem",
+                                    "description": "The ID of the resend."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n   \"success\": true,\n   \"message\": \"Email verification link sent on your email!\",\n   }",
+                            "name": "Ok"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n   \"success\": false,\n   \"message\": \"Email already verified!\"\n }",
+                            "name": "Email already verified!"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

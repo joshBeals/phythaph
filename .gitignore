@@ -15,5 +15,5 @@ yarn-error.log
 /.vscode
 
 # Scribe
-.scribe/
-public/docs/
+# .scribe/
+# public/docs/
