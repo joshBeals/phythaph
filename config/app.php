@@ -56,6 +56,8 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    'frontend_url' => env('FRONTEND_URL', 'https://phythaph-web-app-new.herokuapp.com'),
+
     'use_https' => (bool) env('USE_HTTPS', true),
 
     /*

@@ -76,7 +76,8 @@ class AuthController extends Controller
                 'referred_by' => $referrer
             ]);
 
-            $user->sendEmailVerificationNotification();
+            event(new Registered($user));
+            // $user->sendEmailVerificationNotification();
 
             $token = JWTAuth::fromUser($user);
 

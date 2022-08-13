@@ -21,6 +21,7 @@ class VerificationController extends Controller
         try {
             if (!$request->hasValidSignature()) {
                 return Helper::apiFail("Invalid/Expired url provided.");
+                // return redirect(config('app.frontend_url') . '/email/verify/fail');
             }
         
             $user = User::findOrFail($user_id);
@@ -30,6 +31,7 @@ class VerificationController extends Controller
             }
         
             return Helper::apiSuccess('Email verification successful!');
+            // return redirect(config('app.frontend_url') . '/email/verify/success');
         } catch (\Throwable $th) {
             return Helper::apiException($th);
         }

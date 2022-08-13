@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\VerificationController;
+use App\Http\Controllers\Api\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,6 @@ Route::prefix('auth')->group(function () {
     Route::post('login', "AuthController@login")->name('auth.login');
     Route::get('email/verify/{id}', 'VerificationController@verify')->name('verification.verify');
     Route::get('email/resend/{id}', 'VerificationController@resend')->name('verification.resend');
+    Route::post('password/forgot-password','ForgotPasswordController@sendResetLinkResponse')->name('passwords.sent');
+    Route::post('password/reset', 'ForgotPasswordController@sendResetResponse')->name('passwords.reset');
 });
