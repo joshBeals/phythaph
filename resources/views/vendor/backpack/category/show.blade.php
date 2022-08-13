@@ -34,18 +34,22 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
             <div class="card-header">Category Information</div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-6">
-                        <p class="m-0 p-0">Category Name</p>
-                        <p><strong>{{ $data->name }}</strong></p>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="m-0 p-0">Category Type</p>
-                        <p><strong>{{ Helper::titleCase($data->type) }}</strong></p>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="m-0 p-0">Category Description</p>
-                        <p><strong>{{ $data->description ?? '-' }}</strong></p>
-                    </div>
+                    <table class="table table-striped table-hover table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>Category Name</td>
+                                <td><strong>{{ $data->name }}</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Category Type</td>
+                                <td><strong>{{ Helper::titleCase($data->type) }}</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Category Description</td>
+                                <td><strong>{{ $data->description ?? '-' }}</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -54,16 +58,29 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
         <div class="card">
             <div class="card-header">Category Requirements</div>
             <div class="card-body">
-                @foreach($data->requirements as $req)
-                    <div class="row">
-                    @foreach($req as $key => $value)
-                        <div class="col-6">
-                            <p class="m-0 p-0">{{ Helper::titleCase($key) }}</p>
-                            <p><strong>{{ Helper::titleCase($value) }}</strong></p>
-                        </div>
-                    @endforeach
-                    </div>
-                @endforeach
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Field</th>
+                            <th scope="col">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($data->requirements as $req)
+                            <tr>
+                            @foreach($req as $key => $value)
+                                @if($value)
+                                    <td>{{ Helper::titleCase($value) }}</td>
+                                @else
+                                    <td>-</td>
+                                @endif
+                            @endforeach
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                
             </div>
         </div>
     </div>
