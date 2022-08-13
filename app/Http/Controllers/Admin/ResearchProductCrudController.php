@@ -42,12 +42,13 @@ class ResearchProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        CRUD::column('id')->label('Item ID');
         CRUD::column('category_id');
         CRUD::column('features');
         CRUD::column('market_price_new');
         CRUD::column('market_price_imported');
-        CRUD::column('market_price_local');
-        CRUD::column('market_price_computer_village');
+        CRUD::column('market_price_local')->label('Market Price (Locally Pre-Owned)');
+        CRUD::column('market_price_computer_village')->label('Market Price (Buyback)');
         CRUD::column('created_at');
 
         /**

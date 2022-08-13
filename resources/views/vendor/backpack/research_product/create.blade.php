@@ -64,11 +64,11 @@ $categories = \App\Models\Category::get();
 						<input type="text" name="market_price_imported" class="form-control">
 					</div>
 					<div class="form-group col-md-6">
-						<label for="">Market Price (Local)</label>
+						<label for="">Market Price (Locally Pre-Owned)</label>
 						<input type="text" name="market_price_local" class="form-control">
 					</div>
 					<div class="form-group col-md-6">
-						<label for="">Market Price (Computer Village)</label>
+						<label for="">Market Price (Buyback)</label>
 						<input type="text" name="market_price_computer_village" class="form-control">
 					</div>
 				</div>
@@ -107,12 +107,28 @@ var categories = @json($categories);
 		if(category.requirements.length > 0){
 			var temp = '';
 			category.requirements.forEach(function(requirement){
-				temp += `
-					<div class="form-group col-md-6">
-						<label>${requirement.name}</label>
-						<input type="text" id='${requirement.name}' class="form-control field" required>
-					</div>
-				`;
+				if(requirement.field == 'dropdown'){
+					var options = requirement?.options?.split(',');
+					var op_temp = '';
+					options?.forEach(function(op){
+						op_temp += `<option value='${op}'>${op}</option>`;
+					});
+					temp += `
+						<div class="form-group col-md-6">
+							<label>${requirement.name}</label>
+							<select type="text" id='${requirement.name}' class="form-control field" required>
+								${op_temp}
+							</select>
+						</div>
+					`;
+				}else{
+					temp += `
+						<div class="form-group col-md-6">
+							<label>${requirement.name}</label>
+							<input type="text" id='${requirement.name}' class="form-control field" required>
+						</div>
+					`;
+				}
 			});
 			formFields.html(temp);
 		}
@@ -126,16 +142,14 @@ var categories = @json($categories);
 			if(categoryDropdown.val()){
 				var item = {};
 				formFields.find('input').each(function(){
-					if(this.value == ''){
-						error++;
-					}
+					item [`${this.id}`] = this.value;
+				});
+				formFields?.find('select').each(function(){
 					item [`${this.id}`] = this.value;
 				});
 				$("#features").val(JSON.stringify(item));
 
-				if(error <= 0){
-					form.submit();
-				}
+				form.submit();
 			}
 		});
     })

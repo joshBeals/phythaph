@@ -31,44 +31,52 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
 <div class="row mt-5">
     <div class="col-6">
         <div class="card">
-            <div class="card-header">Product Information</div>
+            <div class="card-header"><strong>Product Information</strong></div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-12">
-                        <p class="m-0 p-0">Product Category</p>
-                        <p><strong>{{ $data->category->name }}</strong></p>
-                    </div>
-                    @foreach(json_decode($data->features) as $key => $value)
-                    <div class="col-md-6">
-                        <p class="m-0 p-0">{{ $key }}</p>
-                        <p><strong>{{ $value }}</strong></p>
-                    </div>
-                    @endforeach
+                    <table class="table table-striped table-hover table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>Product Category</td>
+                                <td><strong>{{ $data->category->name }}</strong></td>
+                            </tr>
+                            @foreach(json_decode($data->features) as $key => $value)
+                            <tr>
+                                <td>{{ $key }}</td>
+                                <td><strong>{{ $value ?? '-' }}</strong></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-6">
         <div class="card">
-            <div class="card-header">Product Pricing</div>
+            <div class="card-header"><strong>Product Pricing</strong></div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-6">
-                        <p class="m-0 p-0">Market Price (New)</p>
-                        <p><strong>{{ Helper::formatToCurrency($data->market_price_new) }}</strong></p>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="m-0 p-0">Market Price (Imported)</p>
-                        <p><strong>{{ Helper::formatToCurrency($data->market_price_imported) }}</strong></p>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="m-0 p-0">Market Price (Locally USed)</p>
-                        <p><strong>{{ Helper::formatToCurrency($data->market_price_local) }}</strong></p>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="m-0 p-0">Market Price (Computer Village)</p>
-                        <p><strong>{{ Helper::formatToCurrency($data->market_price_computer_village) }}</strong></p>
-                    </div>
+                    <table class="table table-striped table-hover table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>Market Price (New)</td>
+                                <td><strong>{{ Helper::formatToCurrency($data->market_price_new) }}</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Market Price (Imported)</td>
+                                <td><strong>{{ Helper::formatToCurrency($data->market_price_imported) }}</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Market Price (Locally Pre-Owned)</td>
+                                <td><strong>{{ Helper::formatToCurrency($data->market_price_local) }}</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Market Price (Buyback)</td>
+                                <td><strong>{{ Helper::formatToCurrency($data->market_price_computer_village) }}</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

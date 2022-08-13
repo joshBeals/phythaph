@@ -83,20 +83,11 @@ class CategoryCrudController extends CrudController
                     'label' => 'Field',
                     'options' => ['text' => 'Text', 'dropdown' => 'Dropdown']
                 ],
-                // [ 
-                //     'name' => 'options',
-                //     'label' => 'Options',
-                //     'type' => 'repeatable',
-                //     'new_item_label' => 'Add Option',
-                //     'max_rows' => 10,
-                //     'subfields' => [
-                //         [
-                //             'name' => 'name',
-                //             'type' => 'text',
-                //             'label' => 'Option',
-                //         ],
-                //     ],
-                // ]
+                [ 
+                    'name' => 'options',
+                    'label' => 'Options',
+                    'type' => 'text',
+                ]
             ],
         ]);
 
