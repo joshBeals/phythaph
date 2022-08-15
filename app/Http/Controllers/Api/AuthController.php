@@ -133,4 +133,160 @@ class AuthController extends Controller
         }
 
     }
+
+    /**
+     * Registration Setup
+     * 
+     * Complete user registration.
+     *
+     *@bodyParam account_type string optional
+     *@bodyParam phone string optional
+     *@bodyParam gender string optional
+     *@bodyParam birthday date optional
+     *@bodyParam address string optional
+     *@bodyParam house_number string optional
+     *@bodyParam street string optional
+     *@bodyParam lga string optional
+     *@bodyParam lcda string optional
+     *@bodyParam company_name string optional
+     *@bodyParam company_phone string optional
+     *@bodyParam country string optional
+     *@bodyParam postal_code string optional
+     *@bodyParam city string optional
+     *@bodyParam state string optional
+     *@response status=200 scenario=Ok {
+     *    "success": true,
+     *    "message": "Setup Complete!",
+     *    "data": {
+     *       "user": {
+     *           ...
+     *       }
+     *    }
+     */
+    public function saveSetup(Request $request)
+    {
+        try {
+            if ($request->input('birthday')) {
+
+                $date = strtotime($request->input('birthday'));
+
+                if (!$date || is_null($date) || $date == '') {
+                    return Helper::apiFail("Invalid birthday (format yyyy-mm-dd)");
+                }
+
+                $birthday = date('Y-m-d', $date);
+
+                $inputs = $request->except(['_token', 'birthday']);
+
+            }
+            $inputs = $request->except(['_token']);
+
+            $user = $request->user();
+
+            foreach ($inputs as $key => $value) {
+                $user->{$key} = $value;
+            }
+
+            if ($request->input('birthday')) {
+                $user->birthday = $birthday;
+            }
+
+            $user->save();
+
+            return Helper::apiSuccess($user, 'Setup Complete!');
+
+        } catch (\Throwable $th) {
+            return Helper::apiException($th);
+        }
+
+    }
+
+    /**
+     * User Data
+     * 
+     * Get user data
+     *
+     *@response status=200 scenario=Ok {
+     *    "success": true,
+     *    "message": "",
+     *    "data": {
+     *       "user": {
+     *           ...
+     *       }
+     *    }
+     *@response status=404 scenario="User not found" {
+     *    "success": false,
+     *    "message": "User not found"
+     *  }
+     */
+    public function getUser(Request $request)
+    {
+        try {
+            $user = $request->user();
+            if (!$user) {
+                return Helper::apiFail("User not found", 404);
+            }
+
+            $user->decorate();
+            return Helper::apiSuccess(['user' => $user]);
+
+        } catch (\Throwable $th) {
+            return Helper::apiException($th);
+        }
+    }
+
+    /**
+     * User Data
+     *
+     * Get user data.
+     *
+     *@response status=200 scenario=Ok {
+     *    "success": true,
+     *    "message": "",
+     *    "data": {
+     *       "user": {
+     *           ...
+     *       }
+     *    }
+     *@response status=404 scenario="User not found" {
+     *    "success": false,
+     *    "message": "User not found"
+     *  }
+     */
+    public function me(Request $request)
+    {
+        try {
+            $user = $request->user();
+            if (!$user) {
+                return Helper::apiFail("User not found", 404);
+            }
+
+            $user->decorate();
+            return Helper::apiSuccess(['user' => $user]);
+
+        } catch (\Throwable $th) {
+            return Helper::apiException($th);
+        }
+    }
+
+    /**
+     * User Logout
+     *
+     *
+     *@response status=200 scenario=Ok {
+     *    "success": true,
+     *    "message": "Logout Successful"
+     *  }
+     */
+    public function logout(Request $request)
+    {
+        try {
+            JWTAuth::getToken(); // Ensures token is already loaded.
+            JWTAuth::invalidate(true);
+            return Helper::apiSuccess("Logout Successful");
+
+        } catch (\Throwable $th) {
+            return Helper::apiException($th);
+        }
+    }
 }

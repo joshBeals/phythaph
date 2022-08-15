@@ -25,3 +25,13 @@ Route::prefix('auth')->group(function () {
     Route::post('password/forgot-password','ForgotPasswordController@sendResetLinkResponse')->name('passwords.sent');
     Route::post('password/reset', 'ForgotPasswordController@sendResetResponse')->name('passwords.reset');
 });
+
+Route::group([
+    'middleware' => ['auth.api'],
+], function () {
+    Route::post('setup', "AuthController@saveSetup")->name('setup');
+    Route::get("/auth/logout", "AuthController@logout")->name('auth.logout');
+
+    Route::get('/user', "AuthController@getUser")->name('user');
+    Route::get('/me', "AuthController@me")->name('user_detail');
+});
