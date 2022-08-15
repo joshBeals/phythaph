@@ -86,7 +86,7 @@ class CategoryCrudController extends CrudController
                 [ 
                     'name' => 'options',
                     'label' => 'Options',
-                    'type' => 'text',
+                    'type' => 'textarea',
                 ]
             ],
         ]);

@@ -108,7 +108,7 @@ var categories = @json($categories);
 			var temp = '';
 			category.requirements.forEach(function(requirement){
 				if(requirement.field == 'dropdown'){
-					var options = requirement?.options?.split(',');
+					var options = requirement?.options?.split('|');
 					var op_temp = '';
 					options?.forEach(function(op){
 						op_temp += `<option value='${op}'>${op}</option>`;
