@@ -71,7 +71,6 @@ class CategoryCrudController extends CrudController
             'label' => 'Requirements',
             'type' => 'repeatable',
             'new_item_label' => 'Add Requirement',
-            'max_rows' => 20,
             'subfields' => [
                 [
                     'name' => 'name',
