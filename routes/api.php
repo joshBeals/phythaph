@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\VerificationController;
 use App\Http\Controllers\Api\ForgotPasswordController;
+use App\Http\Controllers\Api\FilterApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,10 @@ use App\Http\Controllers\Api\ForgotPasswordController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::prefix('filter')->group(function () {
+    Route::get('/currencies', 'FilterApiController@currencies');
+});
 
 Route::prefix('auth')->group(function () {
     Route::post('register', "AuthController@register")->name('auth.register');

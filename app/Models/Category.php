@@ -15,13 +15,16 @@ class Category extends Model
 
     protected $fillable = [
         'name',
+        'image',
         'description',
         'type',
         'requirements',
+        'prices',
     ];
 
     protected $casts = [
         'requirements' => 'array',
+        'prices' => 'array',
     ];
 
     public function research_produsts()

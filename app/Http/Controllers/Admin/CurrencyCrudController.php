@@ -2,25 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ResearchProductRequest;
+use App\Http\Requests\CurrencyRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
 /**
- * Class ResearchProductCrudController
+ * Class CurrencyCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ResearchProductCrudController extends CrudController
+class CurrencyCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    // use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    
-    use CreateOperation {create as traitCreate;}
-    use ShowOperation {show as traitShow;}
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -29,9 +26,9 @@ class ResearchProductCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\ResearchProduct::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/research-product');
-        CRUD::setEntityNameStrings('research item', 'research items');
+        CRUD::setModel(\App\Models\Currency::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/currency');
+        CRUD::setEntityNameStrings('currency', 'currencies');
     }
 
     /**
@@ -42,13 +39,9 @@ class ResearchProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('id')->type('text')->label('Item ID');
-        CRUD::column('category_id');
-        CRUD::column('features');
-        CRUD::column('market_price_new');
-        CRUD::column('market_price_imported');
-        CRUD::column('market_price_local')->label('Market Price (Locally Pre-Owned)');
-        CRUD::column('market_price_computer_village')->label('Market Price (Buyback)');
+        CRUD::column('name');
+        CRUD::column('iso');
+        CRUD::column('exchange_rate');
         CRUD::column('created_at');
 
         /**
@@ -66,26 +59,17 @@ class ResearchProductCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(ResearchProductRequest::class);
+        CRUD::setValidation(CurrencyRequest::class);
 
-        CRUD::field('category_id');
-        CRUD::field('features');
-        CRUD::field('market_price_new');
-        CRUD::field('market_price_imported');
-        CRUD::field('market_price_local');
-        CRUD::field('market_price_computer_village');
+        CRUD::field('name');
+        CRUD::field('iso');
+        CRUD::field('exchange_rate');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
          * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
          */
-    }
-
-    public function create()
-    {
-        $this->traitCreate();
-        return view("backpack::research_product.create", $this->data);
     }
 
     /**
@@ -97,16 +81,5 @@ class ResearchProductCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
-    }
-
-    public function show($id)
-    {
-        // custom logic before
-        $content = $this->traitShow($id);
-
-        $this->data['entry']->decorate();
-        // cutom logic after
-        return view("backpack::research_product.show", $this->data);
-
     }
 }

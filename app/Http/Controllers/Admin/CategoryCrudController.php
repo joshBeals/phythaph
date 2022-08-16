@@ -6,6 +6,9 @@ use App\Http\Requests\CategoryRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Category;
 
 /**
  * Class CategoryCrudController
@@ -15,11 +18,11 @@ use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 class CategoryCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     
     use ShowOperation {show as traitShow;}
+    use CreateOperation {store as traitStore;}
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -41,7 +44,7 @@ class CategoryCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('id')->label('Category ID');
+        CRUD::column('id')->type('text')->label('Category ID');
         CRUD::column('name');
         CRUD::column('description');
         CRUD::column('type');
@@ -66,6 +69,7 @@ class CategoryCrudController extends CrudController
         CRUD::field('name')->size(6);
         CRUD::field('type')->type('enum')->size(6);
         CRUD::field('description');
+        CRUD::field('image')->type('upload')->upload(true)->label('Category Image');
         $this->crud->addField([
             'name' => 'requirements',
             'label' => 'Requirements',
@@ -90,6 +94,25 @@ class CategoryCrudController extends CrudController
                 ]
             ],
         ]);
+        $this->crud->addField([
+            'name' => 'prices',
+            'label' => 'Prices',
+            'type' => 'repeatable',
+            'new_item_label' => 'Add Price',
+            'subfields' => [
+                [
+                    'name' => 'name',
+                    'type' => 'text',
+                    'label' => 'Price Name',
+                ],
+                [
+                    'name' => 'currency_id',
+                    'type' => 'select',
+                    'model' => "App\Models\Currency",
+                    'attribute' => 'name',
+                ]
+            ],
+        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -107,6 +130,43 @@ class CategoryCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    /**
+     * Store a newly created resource in the database.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store()
+    {
+        $request = $this->crud->validateRequest();
+
+        $this->crud->unsetValidation(); // validation has already been run
+
+        $data = $request->validated();
+
+        try {
+
+            $img = Storage::disk('s3')->put('images', $data['image']);
+            $img_url = Storage::disk('s3')->url($img);
+
+            $category = Category::create([
+                'name' => $data['name'],
+                'description' => $data['description'] ?? "",
+                'requirements' => $data['requirements'] ?? "",
+                'prices' => $data['prices'] ?? "",
+                'image' => $img_url,
+            ]);
+
+            return redirect('/admin/category');
+
+        } catch (\Throwable $th) {
+            $message = "Error: " . \addslashes($th->getMessage());
+            \Alert::error($message)->flash();
+            dd($message);
+            // return redirect(url()->previous());
+
+        }
     }
 
     public function show($id)

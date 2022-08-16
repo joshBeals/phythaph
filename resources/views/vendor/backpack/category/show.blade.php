@@ -48,6 +48,10 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                                 <td>Category Description</td>
                                 <td><strong>{{ $data->description ?? '-' }}</strong></td>
                             </tr>
+                            <tr>
+                                <td>Category Image</td>
+                                <td><img src="{{ $data->image }}" alt="image"></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -67,6 +71,7 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                         </tr>
                     </thead>
                     <tbody>
+                        @if($data->requirements)
                         @foreach($data->requirements as $req)
                             <tr>
                             @foreach($req as $key => $value)
@@ -78,6 +83,7 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                             @endforeach
                             </tr>
                         @endforeach
+                        @endif
                     </tbody>
                 </table>
                 

@@ -27,5 +27,6 @@
     <ul class="nav-dropdown-items">
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('category') }}'><i class='nav-icon la la-archive'></i> Categories</a></li>
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('research-product') }}'><i class='nav-icon la la-shopping-cart'></i> Items</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('currency') }}"><i class="nav-icon la la-dollar-sign"></i> Currencies</a></li>
     </ul>
 </li>
