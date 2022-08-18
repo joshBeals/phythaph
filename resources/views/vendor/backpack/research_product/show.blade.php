@@ -40,12 +40,14 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                                 <td>Product Category</td>
                                 <td><strong>{{ $data->category->name }}</strong></td>
                             </tr>
+                            @if($data->features)
                             @foreach(json_decode($data->features) as $key => $value)
                             <tr>
                                 <td>{{ $key }}</td>
                                 <td><strong>{{ $value ?? '-' }}</strong></td>
                             </tr>
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
@@ -59,12 +61,14 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                 <div class="row">
                     <table class="table table-striped table-hover table-bordered">
                         <tbody>
+                            @if($data->prices)
                             @foreach(json_decode($data->prices) as $key => $value)
                             <tr>
                                 <td>{{ $key }}</td>
                                 <td><strong>{{ Helper::formatToCurrency($value) ?? '-' }}</strong></td>
                             </tr>
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
