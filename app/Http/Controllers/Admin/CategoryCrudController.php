@@ -7,6 +7,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
 
@@ -17,12 +18,14 @@ use App\Models\Category;
  */
 class CategoryCrudController extends CrudController
 {
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     
     use ShowOperation {show as traitShow;}
     use CreateOperation {store as traitStore;}
+    use UpdateOperation { update as traitUpdate; }
+    
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -77,17 +80,20 @@ class CategoryCrudController extends CrudController
             'new_item_label' => 'Add Requirement',
             'subfields' => [
                 [
+                    'wrapper' => ['class' => 'form-group col-md-4'],
                     'name' => 'name',
                     'type' => 'text',
                     'label' => 'Requirement',
                 ],
                 [
+                    'wrapper' => ['class' => 'form-group col-md-4'],
                     'name' => 'field',
                     'type' => 'select_from_array',
                     'label' => 'Field',
                     'options' => ['text' => 'Text', 'dropdown' => 'Dropdown']
                 ],
                 [ 
+                    'wrapper' => ['class' => 'form-group col-md-4'],
                     'name' => 'options',
                     'label' => 'Options',
                     'type' => 'textarea',
@@ -101,11 +107,13 @@ class CategoryCrudController extends CrudController
             'new_item_label' => 'Add Price',
             'subfields' => [
                 [
+                    'wrapper' => ['class' => 'form-group col-md-6'],
                     'name' => 'name',
                     'type' => 'text',
                     'label' => 'Price Name',
                 ],
                 [
+                    'wrapper' => ['class' => 'form-group col-md-6'],
                     'name' => 'currency_id',
                     'type' => 'select',
                     'model' => "App\Models\Currency",
@@ -146,7 +154,7 @@ class CategoryCrudController extends CrudController
         $data = $request->validated();
 
         try {
-
+            
             $img = Storage::disk('s3')->put('images', $data['image']);
             $img_url = Storage::disk('s3')->url($img);
 
@@ -163,10 +171,48 @@ class CategoryCrudController extends CrudController
         } catch (\Throwable $th) {
             $message = "Error: " . \addslashes($th->getMessage());
             \Alert::error($message)->flash();
-            dd($message);
-            // return redirect(url()->previous());
+            return redirect(url()->previous());
 
         }
+    }
+
+    public function update($id)
+    {
+        $content = $this->traitUpdate($id);
+
+        $request = $this->crud->validateRequest();
+
+        $this->crud->unsetValidation(); // validation has already been run
+
+        $data = $request->validated();
+
+        try {
+            
+            if(array_key_exists('image', $data)){
+                if($data['image'] != NULL){
+                    $img = Storage::disk('s3')->put('images', $data['image']);
+                    $img_url = Storage::disk('s3')->url($img);
+                }
+            }
+
+            $category = Category::where('id', $id)->update([
+                'name' => $data['name'],
+                'description' => $data['description'] ?? "",
+                'requirements' => $data['requirements'] ?? "",
+                'prices' => $data['prices'] ?? "",
+                'image' => $img_url ?? $data['image'],
+            ]);
+
+            return redirect('/admin/category/'.$id.'/edit');
+
+        } catch (\Throwable $th) {
+            $message = "Error: " . \addslashes($th->getMessage());
+            \Alert::error($message)->flash();
+            return redirect(url()->previous());
+
+        }
+
+
     }
 
     public function show($id)

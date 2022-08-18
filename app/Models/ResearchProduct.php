@@ -14,10 +14,7 @@ class ResearchProduct extends Model
     protected $fillable = [
         'category_id',
         'features',
-        'market_price_new',
-        'market_price_imported',
-        'market_price_local',
-        'market_price_computer_village',
+        'prices',
     ];
 
     public function category()

@@ -59,22 +59,12 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                 <div class="row">
                     <table class="table table-striped table-hover table-bordered">
                         <tbody>
+                            @foreach(json_decode($data->prices) as $key => $value)
                             <tr>
-                                <td>Market Price (New)</td>
-                                <td><strong>{{ Helper::formatToCurrency($data->market_price_new) }}</strong></td>
+                                <td>{{ $key }}</td>
+                                <td><strong>{{ Helper::formatToCurrency($value) ?? '-' }}</strong></td>
                             </tr>
-                            <tr>
-                                <td>Market Price (Imported)</td>
-                                <td><strong>{{ Helper::formatToCurrency($data->market_price_imported) }}</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Market Price (Locally Pre-Owned)</td>
-                                <td><strong>{{ Helper::formatToCurrency($data->market_price_local) }}</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Market Price (Buyback)</td>
-                                <td><strong>{{ Helper::formatToCurrency($data->market_price_computer_village) }}</strong></td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

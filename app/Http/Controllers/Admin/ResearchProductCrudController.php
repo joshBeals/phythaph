@@ -45,10 +45,7 @@ class ResearchProductCrudController extends CrudController
         CRUD::column('id')->type('text')->label('Item ID');
         CRUD::column('category_id');
         CRUD::column('features');
-        CRUD::column('market_price_new');
-        CRUD::column('market_price_imported');
-        CRUD::column('market_price_local')->label('Market Price (Locally Pre-Owned)');
-        CRUD::column('market_price_computer_village')->label('Market Price (Buyback)');
+        CRUD::column('prices');
         CRUD::column('created_at');
 
         /**
@@ -70,10 +67,7 @@ class ResearchProductCrudController extends CrudController
 
         CRUD::field('category_id');
         CRUD::field('features');
-        CRUD::field('market_price_new');
-        CRUD::field('market_price_imported');
-        CRUD::field('market_price_local');
-        CRUD::field('market_price_computer_village');
+        CRUD::field('prices');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

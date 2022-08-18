@@ -3,6 +3,7 @@
 @php
 
 $categories = \App\Models\Category::get();
+$currencies = \App\Models\Currency::get();
 
   $defaultBreadcrumbs = [
     trans('backpack::crud.admin') => url(config('backpack.base.route_prefix'), 'dashboard'),
@@ -54,24 +55,9 @@ $categories = \App\Models\Category::get();
 					<input type="hidden" name="features" id="features">
 					<div id="formFields" class="row mt-3"></div>
 				</div>
-				<div class="row">
-					<div class="form-group col-md-6">
-						<label for="">Market Price (New)</label>
-						<input type="text" name="market_price_new" class="form-control">
-					</div>
-					<div class="form-group col-md-6">
-						<label for="">Market Price (Imported)</label>
-						<input type="text" name="market_price_imported" class="form-control">
-					</div>
-					<div class="form-group col-md-6">
-						<label for="">Market Price (Locally Pre-Owned)</label>
-						<input type="text" name="market_price_local" class="form-control">
-					</div>
-					<div class="form-group col-md-6">
-						<label for="">Market Price (Buyback)</label>
-						<input type="text" name="market_price_computer_village" class="form-control">
-					</div>
-				</div>
+				<h5 class="mt-3 mb-3"><strong>Pricing Information</strong></h5>
+				<input type="hidden" name="prices" id="prices">
+				<div id="priceFields" class="row mt-3"></div>
 			</div>
 			@include('crud::inc.form_save_buttons')
 		</form>
@@ -84,17 +70,20 @@ $categories = \App\Models\Category::get();
 <script>
 
 var categories = @json($categories);
+var currencies = @json($currencies);
 
 
 (function($) {
     var categoryDropdown = $("#category"),
 	form = $("#myform"),
 	formFields = $("#formFields"),
+	priceFields = $("#priceFields"),
 	fields = $(".field");
 
 	function generateForm() {
 
 		formFields.html('');
+		priceFields.html('');
 		
 		categoryId = categoryDropdown.val();
 
@@ -104,10 +93,11 @@ var categories = @json($categories);
 			return i.id === parseInt(categoryId);
 		});
 
-		if(category.requirements.length > 0){
+		if(category?.requirements?.length > 0){
 			var temp = '';
-			category.requirements.forEach(function(requirement){
-				if(requirement.field == 'dropdown'){
+			var temp_price = '';
+			category?.requirements?.forEach(function(requirement){
+				if(requirement?.field == 'dropdown'){
 					var options = requirement?.options?.split('|');
 					var op_temp = '';
 					options?.forEach(function(op){
@@ -115,8 +105,8 @@ var categories = @json($categories);
 					});
 					temp += `
 						<div class="form-group col-md-6">
-							<label>${requirement.name}</label>
-							<select type="text" id='${requirement.name}' class="form-control field" required>
+							<label>${requirement?.name}</label>
+							<select type="text" id='${requirement?.name}' class="form-control field" required>
 								${op_temp}
 							</select>
 						</div>
@@ -124,13 +114,27 @@ var categories = @json($categories);
 				}else{
 					temp += `
 						<div class="form-group col-md-6">
-							<label>${requirement.name}</label>
-							<input type="text" id='${requirement.name}' class="form-control field" required>
+							<label>${requirement?.name}</label>
+							<input type="text" id='${requirement?.name}' class="form-control field" required>
 						</div>
 					`;
 				}
 			});
+
+			category?.prices?.forEach(function(price){
+				currency = currencies.find(function(i) {
+					return i.id === parseInt(price?.currency_id);
+				});
+				temp_price += `
+						<div class="form-group col-md-6">
+							<label>${price?.name} (${currency?.name || 'Naira'})</label>
+							<input type="number" id='${price?.name}' class="form-control field" required>
+						</div>
+					`;
+			});
+
 			formFields.html(temp);
+			priceFields.html(temp_price);
 		}
 	}
 
@@ -141,13 +145,19 @@ var categories = @json($categories);
 			var error = 0;
 			if(categoryDropdown.val()){
 				var item = {};
-				formFields.find('input').each(function(){
-					item [`${this.id}`] = this.value;
+				var price_item = {};
+				formFields?.find('input').each(function(){
+					item[`${this.id}`] = this.value;
 				});
 				formFields?.find('select').each(function(){
-					item [`${this.id}`] = this.value;
+					item[`${this.id}`] = this.value;
 				});
 				$("#features").val(JSON.stringify(item));
+
+				priceFields?.find('input').each(function(){
+					price_item[`${this.id}`] = this.value;
+				});
+				$("#prices").val(JSON.stringify(price_item));
 
 				form.submit();
 			}
