@@ -10,11 +10,99 @@
     ],
     "info": {
         "name": "Phythaph",
-        "_postman_id": "d65a64dd-b9c2-4c1d-851c-c04b3d5ca67d",
+        "_postman_id": "1c4bccd0-775c-4d19-9409-41c8c8c87336",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
+        {
+            "name": "Open (No Auth) APIs",
+            "description": "",
+            "item": [
+                {
+                    "name": "Fetch Categories",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/categories",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/categories"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"categories\": {\n          ...\n      }\n   }",
+                            "name": "Ok"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n   \"success\": false,\n   \"message\": \"Error\"\n }",
+                            "name": "Error"
+                        }
+                    ]
+                },
+                {
+                    "name": "Fetch Faqs",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/faqs",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/faqs"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"faqs\": {\n          ...\n      }\n   }",
+                            "name": "Ok"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n   \"success\": false,\n   \"message\": \"Error\"\n }",
+                            "name": "Error"
+                        }
+                    ]
+                }
+            ]
+        },
         {
             "name": "Auth APIs",
             "description": "",
@@ -41,7 +129,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"qui\",\"last_name\":\"non\",\"email\":\"distinctio\",\"password\":\"et\"}"
+                            "raw": "{\"first_name\":\"ut\",\"last_name\":\"aperiam\",\"email\":\"ut\",\"password\":\"quo\"}"
                         },
                         "description": "",
                         "auth": {
@@ -85,7 +173,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"consequatur\",\"password\":\"odit\"}"
+                            "raw": "{\"email\":\"eos\",\"password\":\"corrupti\"}"
                         },
                         "description": "",
                         "auth": {
@@ -119,7 +207,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "ea",
+                                    "value": "quae",
                                     "description": "The ID of the verify."
                                 }
                             ]
@@ -158,7 +246,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "57"
+                                    "value": "58"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -183,7 +271,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "possimus",
+                                    "value": "enim",
                                     "description": "The ID of the resend."
                                 }
                             ]
@@ -242,7 +330,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"cupiditate\"}"
+                            "raw": "{\"email\":\"perspiciatis\"}"
                         },
                         "description": "",
                         "auth": {
@@ -286,7 +374,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"iusto\",\"token\":\"quisquam\",\"password\":\"aut\"}"
+                            "raw": "{\"email\":\"rerum\",\"token\":\"aut\",\"password\":\"sit\"}"
                         },
                         "description": "",
                         "auth": {
@@ -330,7 +418,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"account_type\":\"dignissimos\",\"phone\":\"aut\",\"gender\":\"et\",\"birthday\":\"blanditiis\",\"address\":\"libero\",\"house_number\":\"voluptas\",\"street\":\"saepe\",\"lga\":\"architecto\",\"lcda\":\"fugit\",\"company_name\":\"eligendi\",\"company_phone\":\"deserunt\",\"country\":\"ex\",\"postal_code\":\"corporis\",\"city\":\"at\",\"state\":\"inventore\"}"
+                            "raw": "{\"account_type\":\"similique\",\"phone\":\"excepturi\",\"gender\":\"quos\",\"birthday\":\"cumque\",\"address\":\"dolores\",\"house_number\":\"sit\",\"street\":\"et\",\"lga\":\"necessitatibus\",\"lcda\":\"hic\",\"company_name\":\"consequatur\",\"company_phone\":\"et\",\"country\":\"molestias\",\"postal_code\":\"facilis\",\"city\":\"ducimus\",\"state\":\"sunt\"}"
                         },
                         "description": "Complete user registration.",
                         "auth": {
@@ -466,94 +554,6 @@
             ]
         },
         {
-            "name": "Category APIs",
-            "description": "",
-            "item": [
-                {
-                    "name": "Fetch Categories",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/categories",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/categories"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"categories\": {\n          ...\n      }\n   }",
-                            "name": "Ok"
-                        },
-                        {
-                            "header": [],
-                            "code": 400,
-                            "body": "{\n   \"success\": false,\n   \"message\": \"Error\"\n }",
-                            "name": "Error"
-                        }
-                    ]
-                },
-                {
-                    "name": "Fetch Faqs",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/faqs",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/faqs"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"faqs\": {\n          ...\n      }\n   }",
-                            "name": "Ok"
-                        },
-                        {
-                            "header": [],
-                            "code": 400,
-                            "body": "{\n   \"success\": false,\n   \"message\": \"Error\"\n }",
-                            "name": "Error"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             "name": "Endpoints",
             "description": "",
             "item": [
@@ -600,7 +600,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "58"
+                                    "value": "59"
                                 },
                                 {
                                     "key": "access-control-allow-origin",

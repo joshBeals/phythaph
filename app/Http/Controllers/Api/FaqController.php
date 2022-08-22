@@ -9,7 +9,7 @@ use App\Classes\Helper;
 use App\Models\Faq;
 
 /**
- * @group Category APIs
+ * @group Open (No Auth) APIs
  */
 class FaqController extends Controller
 {

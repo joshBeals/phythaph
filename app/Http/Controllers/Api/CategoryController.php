@@ -9,7 +9,7 @@ use App\Classes\Helper;
 use App\Models\Category;
 
 /**
- * @group Category APIs
+ * @group Open (No Auth) APIs
  */
 class CategoryController extends Controller
 {

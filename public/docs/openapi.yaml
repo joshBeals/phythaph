@@ -7,6 +7,98 @@ servers:
   -
     url: 'http://phythaph.herokuapp.com'
 paths:
+  /api/categories:
+    get:
+      summary: 'Fetch Categories'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"categories\": {\n          ...\n      }\n   }"
+        400:
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Error
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Error
+      tags:
+        - 'Open (No Auth) APIs'
+      security: []
+  /api/faqs:
+    get:
+      summary: 'Fetch Faqs'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"faqs\": {\n          ...\n      }\n   }"
+        400:
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Error
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Error
+      tags:
+        - 'Open (No Auth) APIs'
+      security: []
   /api/auth/register:
     post:
       summary: 'Register new user'
@@ -62,19 +154,19 @@ paths:
                 first_name:
                   type: string
                   description: ''
-                  example: qui
+                  example: ut
                 last_name:
                   type: string
                   description: ''
-                  example: non
+                  example: aperiam
                 email:
                   type: string
                   description: ''
-                  example: distinctio
+                  example: ut
                 password:
                   type: string
                   description: ''
-                  example: et
+                  example: quo
               required:
                 - first_name
                 - last_name
@@ -136,11 +228,11 @@ paths:
                 email:
                   type: string
                   description: ''
-                  example: consequatur
+                  example: eos
                 password:
                   type: string
                   description: ''
-                  example: odit
+                  example: corrupti
               required:
                 - email
                 - password
@@ -193,7 +285,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the verify.'
-        example: ea
+        example: quae
         required: true
         schema:
           type: string
@@ -248,7 +340,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the resend.'
-        example: possimus
+        example: enim
         required: true
         schema:
           type: string
@@ -307,7 +399,7 @@ paths:
                 email:
                   type: string
                   description: ''
-                  example: cupiditate
+                  example: perspiciatis
               required:
                 - email
       security: []
@@ -366,15 +458,15 @@ paths:
                 email:
                   type: string
                   description: ''
-                  example: iusto
+                  example: rerum
                 token:
                   type: string
                   description: ''
-                  example: quisquam
+                  example: aut
                 password:
                   type: string
                   description: ''
-                  example: aut
+                  example: sit
               required:
                 - email
                 - token
@@ -419,63 +511,63 @@ paths:
                 account_type:
                   type: string
                   description: optional
-                  example: dignissimos
+                  example: similique
                 phone:
                   type: string
                   description: optional
-                  example: aut
+                  example: excepturi
                 gender:
                   type: string
                   description: optional
-                  example: et
+                  example: quos
                 birthday:
                   type: date
                   description: optional
-                  example: blanditiis
+                  example: cumque
                 address:
                   type: string
                   description: optional
-                  example: libero
+                  example: dolores
                 house_number:
                   type: string
                   description: optional
-                  example: voluptas
+                  example: sit
                 street:
                   type: string
                   description: optional
-                  example: saepe
+                  example: et
                 lga:
                   type: string
                   description: optional
-                  example: architecto
+                  example: necessitatibus
                 lcda:
                   type: string
                   description: optional
-                  example: fugit
+                  example: hic
                 company_name:
                   type: string
                   description: optional
-                  example: eligendi
+                  example: consequatur
                 company_phone:
                   type: string
                   description: optional
-                  example: deserunt
+                  example: et
                 country:
                   type: string
                   description: optional
-                  example: ex
+                  example: molestias
                 postal_code:
                   type: string
                   description: optional
-                  example: corporis
+                  example: facilis
                 city:
                   type: string
                   description: optional
-                  example: at
+                  example: ducimus
                 state:
                   type: string
                   description: optional
-                  example: inventore
+                  example: sunt
       security: []
   /api/auth/logout:
     get:
@@ -607,98 +699,6 @@ paths:
                     example: 'User not found'
       tags:
         - 'Auth APIs'
-      security: []
-  /api/categories:
-    get:
-      summary: 'Fetch Categories'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: Ok
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"categories\": {\n          ...\n      }\n   }"
-        400:
-          description: Error
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  success: false
-                  message: Error
-                properties:
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Error
-      tags:
-        - 'Category APIs'
-      security: []
-  /api/faqs:
-    get:
-      summary: 'Fetch Faqs'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: Ok
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"faqs\": {\n          ...\n      }\n   }"
-        400:
-          description: Error
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  success: false
-                  message: Error
-                properties:
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Error
-      tags:
-        - 'Category APIs'
       security: []
   /api/filter/currencies:
     get:
@@ -841,10 +841,10 @@ paths:
       security: []
 tags:
   -
-    name: 'Auth APIs'
+    name: 'Open (No Auth) APIs'
     description: ''
   -
-    name: 'Category APIs'
+    name: 'Auth APIs'
     description: ''
   -
     name: Endpoints
