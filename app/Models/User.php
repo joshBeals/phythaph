@@ -41,4 +41,19 @@ class User extends UserBase implements MustVerifyEmail, JWTSubject
         return $this;
 
     }
+
+    public function Pawns()
+    {
+        return $this->hasMany(UserPawns::class)->orderBy('id', 'DESC');
+    }
+
+    /**
+     * Check of the user has completed their registration
+     *
+     * @return bool
+     */
+    public function completedRegistration(): bool
+    {
+        return $this->getPhone() ? true : false;
+    }
 }

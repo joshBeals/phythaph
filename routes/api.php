@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\VerificationController;
 use App\Http\Controllers\Api\ForgotPasswordController;
 use App\Http\Controllers\Api\FilterApiController;
+use App\Http\Controllers\Api\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,9 @@ Route::group([
 
     Route::get('/user', "AuthController@getUser")->name('user');
     Route::get('/me', "AuthController@me")->name('user_detail');
+
+    Route::middleware('registration_completion_api')->group(function () {
+        Route::get('/categories', "CategoryController@index")->name('categories');
+    });
+    
 });

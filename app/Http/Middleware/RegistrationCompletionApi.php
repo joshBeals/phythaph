@@ -18,7 +18,7 @@ class RegistrationCompletionApi
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!$request->ajax() && !$request->user()->completedRegistration()) {
+        if (!$request->user()->completedRegistration()) {
             return Helper::apiFail('Registration setup not complete!');
         }
 

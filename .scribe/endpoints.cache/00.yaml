@@ -22,28 +22,28 @@ endpoints:
         name: first_name
         description: ''
         required: true
-        example: alias
+        example: neque
         type: string
         custom: []
       last_name:
         name: last_name
         description: ''
         required: true
-        example: est
+        example: placeat
         type: string
         custom: []
       email:
         name: email
         description: ''
         required: true
-        example: dicta
+        example: dolorem
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: ipsa
+        example: et
         type: string
         custom: []
     responses:
@@ -87,14 +87,14 @@ endpoints:
         name: email
         description: ''
         required: true
-        example: voluptatem
+        example: odit
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: voluptas
+        example: sed
         type: string
         custom: []
     responses:
@@ -139,7 +139,7 @@ endpoints:
         name: id
         description: 'The ID of the verify.'
         required: true
-        example: voluptatibus
+        example: iure
         type: string
         custom: []
     queryParameters: []
@@ -152,7 +152,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '59'
+          x-ratelimit-remaining: '56'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -173,7 +173,7 @@ endpoints:
         name: id
         description: 'The ID of the resend.'
         required: true
-        example: tempore
+        example: ex
         type: string
         custom: []
     queryParameters: []
@@ -217,7 +217,7 @@ endpoints:
         name: email
         description: ''
         required: true
-        example: aut
+        example: facere
         type: string
         custom: []
     responses:
@@ -266,14 +266,14 @@ endpoints:
         name: token
         description: ''
         required: true
-        example: cum
+        example: quo
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: sit
+        example: consequuntur
         type: string
         custom: []
     responses:
@@ -315,105 +315,105 @@ endpoints:
         name: account_type
         description: optional
         required: false
-        example: accusantium
+        example: sit
         type: string
         custom: []
       phone:
         name: phone
         description: optional
         required: false
-        example: praesentium
+        example: voluptates
         type: string
         custom: []
       gender:
         name: gender
         description: optional
         required: false
-        example: maxime
+        example: expedita
         type: string
         custom: []
       birthday:
         name: birthday
         description: optional
         required: false
-        example: quia
+        example: dolorum
         type: date
         custom: []
       address:
         name: address
         description: optional
         required: false
-        example: quaerat
+        example: ab
         type: string
         custom: []
       house_number:
         name: house_number
         description: optional
         required: false
-        example: sunt
+        example: voluptas
         type: string
         custom: []
       street:
         name: street
         description: optional
         required: false
-        example: eum
+        example: eos
         type: string
         custom: []
       lga:
         name: lga
         description: optional
         required: false
-        example: odit
+        example: nisi
         type: string
         custom: []
       lcda:
         name: lcda
         description: optional
         required: false
-        example: nostrum
+        example: hic
         type: string
         custom: []
       company_name:
         name: company_name
         description: optional
         required: false
-        example: illum
+        example: et
         type: string
         custom: []
       company_phone:
         name: company_phone
         description: optional
         required: false
-        example: laudantium
+        example: officia
         type: string
         custom: []
       country:
         name: country
         description: optional
         required: false
-        example: veniam
+        example: placeat
         type: string
         custom: []
       postal_code:
         name: postal_code
         description: optional
         required: false
-        example: vel
+        example: fugit
         type: string
         custom: []
       city:
         name: city
         description: optional
         required: false
-        example: ipsa
+        example: provident
         type: string
         custom: []
       state:
         name: state
         description: optional
         required: false
-        example: in
+        example: quae
         type: string
         custom: []
     responses:

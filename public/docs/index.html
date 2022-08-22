@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var baseUrl = "https://phythaph-web-app-new.herokuapp.com";
+        var baseUrl = "http://phythaph.herokuapp.com";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -106,6 +106,26 @@
                     </li>
                                                     </ul>
                             </ul>
+                    <ul id="tocify-header-3" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="category-apis">
+                    <a href="#category-apis">Category APIs</a>
+                </li>
+                                    <ul id="tocify-subheader-category-apis" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="category-apis-GETapi-categories">
+                        <a href="#category-apis-GETapi-categories">Fetch Categories</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+                    <ul id="tocify-header-4" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-filter-currencies">
+                        <a href="#endpoints-GETapi-filter-currencies">GET api/filter/currencies</a>
+                    </li>
+                                                    </ul>
+                            </ul>
         
                         
             </div>
@@ -116,7 +136,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: August 15 2022</li>
+        <li>Last updated: August 22 2022</li>
     </ul>
 </div>
 
@@ -130,7 +150,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 <blockquote>
 <p>Base URL</p>
 </blockquote>
-<pre><code class="language-yaml">https://phythaph-web-app-new.herokuapp.com</code></pre>
+<pre><code class="language-yaml">http://phythaph.herokuapp.com</code></pre>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
@@ -152,21 +172,21 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://phythaph-web-app-new.herokuapp.com/api/auth/register" \
+    "http://phythaph.herokuapp.com/api/auth/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"first_name\": \"alias\",
-    \"last_name\": \"est\",
-    \"email\": \"dicta\",
-    \"password\": \"ipsa\"
+    \"first_name\": \"neque\",
+    \"last_name\": \"placeat\",
+    \"email\": \"dolorem\",
+    \"password\": \"et\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://phythaph-web-app-new.herokuapp.com/api/auth/register"
+    "http://phythaph.herokuapp.com/api/auth/register"
 );
 
 const headers = {
@@ -175,10 +195,10 @@ const headers = {
 };
 
 let body = {
-    "first_name": "alias",
-    "last_name": "est",
-    "email": "dicta",
-    "password": "ipsa"
+    "first_name": "neque",
+    "last_name": "placeat",
+    "email": "dolorem",
+    "password": "et"
 };
 
 fetch(url, {
@@ -258,7 +278,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="POSTapi-auth-register"
-               value="alias"
+               value="neque"
                data-component="body" hidden>
     <br>
 
@@ -268,7 +288,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="POSTapi-auth-register"
-               value="est"
+               value="placeat"
                data-component="body" hidden>
     <br>
 
@@ -278,7 +298,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-register"
-               value="dicta"
+               value="dolorem"
                data-component="body" hidden>
     <br>
 
@@ -288,7 +308,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-register"
-               value="ipsa"
+               value="et"
                data-component="body" hidden>
     <br>
 
@@ -308,19 +328,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://phythaph-web-app-new.herokuapp.com/api/auth/login" \
+    "http://phythaph.herokuapp.com/api/auth/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"voluptatem\",
-    \"password\": \"voluptas\"
+    \"email\": \"odit\",
+    \"password\": \"sed\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://phythaph-web-app-new.herokuapp.com/api/auth/login"
+    "http://phythaph.herokuapp.com/api/auth/login"
 );
 
 const headers = {
@@ -329,8 +349,8 @@ const headers = {
 };
 
 let body = {
-    "email": "voluptatem",
-    "password": "voluptas"
+    "email": "odit",
+    "password": "sed"
 };
 
 fetch(url, {
@@ -413,7 +433,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-login"
-               value="voluptatem"
+               value="odit"
                data-component="body" hidden>
     <br>
 
@@ -423,7 +443,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-login"
-               value="voluptas"
+               value="sed"
                data-component="body" hidden>
     <br>
 
@@ -443,14 +463,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://phythaph-web-app-new.herokuapp.com/api/auth/email/verify/voluptatibus" \
+    --get "http://phythaph.herokuapp.com/api/auth/email/verify/iure" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://phythaph-web-app-new.herokuapp.com/api/auth/email/verify/voluptatibus"
+    "http://phythaph.herokuapp.com/api/auth/email/verify/iure"
 );
 
 const headers = {
@@ -476,7 +496,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 59
+x-ratelimit-remaining: 56
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -533,7 +553,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="id"
                data-endpoint="GETapi-auth-email-verify--id-"
-               value="voluptatibus"
+               value="iure"
                data-component="url" hidden>
     <br>
 <p>The ID of the verify.</p>
@@ -553,14 +573,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://phythaph-web-app-new.herokuapp.com/api/auth/email/resend/tempore" \
+    --get "http://phythaph.herokuapp.com/api/auth/email/resend/ex" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://phythaph-web-app-new.herokuapp.com/api/auth/email/resend/tempore"
+    "http://phythaph.herokuapp.com/api/auth/email/resend/ex"
 );
 
 const headers = {
@@ -642,7 +662,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETapi-auth-email-resend--id-"
-               value="tempore"
+               value="ex"
                data-component="url" hidden>
     <br>
 <p>The ID of the resend.</p>
@@ -662,18 +682,18 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://phythaph-web-app-new.herokuapp.com/api/auth/password/forgot-password" \
+    "http://phythaph.herokuapp.com/api/auth/password/forgot-password" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"aut\"
+    \"email\": \"facere\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://phythaph-web-app-new.herokuapp.com/api/auth/password/forgot-password"
+    "http://phythaph.herokuapp.com/api/auth/password/forgot-password"
 );
 
 const headers = {
@@ -682,7 +702,7 @@ const headers = {
 };
 
 let body = {
-    "email": "aut"
+    "email": "facere"
 };
 
 fetch(url, {
@@ -760,7 +780,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-password-forgot-password"
-               value="aut"
+               value="facere"
                data-component="body" hidden>
     <br>
 
@@ -780,20 +800,20 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://phythaph-web-app-new.herokuapp.com/api/auth/password/reset" \
+    "http://phythaph.herokuapp.com/api/auth/password/reset" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"email\": \"nostrum\",
-    \"token\": \"cum\",
-    \"password\": \"sit\"
+    \"token\": \"quo\",
+    \"password\": \"consequuntur\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://phythaph-web-app-new.herokuapp.com/api/auth/password/reset"
+    "http://phythaph.herokuapp.com/api/auth/password/reset"
 );
 
 const headers = {
@@ -803,8 +823,8 @@ const headers = {
 
 let body = {
     "email": "nostrum",
-    "token": "cum",
-    "password": "sit"
+    "token": "quo",
+    "password": "consequuntur"
 };
 
 fetch(url, {
@@ -892,7 +912,7 @@ fetch(url, {
                 <input type="text"
                name="token"
                data-endpoint="POSTapi-auth-password-reset"
-               value="cum"
+               value="quo"
                data-component="body" hidden>
     <br>
 
@@ -902,7 +922,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-password-reset"
-               value="sit"
+               value="consequuntur"
                data-component="body" hidden>
     <br>
 
@@ -922,32 +942,32 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://phythaph-web-app-new.herokuapp.com/api/setup" \
+    "http://phythaph.herokuapp.com/api/setup" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"account_type\": \"accusantium\",
-    \"phone\": \"praesentium\",
-    \"gender\": \"maxime\",
-    \"birthday\": \"quia\",
-    \"address\": \"quaerat\",
-    \"house_number\": \"sunt\",
-    \"street\": \"eum\",
-    \"lga\": \"odit\",
-    \"lcda\": \"nostrum\",
-    \"company_name\": \"illum\",
-    \"company_phone\": \"laudantium\",
-    \"country\": \"veniam\",
-    \"postal_code\": \"vel\",
-    \"city\": \"ipsa\",
-    \"state\": \"in\"
+    \"account_type\": \"sit\",
+    \"phone\": \"voluptates\",
+    \"gender\": \"expedita\",
+    \"birthday\": \"dolorum\",
+    \"address\": \"ab\",
+    \"house_number\": \"voluptas\",
+    \"street\": \"eos\",
+    \"lga\": \"nisi\",
+    \"lcda\": \"hic\",
+    \"company_name\": \"et\",
+    \"company_phone\": \"officia\",
+    \"country\": \"placeat\",
+    \"postal_code\": \"fugit\",
+    \"city\": \"provident\",
+    \"state\": \"quae\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://phythaph-web-app-new.herokuapp.com/api/setup"
+    "http://phythaph.herokuapp.com/api/setup"
 );
 
 const headers = {
@@ -956,21 +976,21 @@ const headers = {
 };
 
 let body = {
-    "account_type": "accusantium",
-    "phone": "praesentium",
-    "gender": "maxime",
-    "birthday": "quia",
-    "address": "quaerat",
-    "house_number": "sunt",
-    "street": "eum",
-    "lga": "odit",
-    "lcda": "nostrum",
-    "company_name": "illum",
-    "company_phone": "laudantium",
-    "country": "veniam",
-    "postal_code": "vel",
-    "city": "ipsa",
-    "state": "in"
+    "account_type": "sit",
+    "phone": "voluptates",
+    "gender": "expedita",
+    "birthday": "dolorum",
+    "address": "ab",
+    "house_number": "voluptas",
+    "street": "eos",
+    "lga": "nisi",
+    "lcda": "hic",
+    "company_name": "et",
+    "company_phone": "officia",
+    "country": "placeat",
+    "postal_code": "fugit",
+    "city": "provident",
+    "state": "quae"
 };
 
 fetch(url, {
@@ -1042,7 +1062,7 @@ fetch(url, {
                 <input type="text"
                name="account_type"
                data-endpoint="POSTapi-setup"
-               value="accusantium"
+               value="sit"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1052,7 +1072,7 @@ fetch(url, {
                 <input type="text"
                name="phone"
                data-endpoint="POSTapi-setup"
-               value="praesentium"
+               value="voluptates"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1062,7 +1082,7 @@ fetch(url, {
                 <input type="text"
                name="gender"
                data-endpoint="POSTapi-setup"
-               value="maxime"
+               value="expedita"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1072,7 +1092,7 @@ fetch(url, {
                 <input type="text"
                name="birthday"
                data-endpoint="POSTapi-setup"
-               value="quia"
+               value="dolorum"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1082,7 +1102,7 @@ fetch(url, {
                 <input type="text"
                name="address"
                data-endpoint="POSTapi-setup"
-               value="quaerat"
+               value="ab"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1092,7 +1112,7 @@ fetch(url, {
                 <input type="text"
                name="house_number"
                data-endpoint="POSTapi-setup"
-               value="sunt"
+               value="voluptas"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1102,7 +1122,7 @@ fetch(url, {
                 <input type="text"
                name="street"
                data-endpoint="POSTapi-setup"
-               value="eum"
+               value="eos"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1112,7 +1132,7 @@ fetch(url, {
                 <input type="text"
                name="lga"
                data-endpoint="POSTapi-setup"
-               value="odit"
+               value="nisi"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1122,7 +1142,7 @@ fetch(url, {
                 <input type="text"
                name="lcda"
                data-endpoint="POSTapi-setup"
-               value="nostrum"
+               value="hic"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1132,7 +1152,7 @@ fetch(url, {
                 <input type="text"
                name="company_name"
                data-endpoint="POSTapi-setup"
-               value="illum"
+               value="et"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1142,7 +1162,7 @@ fetch(url, {
                 <input type="text"
                name="company_phone"
                data-endpoint="POSTapi-setup"
-               value="laudantium"
+               value="officia"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1152,7 +1172,7 @@ fetch(url, {
                 <input type="text"
                name="country"
                data-endpoint="POSTapi-setup"
-               value="veniam"
+               value="placeat"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1162,7 +1182,7 @@ fetch(url, {
                 <input type="text"
                name="postal_code"
                data-endpoint="POSTapi-setup"
-               value="vel"
+               value="fugit"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1172,7 +1192,7 @@ fetch(url, {
                 <input type="text"
                name="city"
                data-endpoint="POSTapi-setup"
-               value="ipsa"
+               value="provident"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1182,7 +1202,7 @@ fetch(url, {
                 <input type="text"
                name="state"
                data-endpoint="POSTapi-setup"
-               value="in"
+               value="quae"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1202,14 +1222,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://phythaph-web-app-new.herokuapp.com/api/auth/logout" \
+    --get "http://phythaph.herokuapp.com/api/auth/logout" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://phythaph-web-app-new.herokuapp.com/api/auth/logout"
+    "http://phythaph.herokuapp.com/api/auth/logout"
 );
 
 const headers = {
@@ -1290,14 +1310,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://phythaph-web-app-new.herokuapp.com/api/user" \
+    --get "http://phythaph.herokuapp.com/api/user" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://phythaph-web-app-new.herokuapp.com/api/user"
+    "http://phythaph.herokuapp.com/api/user"
 );
 
 const headers = {
@@ -1392,14 +1412,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://phythaph-web-app-new.herokuapp.com/api/me" \
+    --get "http://phythaph.herokuapp.com/api/me" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://phythaph-web-app-new.herokuapp.com/api/me"
+    "http://phythaph.herokuapp.com/api/me"
 );
 
 const headers = {
@@ -1478,6 +1498,258 @@ fetch(url, {
             <p>
             <small class="badge badge-green">GET</small>
             <b><code>api/me</code></b>
+        </p>
+                    </form>
+
+        <h1 id="category-apis">Category APIs</h1>
+
+    
+
+            <h2 id="category-apis-GETapi-categories">Fetch Categories</h2>
+
+<p>
+</p>
+
+<p>Get all categories</p>
+
+<span id="example-requests-GETapi-categories">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/categories" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/categories"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-categories">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;&quot;,
+   &quot;data&quot;: {
+      &quot;categories&quot;: {
+          ...
+      }
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, User not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;User not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-categories" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-categories"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-categories"></code></pre>
+</span>
+<span id="execution-error-GETapi-categories" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-categories"></code></pre>
+</span>
+<form id="form-GETapi-categories" data-method="GET"
+      data-path="api/categories"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-categories', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-categories"
+                    onclick="tryItOut('GETapi-categories');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-categories"
+                    onclick="cancelTryOut('GETapi-categories');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-categories" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/categories</code></b>
+        </p>
+                    </form>
+
+        <h1 id="endpoints">Endpoints</h1>
+
+    
+
+            <h2 id="endpoints-GETapi-filter-currencies">GET api/filter/currencies</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-filter-currencies">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/filter/currencies" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/filter/currencies"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-filter-currencies">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 57
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;current_page&quot;: 1,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Naira&quot;,
+            &quot;iso&quot;: &quot;ngn&quot;,
+            &quot;exchange_rate&quot;: &quot;0.00&quot;,
+            &quot;created_at&quot;: &quot;2022-08-16T20:11:48.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-16T20:11:48.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Dollar&quot;,
+            &quot;iso&quot;: &quot;usd&quot;,
+            &quot;exchange_rate&quot;: &quot;630.00&quot;,
+            &quot;created_at&quot;: &quot;2022-08-16T20:12:06.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-16T20:12:06.000000Z&quot;
+        }
+    ],
+    &quot;first_page_url&quot;: &quot;http://phythaph.herokuapp.com/api/filter/currencies?page=1&quot;,
+    &quot;from&quot;: 1,
+    &quot;last_page&quot;: 1,
+    &quot;last_page_url&quot;: &quot;http://phythaph.herokuapp.com/api/filter/currencies?page=1&quot;,
+    &quot;links&quot;: [
+        {
+            &quot;url&quot;: null,
+            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+            &quot;active&quot;: false
+        },
+        {
+            &quot;url&quot;: &quot;http://phythaph.herokuapp.com/api/filter/currencies?page=1&quot;,
+            &quot;label&quot;: &quot;1&quot;,
+            &quot;active&quot;: true
+        },
+        {
+            &quot;url&quot;: null,
+            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+            &quot;active&quot;: false
+        }
+    ],
+    &quot;next_page_url&quot;: null,
+    &quot;path&quot;: &quot;http://phythaph.herokuapp.com/api/filter/currencies&quot;,
+    &quot;per_page&quot;: 10,
+    &quot;prev_page_url&quot;: null,
+    &quot;to&quot;: 2,
+    &quot;total&quot;: 2
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-filter-currencies" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-filter-currencies"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-filter-currencies"></code></pre>
+</span>
+<span id="execution-error-GETapi-filter-currencies" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-filter-currencies"></code></pre>
+</span>
+<form id="form-GETapi-filter-currencies" data-method="GET"
+      data-path="api/filter/currencies"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-filter-currencies', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-filter-currencies"
+                    onclick="tryItOut('GETapi-filter-currencies');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-filter-currencies"
+                    onclick="cancelTryOut('GETapi-filter-currencies');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-filter-currencies" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/filter/currencies</code></b>
         </p>
                     </form>
 
