@@ -62,19 +62,19 @@ paths:
                 first_name:
                   type: string
                   description: ''
-                  example: quaerat
+                  example: qui
                 last_name:
                   type: string
                   description: ''
-                  example: ducimus
+                  example: non
                 email:
                   type: string
                   description: ''
-                  example: optio
+                  example: distinctio
                 password:
                   type: string
                   description: ''
-                  example: dolore
+                  example: et
               required:
                 - first_name
                 - last_name
@@ -136,11 +136,11 @@ paths:
                 email:
                   type: string
                   description: ''
-                  example: molestias
+                  example: consequatur
                 password:
                   type: string
                   description: ''
-                  example: sit
+                  example: odit
               required:
                 - email
                 - password
@@ -193,7 +193,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the verify.'
-        example: sed
+        example: ea
         required: true
         schema:
           type: string
@@ -248,7 +248,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the resend.'
-        example: ullam
+        example: possimus
         required: true
         schema:
           type: string
@@ -307,7 +307,7 @@ paths:
                 email:
                   type: string
                   description: ''
-                  example: praesentium
+                  example: cupiditate
               required:
                 - email
       security: []
@@ -366,15 +366,15 @@ paths:
                 email:
                   type: string
                   description: ''
-                  example: ut
+                  example: iusto
                 token:
                   type: string
                   description: ''
-                  example: voluptas
+                  example: quisquam
                 password:
                   type: string
                   description: ''
-                  example: aspernatur
+                  example: aut
               required:
                 - email
                 - token
@@ -419,63 +419,63 @@ paths:
                 account_type:
                   type: string
                   description: optional
-                  example: labore
+                  example: dignissimos
                 phone:
                   type: string
                   description: optional
-                  example: mollitia
+                  example: aut
                 gender:
                   type: string
                   description: optional
-                  example: autem
+                  example: et
                 birthday:
                   type: date
                   description: optional
-                  example: rem
+                  example: blanditiis
                 address:
                   type: string
                   description: optional
-                  example: dolorum
+                  example: libero
                 house_number:
                   type: string
                   description: optional
-                  example: rerum
+                  example: voluptas
                 street:
                   type: string
                   description: optional
-                  example: est
+                  example: saepe
                 lga:
                   type: string
                   description: optional
-                  example: dolorem
+                  example: architecto
                 lcda:
                   type: string
                   description: optional
-                  example: unde
+                  example: fugit
                 company_name:
                   type: string
                   description: optional
-                  example: commodi
+                  example: eligendi
                 company_phone:
                   type: string
                   description: optional
-                  example: occaecati
+                  example: deserunt
                 country:
                   type: string
                   description: optional
-                  example: explicabo
+                  example: ex
                 postal_code:
                   type: string
                   description: optional
-                  example: molestias
+                  example: corporis
                 city:
                   type: string
                   description: optional
-                  example: ipsa
+                  example: at
                 state:
                   type: string
                   description: optional
-                  example: quasi
+                  example: inventore
       security: []
   /api/auth/logout:
     get:
@@ -635,6 +635,52 @@ paths:
               schema:
                 type: string
                 example: "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"categories\": {\n          ...\n      }\n   }"
+        400:
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Error
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Error
+      tags:
+        - 'Category APIs'
+      security: []
+  /api/faqs:
+    get:
+      summary: 'Fetch Faqs'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"faqs\": {\n          ...\n      }\n   }"
         400:
           description: Error
           content:

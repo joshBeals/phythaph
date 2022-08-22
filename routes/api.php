@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\VerificationController;
 use App\Http\Controllers\Api\ForgotPasswordController;
 use App\Http\Controllers\Api\FilterApiController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\FaqController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::prefix('filter')->group(function () {
 });
 
 Route::get('/categories', "CategoryController@index")->name('categories');
+Route::get('/faqs', "FaqController@index")->name('faqs');
 
 Route::prefix('auth')->group(function () {
     Route::post('register', "AuthController@register")->name('auth.register');

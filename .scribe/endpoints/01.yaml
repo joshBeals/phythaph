@@ -40,3 +40,42 @@ endpoints:
         headers: []
         description: '400, Error'
     responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/faqs
+    metadata:
+      title: 'Fetch Faqs'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+             "success": true,
+             "message": "",
+             "data": {
+                "faqs": {
+                    ...
+                }
+             }
+        headers: []
+        description: '200, Ok'
+      -
+        status: 400
+        content: |-
+          {
+             "success": false,
+             "message": "Error"
+           }
+        headers: []
+        description: '400, Error'
+    responseFields: []
