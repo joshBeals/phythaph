@@ -75,10 +75,9 @@ class ForgotPasswordController extends Controller
      *  }
      */
     public function sendResetResponse(Request $request) {
-        $input = $request->only('email','token', 'password');
+        $input = $request->only('token', 'password');
 
         $validator = validator()->make($request->all(), [
-            'email' => 'required|email',
             'token' => 'required|string',
             'password' => 'required|string|min:8'
         ]);
@@ -94,11 +93,9 @@ class ForgotPasswordController extends Controller
         });
             
         if($response == Password::PASSWORD_RESET){
-            $message = "Password reset successfully";
-        }else{
-            $message = "Email could not be sent to this email address";
+            return Helper::apiSuccess("Password reset successfully");
         }
-
-        return Helper::apiSuccess($message);
+        
+        return Helper::apiFail("Password reset failed");
     }
 }
