@@ -75,9 +75,10 @@ class ForgotPasswordController extends Controller
      *  }
      */
     public function sendResetResponse(Request $request) {
-        $input = $request->only('token', 'password');
+        $input = $request->only('email','token', 'password');
 
         $validator = validator()->make($request->all(), [
+            'email' => 'required|email',
             'token' => 'required|string',
             'password' => 'required|string|min:8'
         ]);
@@ -94,8 +95,8 @@ class ForgotPasswordController extends Controller
             
         if($response == Password::PASSWORD_RESET){
             return Helper::apiSuccess("Password reset successfully");
+        }else{
+            return Helper::apiFail("Password reset failed");
         }
-        
-        return Helper::apiFail("Password reset failed");
     }
 }

@@ -50,7 +50,7 @@ class MailResetPasswordNotification extends Notification
         return (new MailMessage)
             ->subject(Lang::get('Reset Password Notification'))
             ->line(Lang::get('You are receiving this email because we received a password reset request for your account.'))
-            ->action(Lang::get('Reset Password'), $this->pageUrl."?token=".$this->token)
+            ->action(Lang::get('Reset Password'), $this->pageUrl."?token=".$this->token."&email=".$notifiable->getEmailForPasswordReset())
             ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.users.expire')]))
             ->line(Lang::get('If you did not request a password reset, no further action is required.'));
     }
