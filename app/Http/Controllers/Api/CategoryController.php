@@ -16,8 +16,8 @@ class CategoryController extends Controller
     /**
      * Fetch Categories
      * 
-     * Get all categories
      *
+     *@unauthenticated
      *@response status=200 scenario=Ok {
      *    "success": true,
      *    "message": "",
@@ -26,19 +26,14 @@ class CategoryController extends Controller
      *           ...
      *       }
      *    }
-     *@response status=404 scenario="User not found" {
+     *@response status=400 scenario="Error" {
      *    "success": false,
-     *    "message": "User not found"
+     *    "message": "Error"
      *  }
      */
     public function index(Request $request)
     {
         try {
-            $user = $request->user();
-            if (!$user) {
-                return Helper::apiFail("User not found", 404);
-            }
-
             $categories = Category::all();
             return Helper::apiSuccess(['categories' => $categories]);
 

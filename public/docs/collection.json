@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Phythaph",
-        "_postman_id": "005ee089-6d71-44f6-af26-4cc0c1736317",
+        "_postman_id": "839ccfc6-a006-426d-8c02-518499f9c1e5",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -41,7 +41,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"neque\",\"last_name\":\"placeat\",\"email\":\"dolorem\",\"password\":\"et\"}"
+                            "raw": "{\"first_name\":\"quaerat\",\"last_name\":\"ducimus\",\"email\":\"optio\",\"password\":\"dolore\"}"
                         },
                         "description": "",
                         "auth": {
@@ -85,7 +85,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"odit\",\"password\":\"sed\"}"
+                            "raw": "{\"email\":\"molestias\",\"password\":\"sit\"}"
                         },
                         "description": "",
                         "auth": {
@@ -119,7 +119,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "iure",
+                                    "value": "sed",
                                     "description": "The ID of the verify."
                                 }
                             ]
@@ -158,7 +158,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "56"
+                                    "value": "58"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -183,7 +183,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "ex",
+                                    "value": "ullam",
                                     "description": "The ID of the resend."
                                 }
                             ]
@@ -242,7 +242,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"facere\"}"
+                            "raw": "{\"email\":\"praesentium\"}"
                         },
                         "description": "",
                         "auth": {
@@ -286,7 +286,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"nostrum\",\"token\":\"quo\",\"password\":\"consequuntur\"}"
+                            "raw": "{\"email\":\"ut\",\"token\":\"voluptas\",\"password\":\"aspernatur\"}"
                         },
                         "description": "",
                         "auth": {
@@ -330,7 +330,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"account_type\":\"sit\",\"phone\":\"voluptates\",\"gender\":\"expedita\",\"birthday\":\"dolorum\",\"address\":\"ab\",\"house_number\":\"voluptas\",\"street\":\"eos\",\"lga\":\"nisi\",\"lcda\":\"hic\",\"company_name\":\"et\",\"company_phone\":\"officia\",\"country\":\"placeat\",\"postal_code\":\"fugit\",\"city\":\"provident\",\"state\":\"quae\"}"
+                            "raw": "{\"account_type\":\"labore\",\"phone\":\"mollitia\",\"gender\":\"autem\",\"birthday\":\"rem\",\"address\":\"dolorum\",\"house_number\":\"rerum\",\"street\":\"est\",\"lga\":\"dolorem\",\"lcda\":\"unde\",\"company_name\":\"commodi\",\"company_phone\":\"occaecati\",\"country\":\"explicabo\",\"postal_code\":\"molestias\",\"city\":\"ipsa\",\"state\":\"quasi\"}"
                         },
                         "description": "Complete user registration.",
                         "auth": {
@@ -490,7 +490,7 @@
                             }
                         ],
                         "body": null,
-                        "description": "Get all categories",
+                        "description": "",
                         "auth": {
                             "type": "noauth"
                         }
@@ -504,9 +504,9 @@
                         },
                         {
                             "header": [],
-                            "code": 404,
-                            "body": "{\n   \"success\": false,\n   \"message\": \"User not found\"\n }",
-                            "name": "User not found"
+                            "code": 400,
+                            "body": "{\n   \"success\": false,\n   \"message\": \"Error\"\n }",
+                            "name": "Error"
                         }
                     ]
                 }
@@ -559,7 +559,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "57"
+                                    "value": "59"
                                 },
                                 {
                                     "key": "access-control-allow-origin",

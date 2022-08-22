@@ -30,3 +30,6 @@
         <li class="nav-item"><a class="nav-link" href="{{ backpack_url('currency') }}"><i class="nav-icon la la-dollar-sign"></i> Currencies</a></li>
     </ul>
 </li>
+
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('faq') }}"><i class="nav-icon la la-question-circle"></i> Faqs</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('user-pawns') }}"><i class="nav-icon la la-question"></i> User pawns</a></li>

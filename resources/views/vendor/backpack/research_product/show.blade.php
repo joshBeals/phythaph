@@ -65,7 +65,7 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                             @foreach(json_decode($data->prices) as $key => $value)
                             <tr>
                                 <td>{{ $key }}</td>
-                                <td><strong>{{ Helper::formatToCurrency($value) ?? '-' }}</strong></td>
+                                <td><strong>{{ Helper::formatNumber($value) ?? '-' }}</strong></td>
                             </tr>
                             @endforeach
                             @endif

@@ -176,10 +176,10 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"first_name\": \"neque\",
-    \"last_name\": \"placeat\",
-    \"email\": \"dolorem\",
-    \"password\": \"et\"
+    \"first_name\": \"quaerat\",
+    \"last_name\": \"ducimus\",
+    \"email\": \"optio\",
+    \"password\": \"dolore\"
 }"
 </code></pre></div>
 
@@ -195,10 +195,10 @@ const headers = {
 };
 
 let body = {
-    "first_name": "neque",
-    "last_name": "placeat",
-    "email": "dolorem",
-    "password": "et"
+    "first_name": "quaerat",
+    "last_name": "ducimus",
+    "email": "optio",
+    "password": "dolore"
 };
 
 fetch(url, {
@@ -278,7 +278,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="POSTapi-auth-register"
-               value="neque"
+               value="quaerat"
                data-component="body" hidden>
     <br>
 
@@ -288,7 +288,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="POSTapi-auth-register"
-               value="placeat"
+               value="ducimus"
                data-component="body" hidden>
     <br>
 
@@ -298,7 +298,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-register"
-               value="dolorem"
+               value="optio"
                data-component="body" hidden>
     <br>
 
@@ -308,7 +308,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-register"
-               value="et"
+               value="dolore"
                data-component="body" hidden>
     <br>
 
@@ -332,8 +332,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"odit\",
-    \"password\": \"sed\"
+    \"email\": \"molestias\",
+    \"password\": \"sit\"
 }"
 </code></pre></div>
 
@@ -349,8 +349,8 @@ const headers = {
 };
 
 let body = {
-    "email": "odit",
-    "password": "sed"
+    "email": "molestias",
+    "password": "sit"
 };
 
 fetch(url, {
@@ -433,7 +433,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-login"
-               value="odit"
+               value="molestias"
                data-component="body" hidden>
     <br>
 
@@ -443,7 +443,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-login"
-               value="sed"
+               value="sit"
                data-component="body" hidden>
     <br>
 
@@ -463,14 +463,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/auth/email/verify/iure" \
+    --get "http://phythaph.herokuapp.com/api/auth/email/verify/sed" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/auth/email/verify/iure"
+    "http://phythaph.herokuapp.com/api/auth/email/verify/sed"
 );
 
 const headers = {
@@ -496,7 +496,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 56
+x-ratelimit-remaining: 58
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -553,7 +553,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="id"
                data-endpoint="GETapi-auth-email-verify--id-"
-               value="iure"
+               value="sed"
                data-component="url" hidden>
     <br>
 <p>The ID of the verify.</p>
@@ -573,14 +573,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/auth/email/resend/ex" \
+    --get "http://phythaph.herokuapp.com/api/auth/email/resend/ullam" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/auth/email/resend/ex"
+    "http://phythaph.herokuapp.com/api/auth/email/resend/ullam"
 );
 
 const headers = {
@@ -662,7 +662,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETapi-auth-email-resend--id-"
-               value="ex"
+               value="ullam"
                data-component="url" hidden>
     <br>
 <p>The ID of the resend.</p>
@@ -686,7 +686,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"facere\"
+    \"email\": \"praesentium\"
 }"
 </code></pre></div>
 
@@ -702,7 +702,7 @@ const headers = {
 };
 
 let body = {
-    "email": "facere"
+    "email": "praesentium"
 };
 
 fetch(url, {
@@ -780,7 +780,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-password-forgot-password"
-               value="facere"
+               value="praesentium"
                data-component="body" hidden>
     <br>
 
@@ -804,9 +804,9 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"nostrum\",
-    \"token\": \"quo\",
-    \"password\": \"consequuntur\"
+    \"email\": \"ut\",
+    \"token\": \"voluptas\",
+    \"password\": \"aspernatur\"
 }"
 </code></pre></div>
 
@@ -822,9 +822,9 @@ const headers = {
 };
 
 let body = {
-    "email": "nostrum",
-    "token": "quo",
-    "password": "consequuntur"
+    "email": "ut",
+    "token": "voluptas",
+    "password": "aspernatur"
 };
 
 fetch(url, {
@@ -902,7 +902,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-password-reset"
-               value="nostrum"
+               value="ut"
                data-component="body" hidden>
     <br>
 
@@ -912,7 +912,7 @@ fetch(url, {
                 <input type="text"
                name="token"
                data-endpoint="POSTapi-auth-password-reset"
-               value="quo"
+               value="voluptas"
                data-component="body" hidden>
     <br>
 
@@ -922,7 +922,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-password-reset"
-               value="consequuntur"
+               value="aspernatur"
                data-component="body" hidden>
     <br>
 
@@ -946,21 +946,21 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"account_type\": \"sit\",
-    \"phone\": \"voluptates\",
-    \"gender\": \"expedita\",
-    \"birthday\": \"dolorum\",
-    \"address\": \"ab\",
-    \"house_number\": \"voluptas\",
-    \"street\": \"eos\",
-    \"lga\": \"nisi\",
-    \"lcda\": \"hic\",
-    \"company_name\": \"et\",
-    \"company_phone\": \"officia\",
-    \"country\": \"placeat\",
-    \"postal_code\": \"fugit\",
-    \"city\": \"provident\",
-    \"state\": \"quae\"
+    \"account_type\": \"labore\",
+    \"phone\": \"mollitia\",
+    \"gender\": \"autem\",
+    \"birthday\": \"rem\",
+    \"address\": \"dolorum\",
+    \"house_number\": \"rerum\",
+    \"street\": \"est\",
+    \"lga\": \"dolorem\",
+    \"lcda\": \"unde\",
+    \"company_name\": \"commodi\",
+    \"company_phone\": \"occaecati\",
+    \"country\": \"explicabo\",
+    \"postal_code\": \"molestias\",
+    \"city\": \"ipsa\",
+    \"state\": \"quasi\"
 }"
 </code></pre></div>
 
@@ -976,21 +976,21 @@ const headers = {
 };
 
 let body = {
-    "account_type": "sit",
-    "phone": "voluptates",
-    "gender": "expedita",
-    "birthday": "dolorum",
-    "address": "ab",
-    "house_number": "voluptas",
-    "street": "eos",
-    "lga": "nisi",
-    "lcda": "hic",
-    "company_name": "et",
-    "company_phone": "officia",
-    "country": "placeat",
-    "postal_code": "fugit",
-    "city": "provident",
-    "state": "quae"
+    "account_type": "labore",
+    "phone": "mollitia",
+    "gender": "autem",
+    "birthday": "rem",
+    "address": "dolorum",
+    "house_number": "rerum",
+    "street": "est",
+    "lga": "dolorem",
+    "lcda": "unde",
+    "company_name": "commodi",
+    "company_phone": "occaecati",
+    "country": "explicabo",
+    "postal_code": "molestias",
+    "city": "ipsa",
+    "state": "quasi"
 };
 
 fetch(url, {
@@ -1062,7 +1062,7 @@ fetch(url, {
                 <input type="text"
                name="account_type"
                data-endpoint="POSTapi-setup"
-               value="sit"
+               value="labore"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1072,7 +1072,7 @@ fetch(url, {
                 <input type="text"
                name="phone"
                data-endpoint="POSTapi-setup"
-               value="voluptates"
+               value="mollitia"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1082,7 +1082,7 @@ fetch(url, {
                 <input type="text"
                name="gender"
                data-endpoint="POSTapi-setup"
-               value="expedita"
+               value="autem"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1092,7 +1092,7 @@ fetch(url, {
                 <input type="text"
                name="birthday"
                data-endpoint="POSTapi-setup"
-               value="dolorum"
+               value="rem"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1102,7 +1102,7 @@ fetch(url, {
                 <input type="text"
                name="address"
                data-endpoint="POSTapi-setup"
-               value="ab"
+               value="dolorum"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1112,7 +1112,7 @@ fetch(url, {
                 <input type="text"
                name="house_number"
                data-endpoint="POSTapi-setup"
-               value="voluptas"
+               value="rerum"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1122,7 +1122,7 @@ fetch(url, {
                 <input type="text"
                name="street"
                data-endpoint="POSTapi-setup"
-               value="eos"
+               value="est"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1132,7 +1132,7 @@ fetch(url, {
                 <input type="text"
                name="lga"
                data-endpoint="POSTapi-setup"
-               value="nisi"
+               value="dolorem"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1142,7 +1142,7 @@ fetch(url, {
                 <input type="text"
                name="lcda"
                data-endpoint="POSTapi-setup"
-               value="hic"
+               value="unde"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1152,7 +1152,7 @@ fetch(url, {
                 <input type="text"
                name="company_name"
                data-endpoint="POSTapi-setup"
-               value="et"
+               value="commodi"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1162,7 +1162,7 @@ fetch(url, {
                 <input type="text"
                name="company_phone"
                data-endpoint="POSTapi-setup"
-               value="officia"
+               value="occaecati"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1172,7 +1172,7 @@ fetch(url, {
                 <input type="text"
                name="country"
                data-endpoint="POSTapi-setup"
-               value="placeat"
+               value="explicabo"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1182,7 +1182,7 @@ fetch(url, {
                 <input type="text"
                name="postal_code"
                data-endpoint="POSTapi-setup"
-               value="fugit"
+               value="molestias"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1192,7 +1192,7 @@ fetch(url, {
                 <input type="text"
                name="city"
                data-endpoint="POSTapi-setup"
-               value="provident"
+               value="ipsa"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1202,7 +1202,7 @@ fetch(url, {
                 <input type="text"
                name="state"
                data-endpoint="POSTapi-setup"
-               value="quae"
+               value="quasi"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1510,7 +1510,7 @@ fetch(url, {
 <p>
 </p>
 
-<p>Get all categories</p>
+
 
 <span id="example-requests-GETapi-categories">
 <blockquote>Example request:</blockquote>
@@ -1556,13 +1556,13 @@ fetch(url, {
    }</code>
  </pre>
             <blockquote>
-            <p>Example response (404, User not found):</p>
+            <p>Example response (400, Error):</p>
         </blockquote>
                 <pre>
 
 <code class="language-json">{
     &quot;success&quot;: false,
-    &quot;message&quot;: &quot;User not found&quot;
+    &quot;message&quot;: &quot;Error&quot;
 }</code>
  </pre>
     </span>
@@ -1657,7 +1657,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 57
+x-ratelimit-remaining: 59
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>

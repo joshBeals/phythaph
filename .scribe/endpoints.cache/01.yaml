@@ -9,7 +9,7 @@ endpoints:
     uri: api/categories
     metadata:
       title: 'Fetch Categories'
-      description: 'Get all categories'
+      description: ''
       authenticated: false
       custom: []
     headers:
@@ -33,12 +33,12 @@ endpoints:
         headers: []
         description: '200, Ok'
       -
-        status: 404
+        status: 400
         content: |-
           {
              "success": false,
-             "message": "User not found"
+             "message": "Error"
            }
         headers: []
-        description: '404, User not found'
+        description: '400, Error'
     responseFields: []

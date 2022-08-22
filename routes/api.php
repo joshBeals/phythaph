@@ -23,6 +23,8 @@ Route::prefix('filter')->group(function () {
     Route::get('/currencies', 'FilterApiController@currencies');
 });
 
+Route::get('/categories', "CategoryController@index")->name('categories');
+
 Route::prefix('auth')->group(function () {
     Route::post('register', "AuthController@register")->name('auth.register');
     Route::post('login', "AuthController@login")->name('auth.login');
@@ -42,7 +44,6 @@ Route::group([
     Route::get('/me', "AuthController@me")->name('user_detail');
 
     Route::middleware('registration_completion_api')->group(function () {
-        Route::get('/categories', "CategoryController@index")->name('categories');
     });
     
 });
