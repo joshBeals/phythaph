@@ -108,7 +108,7 @@ class UserPawnsCrudController extends CrudController
     public function create()
     {
         $this->traitCreate();
-        return view("backpack::pawns.create", $this->data);
+        return view("backpack::pawn.create", $this->data);
     }
 
 
@@ -130,7 +130,7 @@ class UserPawnsCrudController extends CrudController
 
         $this->data['entry']->decorate();
         // cutom logic after
-        return view("backpack::pawns.show", $this->data);
+        return view("backpack::pawn.show", $this->data);
 
     }
 }
