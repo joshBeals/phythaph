@@ -35,11 +35,11 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
             <div class="card-body">
                 <div class="row">
                     <input type="hidden" id="pawn_id" value="{{$data->id}}">
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-6 mb-3">
                         <strong>Category Name</strong>
                         <p>{{ $data->name }}</p>
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-6 mb-3">
                         <strong>Category Type</strong>
                         <p>{{ Helper::titleCase($data->type) }}</p>
                     </div>
@@ -48,7 +48,7 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                         <p>{{ $data->description ?? '-' }}</p>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <img src="{{ $data->image }}" alt="image">
+                        <img src="{{ $data->image }}" alt="image" style="width: 100px;">
                     </div>
 
                 </div>
@@ -146,8 +146,13 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
 <link rel="stylesheet"
     href="{{ asset('packages/backpack/crud/css/show.css').'?v='.config('backpack.base.cachebusting_string') }}">
 <style>
+    table{
+        table-layout: fixed;
+    }
     th, td{
-        white-space: wrap;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 </style>
 @endsection
