@@ -102,6 +102,7 @@ class CategoryCrudController extends CrudController
             ],
         ]);
         $this->crud->addField([
+            'wrapper' => ['class' => 'form-group col-md-6'],
             'name' => 'prices',
             'label' => 'Prices',
             'type' => 'repeatable',
@@ -119,6 +120,27 @@ class CategoryCrudController extends CrudController
                     'type' => 'select',
                     'model' => "App\Models\Currency",
                     'attribute' => 'name',
+                ]
+            ],
+        ]);
+        $this->crud->addField([
+            'wrapper' => ['class' => 'form-group col-md-6'],
+            'name' => 'checks',
+            'label' => 'checks',
+            'type' => 'repeatable',
+            'new_item_label' => 'Add Check',
+            'subfields' => [
+                [
+                    'wrapper' => ['class' => 'form-group col-md-6'],
+                    'name' => 'variable',
+                    'type' => 'text',
+                    'label' => 'Variable',
+                ],
+                [
+                    'wrapper' => ['class' => 'form-group col-md-6'],
+                    'name' => 'description',
+                    'type' => 'textarea',
+                    'label' => 'Description',
                 ]
             ],
         ]);
@@ -164,6 +186,7 @@ class CategoryCrudController extends CrudController
                 'description' => $data['description'] ?? "",
                 'requirements' => $data['requirements'] ?? "",
                 'prices' => $data['prices'] ?? "",
+                'checks' => $data['checks'] ?? "",
                 'image' => $img_url,
             ]);
 
@@ -201,6 +224,7 @@ class CategoryCrudController extends CrudController
                 'description' => $data['description'] ?? "",
                 'requirements' => $data['requirements'] ?? "",
                 'prices' => $data['prices'] ?? "",
+                'checks' => $data['checks'] ?? "",
                 'image' => $img_url ?? $data['image'],
             ]);
 

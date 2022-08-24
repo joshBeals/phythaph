@@ -20,11 +20,13 @@ class Category extends Model
         'type',
         'requirements',
         'prices',
+        'checks',
     ];
 
     protected $casts = [
         'requirements' => 'array',
         'prices' => 'array',
+        'checks' => 'array',
     ];
 
     public function research_produsts()

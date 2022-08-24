@@ -34,26 +34,71 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
             <div class="card-header">Category Information</div>
             <div class="card-body">
                 <div class="row">
-                    <table class="table table-striped table-hover table-bordered">
-                        <tbody>
-                            <tr>
-                                <td>Category Name</td>
-                                <td><strong>{{ $data->name }}</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Category Type</td>
-                                <td><strong>{{ Helper::titleCase($data->type) }}</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Category Description</td>
-                                <td><strong>{{ $data->description ?? '-' }}</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Category Image</td>
-                                <td><img src="{{ $data->image }}" alt="image"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <input type="hidden" id="pawn_id" value="{{$data->id}}">
+                    <div class="col-md-3 mb-3">
+                        <strong>Category Name</strong>
+                        <p>{{ $data->name }}</p>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <strong>Category Type</strong>
+                        <p>{{ Helper::titleCase($data->type) }}</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <strong>Category Description</strong>
+                        <p>{{ $data->description ?? '-' }}</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <img src="{{ $data->image }}" alt="image">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Category Checks</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <table class="table table-striped table-hover table-bordered">
+                                <tbody>
+                                    @if($data->checks)
+                                    @foreach($data->checks as $check)
+                                        <tr>
+                                        @foreach($check as $key => $value)
+                                            @if($value)
+                                                <td>{{ Helper::titleCase($value) }}</td>
+                                            @else
+                                                <td>-</td>
+                                            @endif
+                                        @endforeach
+                                        </tr>
+                                    @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">Category Prices</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <table class="table table-striped table-hover table-bordered">
+                                <tbody>
+                                    @if($data->prices)
+                                    @foreach($data->prices as $price)
+                                        <tr>
+                                            <td>{{ Helper::titleCase($price['name']) }}</td>
+                                        </tr>
+                                    @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,7 +131,6 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                         @endif
                     </tbody>
                 </table>
-                
             </div>
         </div>
     </div>
@@ -101,6 +145,11 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
     href="{{ asset('packages/backpack/crud/css/crud.css').'?v='.config('backpack.base.cachebusting_string') }}">
 <link rel="stylesheet"
     href="{{ asset('packages/backpack/crud/css/show.css').'?v='.config('backpack.base.cachebusting_string') }}">
+<style>
+    th, td{
+        white-space: wrap;
+    }
+</style>
 @endsection
 
 @push('before_scripts')
