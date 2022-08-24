@@ -19,7 +19,7 @@ use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 class UserPawnsCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     
     use CreateOperation {create as traitCreate;}
@@ -108,7 +108,7 @@ class UserPawnsCrudController extends CrudController
     public function create()
     {
         $this->traitCreate();
-        return view("backpack::pawn.create", $this->data);
+        return view("backpack::pawns.create", $this->data);
     }
 
 
@@ -130,7 +130,7 @@ class UserPawnsCrudController extends CrudController
 
         $this->data['entry']->decorate();
         // cutom logic after
-        return view("backpack::pawn.show", $this->data);
+        return view("backpack::pawns.show", $this->data);
 
     }
 }
