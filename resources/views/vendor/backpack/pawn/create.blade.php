@@ -61,8 +61,12 @@ $users = \App\Models\User::get();
 						@endforeach
 					</select>
 				</div>
+				<div class="col-12">
+					
+					
 				<input type="hidden" name="item_features" id="features">
 				<div id="formFields" class="row mt-3"></div>
+				</div>
 			</div>
 			<div class="mt-4"></div>
 	          @include('crud::inc.form_save_buttons')
