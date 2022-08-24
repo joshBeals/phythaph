@@ -22,10 +22,13 @@ use App\Http\Controllers\Api\FaqController;
 
 Route::prefix('filter')->group(function () {
     Route::get('/currencies', 'FilterApiController@currencies');
+    Route::get('/users', 'FilterApiController@users');
 });
 
 Route::get('/categories', "CategoryController@index")->name('categories');
 Route::get('/faqs', "FaqController@index")->name('faqs');
+
+Route::post('/file-upload/{id?}', "FileController@fileUpload")->name('file_upload');
 
 Route::prefix('auth')->group(function () {
     Route::post('register', "AuthController@register")->name('auth.register');
@@ -46,6 +49,7 @@ Route::group([
     Route::get('/me', "AuthController@me")->name('user_detail');
 
     Route::middleware('registration_completion_api')->group(function () {
+
     });
     
 });

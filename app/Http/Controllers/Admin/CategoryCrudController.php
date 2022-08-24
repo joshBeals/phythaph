@@ -48,6 +48,7 @@ class CategoryCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('id')->type('text')->label('Category ID');
+        CRUD::column('image')->type('image');
         CRUD::column('name');
         CRUD::column('description');
         CRUD::column('type');

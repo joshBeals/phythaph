@@ -423,6 +423,8 @@ class Helper
         switch ($status) {
             case 'pending':
             case 'unpaid':
+            case 'submitted':
+            case 'unpaid':
                 $color = 'warning';
                 break;
             case 'approved':
@@ -439,6 +441,7 @@ class Helper
             case 'cancelled':
             case 'overdue':
             case 'missed':
+            case 'incomplete':
                 $color = 'danger';
                 break;
             default:

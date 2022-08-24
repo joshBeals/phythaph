@@ -15,13 +15,6 @@
     </ul>
 </li>
 
-<!-- <li class="nav-item nav-dropdown">
-    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-lg la-shopping-bag"></i> Pawn</a>
-    <ul class="nav-dropdown-items">
-        
-    </ul>
-</li> -->
-
 <li class="nav-item nav-dropdown">
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-lg la-shopping-cart"></i> Researched Items</a>
     <ul class="nav-dropdown-items">
@@ -31,5 +24,11 @@
     </ul>
 </li>
 
+<li class="nav-item nav-dropdown">
+    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-lg la-folder"></i> Pawn</a>
+    <ul class="nav-dropdown-items">
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('user-pawns') }}"><i class="nav-icon la la-folder"></i> Pawn Requests</a></li>
+    </ul>
+</li>
+
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('faq') }}"><i class="nav-icon la la-question-circle"></i> Faqs</a></li>
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('user-pawns') }}"><i class="nav-icon la la-question"></i> User pawns</a></li>

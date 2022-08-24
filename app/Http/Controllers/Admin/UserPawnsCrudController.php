@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Classes\GlobalVars;
+use App\Classes\Helper;
+use App\Models\User;
 use App\Http\Requests\UserPawnsRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
 /**
  * Class UserPawnsCrudController
@@ -14,10 +19,11 @@ use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 class UserPawnsCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    
+    use CreateOperation {create as traitCreate;}
+    use ShowOperation {show as traitShow;}
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -39,21 +45,31 @@ class UserPawnsCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('id');
-        CRUD::column('user_id');
+        CRUD::column('id')->type('text')->label('ID');
+        CRUD::column('customer_name')->label("Customer");
         CRUD::column('category_id');
         CRUD::column('item_features');
-        CRUD::column('item_images');
-        CRUD::column('price');
+        CRUD::column('status')->type('status');
         CRUD::column('created_at');
-        CRUD::column('updated_at');
-        CRUD::column('deleted_at');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
          * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
          */
+    }
+
+    public function fetchUser()
+    {
+        return $this->fetch([
+            'model' => User::class,
+            'paginate' => 10, // items to show per page
+            'query' => function ($model) {
+                return $model->selectRaw('id, first_name, last_name, email, CONCAT(`first_name`," ",`last_name`, " - ", `email`) as full_name');
+                // return $model->active();
+            },
+            'searchable_attributes' => ['first_name', 'last_name', 'email', 'phone', 'id'],
+        ]);
     }
 
     /**
@@ -66,15 +82,21 @@ class UserPawnsCrudController extends CrudController
     {
         CRUD::setValidation(UserPawnsRequest::class);
 
-        CRUD::field('id');
-        CRUD::field('user_id');
+        $this->crud->addField([
+            'name' => 'user_id',
+            'type' => "select2_from_ajax",
+            'ajax' => true,
+            'model' => User::class,
+            "attribute" => 'name',
+            'data_source' => url("api/filter/users"),
+
+            'label' => "Customer",
+            'placeholder' => "Search for customer",
+            'wrapper' => ['class' => 'form-group col-md-12'],
+            'include_all_form_fields' => true,
+        ]);
         CRUD::field('category_id');
         CRUD::field('item_features');
-        CRUD::field('item_images');
-        CRUD::field('price');
-        CRUD::field('created_at');
-        CRUD::field('updated_at');
-        CRUD::field('deleted_at');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -82,6 +104,13 @@ class UserPawnsCrudController extends CrudController
          * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
          */
     }
+
+    public function create()
+    {
+        $this->traitCreate();
+        return view("backpack::pawn.create", $this->data);
+    }
+
 
     /**
      * Define what happens when the Update operation is loaded.
@@ -92,5 +121,16 @@ class UserPawnsCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    public function show($id)
+    {
+        // custom logic before
+        $content = $this->traitShow($id);
+
+        $this->data['entry']->decorate();
+        // cutom logic after
+        return view("backpack::pawn.show", $this->data);
+
     }
 }

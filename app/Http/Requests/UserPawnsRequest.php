@@ -25,7 +25,9 @@ class UserPawnsRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'user_id' => 'required',
+            'category_id' => 'required',
+            'item_features' => 'required',
         ];
     }
 
