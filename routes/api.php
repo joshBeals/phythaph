@@ -28,6 +28,7 @@ Route::prefix('filter')->group(function () {
 Route::get('/categories', "CategoryController@index")->name('categories');
 Route::get('/faqs', "FaqController@index")->name('faqs');
 
+
 Route::post('/file-upload/{id?}', "FileController@fileUpload")->name('file_upload');
 
 Route::prefix('auth')->group(function () {
