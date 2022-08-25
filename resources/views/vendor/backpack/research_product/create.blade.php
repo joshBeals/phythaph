@@ -76,7 +76,7 @@ $currencies = \App\Models\Currency::get();
 		<div class="card">
 			<div class="card-header">Add Option</div>
 			<div class="card-body">
-  				<form action="" >
+  				<form action="/api/option" method="POST">
 					<input type="hidden" id="category_id" name="category_id">
 					<div class="form-group">
 						<label for="options">Requirement</label>

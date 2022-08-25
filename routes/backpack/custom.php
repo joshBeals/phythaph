@@ -23,8 +23,5 @@ Route::group([
     Route::crud('currency', 'CurrencyCrudController');
     Route::crud('faq', 'FaqCrudController');
     Route::crud('user-pawns', 'UserPawnsCrudController');
-
-    
-Route::get('/categories', "CategoryController@index")->name('categories');
     
 }); // this should be the absolute last line of this file

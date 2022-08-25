@@ -26,6 +26,8 @@ Route::prefix('filter')->group(function () {
     Route::get('/users', 'FilterApiController@users');
 });
 
+Route::post('/option', "CategoryController@options")->name('options');
+
 Route::get('/categories', "CategoryController@index")->name('categories');
 Route::get('/faqs', "FaqController@index")->name('faqs');
 
