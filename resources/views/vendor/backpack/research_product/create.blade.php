@@ -45,7 +45,12 @@ $currencies = \App\Models\Currency::get();
 			{!! csrf_field() !!}
   			<div class="bg-white p-3">
 				<div class="form-group">
-					<label for="category">Product Category</label>
+					<div class="d-flex justify-content-between">
+						<label for="category">Product Category</label>
+						<button type="button" style="display: none;" id="modal_btn" class="btn btn-primary mb-2" onclick="$('#myModal').show()">
+							Add Option
+						</button>
+					</div>
 					<select id="category" name="category_id" class="form-control" required>
 						<option value="">Select Category</option>	
 						@foreach($categories as $category)
@@ -61,8 +66,73 @@ $currencies = \App\Models\Currency::get();
 			</div>
 			@include('crud::inc.form_save_buttons')
 		</form>
+		<!-- Modal -->
+		
 	</div>
 </div>
+
+<div class="myModal" id="myModal" style="display: none;">
+	<div class="inner" id="inner">
+		<div class="card">
+			<div class="card-header">Add Option</div>
+			<div class="card-body">
+  				<form action="" >
+					<input type="hidden" id="category_id" name="category_id">
+					<div class="form-group">
+						<label for="options">Requirement</label>
+						<select name="requirement" id="options" class="form-control" required></select>
+					</div>
+					<div class="form-group">
+						<label for="options">Option To Add</label>
+						<input name="option" class="form-control" required>
+					</div>
+					<div class="mt-3">
+						<button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
+						<div onclick="$('#myModal').hide()" class="btn btn-danger" data-dismiss="modal">Close</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+	body{
+		position: relative;
+	}
+	.myModal{
+		position: absolute;
+		top: 0;
+		left: 0;
+		min-height: 100vh;
+		width: 100vw;
+		z-index: 25000;
+		background: rgba(0,0,0,.5);
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		animation: load 300ms ease-in-out;
+	}
+	.inner{
+		width: 30%;
+		margin: 20px;
+		padding: 20px;
+		border-radius: 10px;
+		background: white;
+	}
+	@keyframes load{
+		0%{
+			opacity: 0;
+		}100%{
+			opacity: 1;
+		}
+	}
+	@media screen and (max-width: 800px) {
+		.inner{
+			margin: 5px;
+			width: 50%;
+		}
+	}
+</style>
 
 @endsection
 
@@ -93,9 +163,12 @@ var currencies = @json($currencies);
 			return i.id === parseInt(categoryId);
 		});
 
+		$('#modal_btn').show();
+		$('#category_id').val(categoryId);
+
 		if(category?.requirements?.length > 0){
 			var temp = '';
-			var temp_price = '';
+			var temp_price = ''; var option = "<option value=''>-</option>";
 			category?.requirements?.forEach(function(requirement){
 				if(requirement?.field == 'dropdown'){
 					var options = requirement?.options?.split('|');
@@ -111,6 +184,9 @@ var currencies = @json($currencies);
 							</select>
 						</div>
 					`;
+
+					option += `<option value='${requirement?.name}'>${requirement?.name}</option>`;
+
 				}else{
 					temp += `
 						<div class="form-group col-md-6">
@@ -135,11 +211,17 @@ var currencies = @json($currencies);
 
 			formFields.html(temp);
 			priceFields.html(temp_price);
+			$('#options').html(option);
 		}
 	}
 
     $(function() {
         categoryDropdown.on('change', generateForm);
+		
+		$('#myModal').on('shown.bs.modal', function () {
+			$('#myInput').trigger('focus')
+		});
+
 		$('.btn-success').on('click', function(e) {
 			e.preventDefault();
 			var error = 0;
