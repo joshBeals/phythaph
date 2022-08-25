@@ -152,6 +152,7 @@ class AuthController extends Controller
      *@bodyParam company_phone string optional
      *@bodyParam country string optional
      *@bodyParam postal_code string optional
+     *@bodyParam rc_number string optional
      *@bodyParam city string optional
      *@bodyParam state string optional
      *@response status=200 scenario=Ok {

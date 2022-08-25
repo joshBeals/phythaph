@@ -1,12 +1,12 @@
-name: Endpoints
+name: 'Open (No Auth) APIs'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/filter/currencies
+    uri: api/categories
     metadata:
-      title: ''
+      title: 'Fetch Categories'
       description: ''
       authenticated: false
       custom: []
@@ -19,12 +19,63 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"current_page":1,"data":[{"id":1,"name":"Naira","iso":"ngn","exchange_rate":"0.00","created_at":"2022-08-16T20:11:48.000000Z","updated_at":"2022-08-16T20:11:48.000000Z"},{"id":2,"name":"Dollar","iso":"usd","exchange_rate":"630.00","created_at":"2022-08-16T20:12:06.000000Z","updated_at":"2022-08-16T20:12:06.000000Z"}],"first_page_url":"http:\/\/phythaph.herokuapp.com\/api\/filter\/currencies?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/phythaph.herokuapp.com\/api\/filter\/currencies?page=1","links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"http:\/\/phythaph.herokuapp.com\/api\/filter\/currencies?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/phythaph.herokuapp.com\/api\/filter\/currencies","per_page":10,"prev_page_url":null,"to":2,"total":2}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '59'
-          access-control-allow-origin: '*'
-        description: null
+        content: |-
+          {
+             "success": true,
+             "message": "",
+             "data": {
+                "categories": {
+                    ...
+                }
+             }
+        headers: []
+        description: '200, Ok'
+      -
+        status: 400
+        content: |-
+          {
+             "success": false,
+             "message": "Error"
+           }
+        headers: []
+        description: '400, Error'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/faqs
+    metadata:
+      title: 'Fetch Faqs'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+             "success": true,
+             "message": "",
+             "data": {
+                "faqs": {
+                    ...
+                }
+             }
+        headers: []
+        description: '200, Ok'
+      -
+        status: 400
+        content: |-
+          {
+             "success": false,
+             "message": "Error"
+           }
+        headers: []
+        description: '400, Error'
     responseFields: []

@@ -7,98 +7,6 @@ servers:
   -
     url: 'http://phythaph.herokuapp.com'
 paths:
-  /api/categories:
-    get:
-      summary: 'Fetch Categories'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: Ok
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"categories\": {\n          ...\n      }\n   }"
-        400:
-          description: Error
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  success: false
-                  message: Error
-                properties:
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Error
-      tags:
-        - 'Open (No Auth) APIs'
-      security: []
-  /api/faqs:
-    get:
-      summary: 'Fetch Faqs'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: Ok
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"faqs\": {\n          ...\n      }\n   }"
-        400:
-          description: Error
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  success: false
-                  message: Error
-                properties:
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: Error
-      tags:
-        - 'Open (No Auth) APIs'
-      security: []
   /api/auth/register:
     post:
       summary: 'Register new user'
@@ -154,19 +62,19 @@ paths:
                 first_name:
                   type: string
                   description: ''
-                  example: ut
+                  example: soluta
                 last_name:
                   type: string
                   description: ''
-                  example: aperiam
+                  example: distinctio
                 email:
                   type: string
                   description: ''
-                  example: ut
+                  example: aspernatur
                 password:
                   type: string
                   description: ''
-                  example: quo
+                  example: cumque
               required:
                 - first_name
                 - last_name
@@ -228,11 +136,11 @@ paths:
                 email:
                   type: string
                   description: ''
-                  example: eos
+                  example: facere
                 password:
                   type: string
                   description: ''
-                  example: corrupti
+                  example: aspernatur
               required:
                 - email
                 - password
@@ -257,26 +165,13 @@ paths:
           schema:
             type: string
       responses:
-        400:
+        302:
           description: ''
           content:
-            application/json:
+            text/plain:
               schema:
-                type: object
-                example:
-                  status: false
-                  success: false
-                  message: 'Invalid/Expired url provided.'
-                properties:
-                  status:
-                    type: boolean
-                    example: false
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Invalid/Expired url provided.'
+                type: string
+                example: "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"UTF-8\" />\n        <meta http-equiv=\"refresh\" content=\"0;url='https://phythaph-web-app-new.herokuapp.com/email/verify/fail'\" />\n\n        <title>Redirecting to https://phythaph-web-app-new.herokuapp.com/email/verify/fail</title>\n    </head>\n    <body>\n        Redirecting to <a href=\"https://phythaph-web-app-new.herokuapp.com/email/verify/fail\">https://phythaph-web-app-new.herokuapp.com/email/verify/fail</a>.\n    </body>\n</html>"
       tags:
         - 'Auth APIs'
       security: []
@@ -285,7 +180,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the verify.'
-        example: quae
+        example: sed
         required: true
         schema:
           type: string
@@ -340,7 +235,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the resend.'
-        example: enim
+        example: sed
         required: true
         schema:
           type: string
@@ -399,7 +294,7 @@ paths:
                 email:
                   type: string
                   description: ''
-                  example: perspiciatis
+                  example: sit
               required:
                 - email
       security: []
@@ -458,15 +353,15 @@ paths:
                 email:
                   type: string
                   description: ''
-                  example: rerum
+                  example: aut
                 token:
                   type: string
                   description: ''
-                  example: aut
+                  example: ea
                 password:
                   type: string
                   description: ''
-                  example: sit
+                  example: architecto
               required:
                 - email
                 - token
@@ -511,43 +406,43 @@ paths:
                 account_type:
                   type: string
                   description: optional
-                  example: similique
+                  example: eos
                 phone:
                   type: string
                   description: optional
-                  example: excepturi
+                  example: eum
                 gender:
                   type: string
                   description: optional
-                  example: quos
+                  example: quaerat
                 birthday:
                   type: date
                   description: optional
-                  example: cumque
+                  example: et
                 address:
                   type: string
                   description: optional
-                  example: dolores
+                  example: sit
                 house_number:
                   type: string
                   description: optional
-                  example: sit
+                  example: et
                 street:
                   type: string
                   description: optional
-                  example: et
+                  example: ea
                 lga:
                   type: string
                   description: optional
-                  example: necessitatibus
+                  example: ipsam
                 lcda:
                   type: string
                   description: optional
-                  example: hic
+                  example: autem
                 company_name:
                   type: string
                   description: optional
-                  example: consequatur
+                  example: quidem
                 company_phone:
                   type: string
                   description: optional
@@ -555,19 +450,23 @@ paths:
                 country:
                   type: string
                   description: optional
-                  example: molestias
+                  example: sequi
                 postal_code:
                   type: string
                   description: optional
-                  example: facilis
+                  example: vero
+                rc_number:
+                  type: string
+                  description: optional
+                  example: fugit
                 city:
                   type: string
                   description: optional
-                  example: ducimus
+                  example: dignissimos
                 state:
                   type: string
                   description: optional
-                  example: sunt
+                  example: non
       security: []
   /api/auth/logout:
     get:
@@ -699,6 +598,332 @@ paths:
                     example: 'User not found'
       tags:
         - 'Auth APIs'
+      security: []
+  '/api/file-upload/{id}':
+    post:
+      summary: 'Upload file'
+      description: 'The title parameter can either be (''image'' or ''file'')'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n   \"success\": true,\n   \"message\": \"File Uploaded Successfully\",\n   }"
+        400:
+          description: Failure
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'No file uploaded'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'No file uploaded'
+      tags:
+        - 'Pawn APIs'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: ''
+                title:
+                  type: string
+                  description: ''
+                  example: amet
+              required:
+                - file
+                - title
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'Optional parameter. The ID of the .'
+        required: true
+        schema:
+          type: string
+        examples:
+          omitted:
+            summary: 'When the value is omitted'
+            value: ''
+          present:
+            summary: 'When the value is present'
+            value: eveniet
+  /api/pawn:
+    post:
+      summary: 'Pawn item'
+      description: 'Make a new pawn request'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n   \"success\": true,\n   \"message\": \"Request successful\",\n   \"data\": {\n      \"pawn\": {...}\n   }"
+        400:
+          description: Failure
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Pawn Request Failed'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Pawn Request Failed'
+      tags:
+        - 'Pawn APIs'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category_id:
+                  type: string
+                  description: ''
+                  example: voluptatem
+                item_features:
+                  type: json
+                  description: ''
+                  example: ea
+              required:
+                - category_id
+                - item_features
+      security: []
+    get:
+      summary: 'Fetch User Pawns'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"pawns\": {\n          ...\n      }\n   }"
+        404:
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Error
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Error
+      tags:
+        - 'Pawn APIs'
+      security: []
+  '/api/pawn/{id}':
+    get:
+      summary: 'Fetch Single Pawn Item'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"pawn\": {\n          ...\n      }\n   }"
+        404:
+          description: Error
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "\" {\n   \"success\": false,\n   \"message\": Error\"\n }"
+      tags:
+        - 'Pawn APIs'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the pawn.'
+        example: aut
+        required: true
+        schema:
+          type: string
+  /api/categories:
+    get:
+      summary: 'Fetch Categories'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"categories\": {\n          ...\n      }\n   }"
+        400:
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Error
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Error
+      tags:
+        - 'Open (No Auth) APIs'
+      security: []
+  /api/faqs:
+    get:
+      summary: 'Fetch Faqs'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"faqs\": {\n          ...\n      }\n   }"
+        400:
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Error
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Error
+      tags:
+        - 'Open (No Auth) APIs'
       security: []
   /api/filter/currencies:
     get:
@@ -839,12 +1064,466 @@ paths:
       tags:
         - Endpoints
       security: []
+  /api/filter/users:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  current_page: 1
+                  data:
+                    -
+                      id: 290800
+                      first_name: Testing
+                      last_name: Love
+                      email: alelebealsjoshua@gmail.com
+                      email_verified_at: null
+                      account_type: individual
+                      gender: male
+                      birthday: '1999-04-22'
+                      phone: phone
+                      address: ghjklskla
+                      company_name: ghjklskla
+                      company_phone: ghjklskla
+                      rc_number: null
+                      country: null
+                      postal_code: ghjklskla
+                      house_number: ghjklskla
+                      street: ghjklskla
+                      lcda: ghjklskla
+                      lga: ghjklskla
+                      city: ghjklskla
+                      state: ghjklskla
+                      avatar: null
+                      avatar_thumb: null
+                      is_active: 0
+                      is_blocked: 0
+                      must_change_password: 0
+                      referral_code: 2yDdc3O4
+                      referred_by: null
+                      created_at: '2022-08-12T16:34:45.000000Z'
+                      updated_at: '2022-08-23T21:40:58.000000Z'
+                      name: 'Testing Love'
+                      avatar_url: 'https://phythaph.s3.amazonaws.com/users/_user_default.svg'
+                      name_with_email: 'Testing Love - alelebealsjoshua@gmail.com'
+                    -
+                      id: 290802
+                      first_name: Testing
+                      last_name: Love
+                      email: alelebealsjoshua1@gmail.com
+                      email_verified_at: null
+                      account_type: individual
+                      gender: null
+                      birthday: null
+                      phone: '08092834743'
+                      address: null
+                      company_name: null
+                      company_phone: null
+                      rc_number: null
+                      country: null
+                      postal_code: null
+                      house_number: null
+                      street: null
+                      lcda: null
+                      lga: null
+                      city: null
+                      state: null
+                      avatar: null
+                      avatar_thumb: null
+                      is_active: 0
+                      is_blocked: 0
+                      must_change_password: 0
+                      referral_code: EP2kpt1y
+                      referred_by: null
+                      created_at: '2022-08-12T16:46:21.000000Z'
+                      updated_at: '2022-08-22T13:54:40.000000Z'
+                      name: 'Testing Love'
+                      avatar_url: 'https://phythaph.s3.amazonaws.com/users/_user_default.svg'
+                      name_with_email: 'Testing Love - alelebealsjoshua1@gmail.com'
+                    -
+                      id: 290803
+                      first_name: Testing
+                      last_name: Love
+                      email: alelebealsjoshua10@gmail.com
+                      email_verified_at: null
+                      account_type: individual
+                      gender: null
+                      birthday: null
+                      phone: null
+                      address: null
+                      company_name: null
+                      company_phone: null
+                      rc_number: null
+                      country: null
+                      postal_code: null
+                      house_number: null
+                      street: null
+                      lcda: null
+                      lga: null
+                      city: null
+                      state: null
+                      avatar: null
+                      avatar_thumb: null
+                      is_active: 0
+                      is_blocked: 0
+                      must_change_password: 0
+                      referral_code: rkCoOjx4
+                      referred_by: null
+                      created_at: '2022-08-12T16:46:46.000000Z'
+                      updated_at: '2022-08-13T17:35:59.000000Z'
+                      name: 'Testing Love'
+                      avatar_url: 'https://phythaph.s3.amazonaws.com/users/_user_default.svg'
+                      name_with_email: 'Testing Love - alelebealsjoshua10@gmail.com'
+                    -
+                      id: 290804
+                      first_name: Testing
+                      last_name: Love
+                      email: alelebealsjoshua101@gmail.com
+                      email_verified_at: '2022-08-12T16:49:00.000000Z'
+                      account_type: individual
+                      gender: null
+                      birthday: null
+                      phone: null
+                      address: null
+                      company_name: null
+                      company_phone: null
+                      rc_number: null
+                      country: null
+                      postal_code: null
+                      house_number: null
+                      street: null
+                      lcda: null
+                      lga: null
+                      city: null
+                      state: null
+                      avatar: null
+                      avatar_thumb: null
+                      is_active: 0
+                      is_blocked: 0
+                      must_change_password: 0
+                      referral_code: w6snHTrK
+                      referred_by: null
+                      created_at: '2022-08-12T16:47:34.000000Z'
+                      updated_at: '2022-08-12T16:52:25.000000Z'
+                      name: 'Testing Love'
+                      avatar_url: 'https://phythaph.s3.amazonaws.com/users/_user_default.svg'
+                      name_with_email: 'Testing Love - alelebealsjoshua101@gmail.com'
+                    -
+                      id: 290805
+                      first_name: Testing
+                      last_name: Love
+                      email: alelebealsjoshua0@gmail.com
+                      email_verified_at: null
+                      account_type: individual
+                      gender: null
+                      birthday: null
+                      phone: null
+                      address: null
+                      company_name: null
+                      company_phone: null
+                      rc_number: null
+                      country: null
+                      postal_code: null
+                      house_number: null
+                      street: null
+                      lcda: null
+                      lga: null
+                      city: null
+                      state: null
+                      avatar: null
+                      avatar_thumb: null
+                      is_active: 0
+                      is_blocked: 0
+                      must_change_password: 0
+                      referral_code: 0fmZMKYs
+                      referred_by: null
+                      created_at: '2022-08-13T18:58:42.000000Z'
+                      updated_at: '2022-08-15T09:11:32.000000Z'
+                      name: 'Testing Love'
+                      avatar_url: 'https://phythaph.s3.amazonaws.com/users/_user_default.svg'
+                      name_with_email: 'Testing Love - alelebealsjoshua0@gmail.com'
+                  first_page_url: 'http://phythaph.herokuapp.com/api/filter/users?page=1'
+                  from: 1
+                  last_page: 1
+                  last_page_url: 'http://phythaph.herokuapp.com/api/filter/users?page=1'
+                  links:
+                    -
+                      url: null
+                      label: '&laquo; Previous'
+                      active: false
+                    -
+                      url: 'http://phythaph.herokuapp.com/api/filter/users?page=1'
+                      label: '1'
+                      active: true
+                    -
+                      url: null
+                      label: 'Next &raquo;'
+                      active: false
+                  next_page_url: null
+                  path: 'http://phythaph.herokuapp.com/api/filter/users'
+                  per_page: 10
+                  prev_page_url: null
+                  to: 5
+                  total: 5
+                properties:
+                  current_page:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 290800
+                        first_name: Testing
+                        last_name: Love
+                        email: alelebealsjoshua@gmail.com
+                        email_verified_at: null
+                        account_type: individual
+                        gender: male
+                        birthday: '1999-04-22'
+                        phone: phone
+                        address: ghjklskla
+                        company_name: ghjklskla
+                        company_phone: ghjklskla
+                        rc_number: null
+                        country: null
+                        postal_code: ghjklskla
+                        house_number: ghjklskla
+                        street: ghjklskla
+                        lcda: ghjklskla
+                        lga: ghjklskla
+                        city: ghjklskla
+                        state: ghjklskla
+                        avatar: null
+                        avatar_thumb: null
+                        is_active: 0
+                        is_blocked: 0
+                        must_change_password: 0
+                        referral_code: 2yDdc3O4
+                        referred_by: null
+                        created_at: '2022-08-12T16:34:45.000000Z'
+                        updated_at: '2022-08-23T21:40:58.000000Z'
+                        name: 'Testing Love'
+                        avatar_url: 'https://phythaph.s3.amazonaws.com/users/_user_default.svg'
+                        name_with_email: 'Testing Love - alelebealsjoshua@gmail.com'
+                      -
+                        id: 290802
+                        first_name: Testing
+                        last_name: Love
+                        email: alelebealsjoshua1@gmail.com
+                        email_verified_at: null
+                        account_type: individual
+                        gender: null
+                        birthday: null
+                        phone: '08092834743'
+                        address: null
+                        company_name: null
+                        company_phone: null
+                        rc_number: null
+                        country: null
+                        postal_code: null
+                        house_number: null
+                        street: null
+                        lcda: null
+                        lga: null
+                        city: null
+                        state: null
+                        avatar: null
+                        avatar_thumb: null
+                        is_active: 0
+                        is_blocked: 0
+                        must_change_password: 0
+                        referral_code: EP2kpt1y
+                        referred_by: null
+                        created_at: '2022-08-12T16:46:21.000000Z'
+                        updated_at: '2022-08-22T13:54:40.000000Z'
+                        name: 'Testing Love'
+                        avatar_url: 'https://phythaph.s3.amazonaws.com/users/_user_default.svg'
+                        name_with_email: 'Testing Love - alelebealsjoshua1@gmail.com'
+                      -
+                        id: 290803
+                        first_name: Testing
+                        last_name: Love
+                        email: alelebealsjoshua10@gmail.com
+                        email_verified_at: null
+                        account_type: individual
+                        gender: null
+                        birthday: null
+                        phone: null
+                        address: null
+                        company_name: null
+                        company_phone: null
+                        rc_number: null
+                        country: null
+                        postal_code: null
+                        house_number: null
+                        street: null
+                        lcda: null
+                        lga: null
+                        city: null
+                        state: null
+                        avatar: null
+                        avatar_thumb: null
+                        is_active: 0
+                        is_blocked: 0
+                        must_change_password: 0
+                        referral_code: rkCoOjx4
+                        referred_by: null
+                        created_at: '2022-08-12T16:46:46.000000Z'
+                        updated_at: '2022-08-13T17:35:59.000000Z'
+                        name: 'Testing Love'
+                        avatar_url: 'https://phythaph.s3.amazonaws.com/users/_user_default.svg'
+                        name_with_email: 'Testing Love - alelebealsjoshua10@gmail.com'
+                      -
+                        id: 290804
+                        first_name: Testing
+                        last_name: Love
+                        email: alelebealsjoshua101@gmail.com
+                        email_verified_at: '2022-08-12T16:49:00.000000Z'
+                        account_type: individual
+                        gender: null
+                        birthday: null
+                        phone: null
+                        address: null
+                        company_name: null
+                        company_phone: null
+                        rc_number: null
+                        country: null
+                        postal_code: null
+                        house_number: null
+                        street: null
+                        lcda: null
+                        lga: null
+                        city: null
+                        state: null
+                        avatar: null
+                        avatar_thumb: null
+                        is_active: 0
+                        is_blocked: 0
+                        must_change_password: 0
+                        referral_code: w6snHTrK
+                        referred_by: null
+                        created_at: '2022-08-12T16:47:34.000000Z'
+                        updated_at: '2022-08-12T16:52:25.000000Z'
+                        name: 'Testing Love'
+                        avatar_url: 'https://phythaph.s3.amazonaws.com/users/_user_default.svg'
+                        name_with_email: 'Testing Love - alelebealsjoshua101@gmail.com'
+                      -
+                        id: 290805
+                        first_name: Testing
+                        last_name: Love
+                        email: alelebealsjoshua0@gmail.com
+                        email_verified_at: null
+                        account_type: individual
+                        gender: null
+                        birthday: null
+                        phone: null
+                        address: null
+                        company_name: null
+                        company_phone: null
+                        rc_number: null
+                        country: null
+                        postal_code: null
+                        house_number: null
+                        street: null
+                        lcda: null
+                        lga: null
+                        city: null
+                        state: null
+                        avatar: null
+                        avatar_thumb: null
+                        is_active: 0
+                        is_blocked: 0
+                        must_change_password: 0
+                        referral_code: 0fmZMKYs
+                        referred_by: null
+                        created_at: '2022-08-13T18:58:42.000000Z'
+                        updated_at: '2022-08-15T09:11:32.000000Z'
+                        name: 'Testing Love'
+                        avatar_url: 'https://phythaph.s3.amazonaws.com/users/_user_default.svg'
+                        name_with_email: 'Testing Love - alelebealsjoshua0@gmail.com'
+                    items:
+                      type: object
+                  first_page_url:
+                    type: string
+                    example: 'http://phythaph.herokuapp.com/api/filter/users?page=1'
+                  from:
+                    type: integer
+                    example: 1
+                  last_page:
+                    type: integer
+                    example: 1
+                  last_page_url:
+                    type: string
+                    example: 'http://phythaph.herokuapp.com/api/filter/users?page=1'
+                  links:
+                    type: array
+                    example:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://phythaph.herokuapp.com/api/filter/users?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    items:
+                      type: object
+                  next_page_url:
+                    type: string
+                    example: null
+                  path:
+                    type: string
+                    example: 'http://phythaph.herokuapp.com/api/filter/users'
+                  per_page:
+                    type: integer
+                    example: 10
+                  prev_page_url:
+                    type: string
+                    example: null
+                  to:
+                    type: integer
+                    example: 5
+                  total:
+                    type: integer
+                    example: 5
+      tags:
+        - Endpoints
+      security: []
 tags:
   -
-    name: 'Open (No Auth) APIs'
+    name: 'Auth APIs'
     description: ''
   -
-    name: 'Auth APIs'
+    name: 'Pawn APIs'
+    description: ''
+  -
+    name: 'Open (No Auth) APIs'
     description: ''
   -
     name: Endpoints

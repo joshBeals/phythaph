@@ -1,0 +1,195 @@
+name: 'Pawn APIs'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: 'api/file-upload/{id?}'
+    metadata:
+      title: 'Upload file'
+      description: 'The title parameter can either be (''image'' or ''file'')'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the .'
+        required: false
+        example: eveniet
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      file:
+        name: file
+        description: ''
+        required: true
+        example: null
+        type: file
+        custom: []
+      title:
+        name: title
+        description: ''
+        required: true
+        example: amet
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+             "success": true,
+             "message": "File Uploaded Successfully",
+             }
+        headers: []
+        description: '200, Ok'
+      -
+        status: 400
+        content: |-
+          {
+             "success": false,
+             "message": "No file uploaded"
+           }
+        headers: []
+        description: '400, Failure'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/pawn
+    metadata:
+      title: 'Pawn item'
+      description: 'Make a new pawn request'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      category_id:
+        name: category_id
+        description: ''
+        required: true
+        example: voluptatem
+        type: string
+        custom: []
+      item_features:
+        name: item_features
+        description: ''
+        required: true
+        example: ea
+        type: json
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+             "success": true,
+             "message": "Request successful",
+             "data": {
+                "pawn": {...}
+             }
+        headers: []
+        description: '200, Ok'
+      -
+        status: 400
+        content: |-
+          {
+             "success": false,
+             "message": "Pawn Request Failed"
+           }
+        headers: []
+        description: '400, Failure'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/pawn
+    metadata:
+      title: 'Fetch User Pawns'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+             "success": true,
+             "message": "",
+             "data": {
+                "pawns": {
+                    ...
+                }
+             }
+        headers: []
+        description: '200, Ok'
+      -
+        status: 404
+        content: |-
+          {
+             "success": false,
+             "message": "Error"
+           }
+        headers: []
+        description: '404, Error'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/pawn/{id}'
+    metadata:
+      title: 'Fetch Single Pawn Item'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the pawn.'
+        required: true
+        example: aut
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+             "success": true,
+             "message": "",
+             "data": {
+                "pawn": {
+                    ...
+                }
+             }
+        headers: []
+        description: '200, Ok'
+      -
+        status: 404
+        content: |-
+          " {
+             "success": false,
+             "message": Error"
+           }
+        headers: []
+        description: '404, Error'
+    responseFields: []

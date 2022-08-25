@@ -11,9 +11,28 @@ use App\Models\Files;
 use App\Models\UserPawns;
 use App\Models\PawnFiles;
 
+/**
+ * @group Pawn APIs
+ */
 class FileController extends Controller
 {
 
+     /**
+     * Upload file
+     * 
+     * The title parameter can either be ('image' or 'file')
+     *
+     *@bodyParam file file required
+     *@bodyParam title string required
+     *@response status=200 scenario=Ok {
+     *    "success": true,
+     *    "message": "File Uploaded Successfully",
+     *    }
+     *@response status=400 scenario="Failure" {
+     *    "success": false,
+     *    "message": "No file uploaded"
+     *  }
+     */
     public function fileUpload(Request $request, $id = null){
         try {
             if (!$request->has('file')) {

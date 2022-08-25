@@ -46,4 +46,13 @@ class UserPawns extends Model
         return $files;
     }
 
+    public function decorate()
+    {
+
+        Parent::decorate();
+
+        return $this;
+
+    }
+
 }

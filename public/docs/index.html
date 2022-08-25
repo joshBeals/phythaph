@@ -70,19 +70,6 @@
                                                 </ul>
                     
                     <ul id="tocify-header-2" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="open-no-auth-apis">
-                    <a href="#open-no-auth-apis">Open (No Auth) APIs</a>
-                </li>
-                                    <ul id="tocify-subheader-open-no-auth-apis" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="open-no-auth-apis-GETapi-categories">
-                        <a href="#open-no-auth-apis-GETapi-categories">Fetch Categories</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="open-no-auth-apis-GETapi-faqs">
-                        <a href="#open-no-auth-apis-GETapi-faqs">Fetch Faqs</a>
-                    </li>
-                                                    </ul>
-                            </ul>
-                    <ul id="tocify-header-3" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="auth-apis">
                     <a href="#auth-apis">Auth APIs</a>
                 </li>
@@ -119,13 +106,48 @@
                     </li>
                                                     </ul>
                             </ul>
+                    <ul id="tocify-header-3" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="pawn-apis">
+                    <a href="#pawn-apis">Pawn APIs</a>
+                </li>
+                                    <ul id="tocify-subheader-pawn-apis" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="pawn-apis-POSTapi-file-upload--id--">
+                        <a href="#pawn-apis-POSTapi-file-upload--id--">Upload file</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="pawn-apis-POSTapi-pawn">
+                        <a href="#pawn-apis-POSTapi-pawn">Pawn item</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="pawn-apis-GETapi-pawn">
+                        <a href="#pawn-apis-GETapi-pawn">Fetch User Pawns</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="pawn-apis-GETapi-pawn--id-">
+                        <a href="#pawn-apis-GETapi-pawn--id-">Fetch Single Pawn Item</a>
+                    </li>
+                                                    </ul>
+                            </ul>
                     <ul id="tocify-header-4" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="open-no-auth-apis">
+                    <a href="#open-no-auth-apis">Open (No Auth) APIs</a>
+                </li>
+                                    <ul id="tocify-subheader-open-no-auth-apis" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="open-no-auth-apis-GETapi-categories">
+                        <a href="#open-no-auth-apis-GETapi-categories">Fetch Categories</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="open-no-auth-apis-GETapi-faqs">
+                        <a href="#open-no-auth-apis-GETapi-faqs">Fetch Faqs</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+                    <ul id="tocify-header-5" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="endpoints">
                     <a href="#endpoints">Endpoints</a>
                 </li>
                                     <ul id="tocify-subheader-endpoints" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="endpoints-GETapi-filter-currencies">
                         <a href="#endpoints-GETapi-filter-currencies">GET api/filter/currencies</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-filter-users">
+                        <a href="#endpoints-GETapi-filter-users">GET api/filter/users</a>
                     </li>
                                                     </ul>
                             </ul>
@@ -139,7 +161,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: August 22 2022</li>
+        <li>Last updated: August 25 2022</li>
     </ul>
 </div>
 
@@ -157,214 +179,6 @@ You can switch the language used with the tabs at the top right (or from the nav
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
-
-        <h1 id="open-no-auth-apis">Open (No Auth) APIs</h1>
-
-    
-
-            <h2 id="open-no-auth-apis-GETapi-categories">Fetch Categories</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-categories">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/categories" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/categories"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-categories">
-            <blockquote>
-            <p>Example response (200, Ok):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-   &quot;success&quot;: true,
-   &quot;message&quot;: &quot;&quot;,
-   &quot;data&quot;: {
-      &quot;categories&quot;: {
-          ...
-      }
-   }</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Error):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Error&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-categories" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-categories"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-categories"></code></pre>
-</span>
-<span id="execution-error-GETapi-categories" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-categories"></code></pre>
-</span>
-<form id="form-GETapi-categories" data-method="GET"
-      data-path="api/categories"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-categories', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-categories"
-                    onclick="tryItOut('GETapi-categories');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-categories"
-                    onclick="cancelTryOut('GETapi-categories');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-categories" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/categories</code></b>
-        </p>
-                    </form>
-
-            <h2 id="open-no-auth-apis-GETapi-faqs">Fetch Faqs</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-faqs">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/faqs" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/faqs"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-faqs">
-            <blockquote>
-            <p>Example response (200, Ok):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-   &quot;success&quot;: true,
-   &quot;message&quot;: &quot;&quot;,
-   &quot;data&quot;: {
-      &quot;faqs&quot;: {
-          ...
-      }
-   }</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Error):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Error&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-faqs" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-faqs"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-faqs"></code></pre>
-</span>
-<span id="execution-error-GETapi-faqs" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-faqs"></code></pre>
-</span>
-<form id="form-GETapi-faqs" data-method="GET"
-      data-path="api/faqs"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-faqs', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-faqs"
-                    onclick="tryItOut('GETapi-faqs');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-faqs"
-                    onclick="cancelTryOut('GETapi-faqs');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-faqs" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/faqs</code></b>
-        </p>
-                    </form>
 
         <h1 id="auth-apis">Auth APIs</h1>
 
@@ -387,10 +201,10 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"first_name\": \"ut\",
-    \"last_name\": \"aperiam\",
-    \"email\": \"ut\",
-    \"password\": \"quo\"
+    \"first_name\": \"soluta\",
+    \"last_name\": \"distinctio\",
+    \"email\": \"aspernatur\",
+    \"password\": \"cumque\"
 }"
 </code></pre></div>
 
@@ -406,10 +220,10 @@ const headers = {
 };
 
 let body = {
-    "first_name": "ut",
-    "last_name": "aperiam",
-    "email": "ut",
-    "password": "quo"
+    "first_name": "soluta",
+    "last_name": "distinctio",
+    "email": "aspernatur",
+    "password": "cumque"
 };
 
 fetch(url, {
@@ -489,7 +303,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="POSTapi-auth-register"
-               value="ut"
+               value="soluta"
                data-component="body" hidden>
     <br>
 
@@ -499,7 +313,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="POSTapi-auth-register"
-               value="aperiam"
+               value="distinctio"
                data-component="body" hidden>
     <br>
 
@@ -509,7 +323,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-register"
-               value="ut"
+               value="aspernatur"
                data-component="body" hidden>
     <br>
 
@@ -519,7 +333,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-register"
-               value="quo"
+               value="cumque"
                data-component="body" hidden>
     <br>
 
@@ -543,8 +357,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"eos\",
-    \"password\": \"corrupti\"
+    \"email\": \"facere\",
+    \"password\": \"aspernatur\"
 }"
 </code></pre></div>
 
@@ -560,8 +374,8 @@ const headers = {
 };
 
 let body = {
-    "email": "eos",
-    "password": "corrupti"
+    "email": "facere",
+    "password": "aspernatur"
 };
 
 fetch(url, {
@@ -644,7 +458,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-login"
-               value="eos"
+               value="facere"
                data-component="body" hidden>
     <br>
 
@@ -654,7 +468,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-login"
-               value="corrupti"
+               value="aspernatur"
                data-component="body" hidden>
     <br>
 
@@ -674,14 +488,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/auth/email/verify/quae" \
+    --get "http://phythaph.herokuapp.com/api/auth/email/verify/sed" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/auth/email/verify/quae"
+    "http://phythaph.herokuapp.com/api/auth/email/verify/sed"
 );
 
 const headers = {
@@ -698,25 +512,33 @@ fetch(url, {
 
 <span id="example-responses-GETapi-auth-email-verify--id-">
             <blockquote>
-            <p>Example response (400):</p>
+            <p>Example response (302):</p>
         </blockquote>
                 <details class="annotation">
             <summary>
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
+location: https://phythaph-web-app-new.herokuapp.com/email/verify/fail
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 58
+x-ratelimit-remaining: 57
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
-<code class="language-json">{
-    &quot;status&quot;: false,
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Invalid/Expired url provided.&quot;
-}</code>
+<code class="language-json">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot; /&gt;
+        &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url='https://phythaph-web-app-new.herokuapp.com/email/verify/fail'&quot; /&gt;
+
+        &lt;title&gt;Redirecting to https://phythaph-web-app-new.herokuapp.com/email/verify/fail&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        Redirecting to &lt;a href=&quot;https://phythaph-web-app-new.herokuapp.com/email/verify/fail&quot;&gt;https://phythaph-web-app-new.herokuapp.com/email/verify/fail&lt;/a&gt;.
+    &lt;/body&gt;
+&lt;/html&gt;</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-auth-email-verify--id-" hidden>
@@ -764,7 +586,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="id"
                data-endpoint="GETapi-auth-email-verify--id-"
-               value="quae"
+               value="sed"
                data-component="url" hidden>
     <br>
 <p>The ID of the verify.</p>
@@ -784,14 +606,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/auth/email/resend/enim" \
+    --get "http://phythaph.herokuapp.com/api/auth/email/resend/sed" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/auth/email/resend/enim"
+    "http://phythaph.herokuapp.com/api/auth/email/resend/sed"
 );
 
 const headers = {
@@ -873,7 +695,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETapi-auth-email-resend--id-"
-               value="enim"
+               value="sed"
                data-component="url" hidden>
     <br>
 <p>The ID of the resend.</p>
@@ -897,7 +719,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"perspiciatis\"
+    \"email\": \"sit\"
 }"
 </code></pre></div>
 
@@ -913,7 +735,7 @@ const headers = {
 };
 
 let body = {
-    "email": "perspiciatis"
+    "email": "sit"
 };
 
 fetch(url, {
@@ -991,7 +813,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-password-forgot-password"
-               value="perspiciatis"
+               value="sit"
                data-component="body" hidden>
     <br>
 
@@ -1015,9 +837,9 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"rerum\",
-    \"token\": \"aut\",
-    \"password\": \"sit\"
+    \"email\": \"aut\",
+    \"token\": \"ea\",
+    \"password\": \"architecto\"
 }"
 </code></pre></div>
 
@@ -1033,9 +855,9 @@ const headers = {
 };
 
 let body = {
-    "email": "rerum",
-    "token": "aut",
-    "password": "sit"
+    "email": "aut",
+    "token": "ea",
+    "password": "architecto"
 };
 
 fetch(url, {
@@ -1113,7 +935,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-password-reset"
-               value="rerum"
+               value="aut"
                data-component="body" hidden>
     <br>
 
@@ -1123,7 +945,7 @@ fetch(url, {
                 <input type="text"
                name="token"
                data-endpoint="POSTapi-auth-password-reset"
-               value="aut"
+               value="ea"
                data-component="body" hidden>
     <br>
 
@@ -1133,7 +955,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-password-reset"
-               value="sit"
+               value="architecto"
                data-component="body" hidden>
     <br>
 
@@ -1157,21 +979,22 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"account_type\": \"similique\",
-    \"phone\": \"excepturi\",
-    \"gender\": \"quos\",
-    \"birthday\": \"cumque\",
-    \"address\": \"dolores\",
-    \"house_number\": \"sit\",
-    \"street\": \"et\",
-    \"lga\": \"necessitatibus\",
-    \"lcda\": \"hic\",
-    \"company_name\": \"consequatur\",
+    \"account_type\": \"eos\",
+    \"phone\": \"eum\",
+    \"gender\": \"quaerat\",
+    \"birthday\": \"et\",
+    \"address\": \"sit\",
+    \"house_number\": \"et\",
+    \"street\": \"ea\",
+    \"lga\": \"ipsam\",
+    \"lcda\": \"autem\",
+    \"company_name\": \"quidem\",
     \"company_phone\": \"et\",
-    \"country\": \"molestias\",
-    \"postal_code\": \"facilis\",
-    \"city\": \"ducimus\",
-    \"state\": \"sunt\"
+    \"country\": \"sequi\",
+    \"postal_code\": \"vero\",
+    \"rc_number\": \"fugit\",
+    \"city\": \"dignissimos\",
+    \"state\": \"non\"
 }"
 </code></pre></div>
 
@@ -1187,21 +1010,22 @@ const headers = {
 };
 
 let body = {
-    "account_type": "similique",
-    "phone": "excepturi",
-    "gender": "quos",
-    "birthday": "cumque",
-    "address": "dolores",
-    "house_number": "sit",
-    "street": "et",
-    "lga": "necessitatibus",
-    "lcda": "hic",
-    "company_name": "consequatur",
+    "account_type": "eos",
+    "phone": "eum",
+    "gender": "quaerat",
+    "birthday": "et",
+    "address": "sit",
+    "house_number": "et",
+    "street": "ea",
+    "lga": "ipsam",
+    "lcda": "autem",
+    "company_name": "quidem",
     "company_phone": "et",
-    "country": "molestias",
-    "postal_code": "facilis",
-    "city": "ducimus",
-    "state": "sunt"
+    "country": "sequi",
+    "postal_code": "vero",
+    "rc_number": "fugit",
+    "city": "dignissimos",
+    "state": "non"
 };
 
 fetch(url, {
@@ -1273,7 +1097,7 @@ fetch(url, {
                 <input type="text"
                name="account_type"
                data-endpoint="POSTapi-setup"
-               value="similique"
+               value="eos"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1283,7 +1107,7 @@ fetch(url, {
                 <input type="text"
                name="phone"
                data-endpoint="POSTapi-setup"
-               value="excepturi"
+               value="eum"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1293,7 +1117,7 @@ fetch(url, {
                 <input type="text"
                name="gender"
                data-endpoint="POSTapi-setup"
-               value="quos"
+               value="quaerat"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1303,7 +1127,7 @@ fetch(url, {
                 <input type="text"
                name="birthday"
                data-endpoint="POSTapi-setup"
-               value="cumque"
+               value="et"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1313,7 +1137,7 @@ fetch(url, {
                 <input type="text"
                name="address"
                data-endpoint="POSTapi-setup"
-               value="dolores"
+               value="sit"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1323,7 +1147,7 @@ fetch(url, {
                 <input type="text"
                name="house_number"
                data-endpoint="POSTapi-setup"
-               value="sit"
+               value="et"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1333,7 +1157,7 @@ fetch(url, {
                 <input type="text"
                name="street"
                data-endpoint="POSTapi-setup"
-               value="et"
+               value="ea"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1343,7 +1167,7 @@ fetch(url, {
                 <input type="text"
                name="lga"
                data-endpoint="POSTapi-setup"
-               value="necessitatibus"
+               value="ipsam"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1353,7 +1177,7 @@ fetch(url, {
                 <input type="text"
                name="lcda"
                data-endpoint="POSTapi-setup"
-               value="hic"
+               value="autem"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1363,7 +1187,7 @@ fetch(url, {
                 <input type="text"
                name="company_name"
                data-endpoint="POSTapi-setup"
-               value="consequatur"
+               value="quidem"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1383,7 +1207,7 @@ fetch(url, {
                 <input type="text"
                name="country"
                data-endpoint="POSTapi-setup"
-               value="molestias"
+               value="sequi"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1393,7 +1217,17 @@ fetch(url, {
                 <input type="text"
                name="postal_code"
                data-endpoint="POSTapi-setup"
-               value="facilis"
+               value="vero"
+               data-component="body" hidden>
+    <br>
+<p>optional</p>
+        </p>
+                <p>
+            <b><code>rc_number</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="rc_number"
+               data-endpoint="POSTapi-setup"
+               value="fugit"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1403,7 +1237,7 @@ fetch(url, {
                 <input type="text"
                name="city"
                data-endpoint="POSTapi-setup"
-               value="ducimus"
+               value="dignissimos"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1413,7 +1247,7 @@ fetch(url, {
                 <input type="text"
                name="state"
                data-endpoint="POSTapi-setup"
-               value="sunt"
+               value="non"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1712,6 +1546,702 @@ fetch(url, {
         </p>
                     </form>
 
+        <h1 id="pawn-apis">Pawn APIs</h1>
+
+    
+
+            <h2 id="pawn-apis-POSTapi-file-upload--id--">Upload file</h2>
+
+<p>
+</p>
+
+<p>The title parameter can either be ('image' or 'file')</p>
+
+<span id="example-requests-POSTapi-file-upload--id--">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://phythaph.herokuapp.com/api/file-upload/eveniet" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "title=amet" \
+    --form "file=@C:\Users\USER\AppData\Local\Temp\phpE9DC.tmp" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/file-upload/eveniet"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('title', 'amet');
+body.append('file', document.querySelector('input[name="file"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-file-upload--id--">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;File Uploaded Successfully&quot;,
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Failure):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;No file uploaded&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-file-upload--id--" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-file-upload--id--"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-file-upload--id--"></code></pre>
+</span>
+<span id="execution-error-POSTapi-file-upload--id--" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-file-upload--id--"></code></pre>
+</span>
+<form id="form-POSTapi-file-upload--id--" data-method="POST"
+      data-path="api/file-upload/{id?}"
+      data-authed="0"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"multipart\/form-data","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-file-upload--id--', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-file-upload--id--"
+                    onclick="tryItOut('POSTapi-file-upload--id--');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-file-upload--id--"
+                    onclick="cancelTryOut('POSTapi-file-upload--id--');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-file-upload--id--" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/file-upload/{id?}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="id"
+               data-endpoint="POSTapi-file-upload--id--"
+               value="eveniet"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the .</p>
+            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>file</code></b>&nbsp;&nbsp;<small>file</small>  &nbsp;
+                <input type="file"
+               name="file"
+               data-endpoint="POSTapi-file-upload--id--"
+               value=""
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>title</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="title"
+               data-endpoint="POSTapi-file-upload--id--"
+               value="amet"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
+
+            <h2 id="pawn-apis-POSTapi-pawn">Pawn item</h2>
+
+<p>
+</p>
+
+<p>Make a new pawn request</p>
+
+<span id="example-requests-POSTapi-pawn">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://phythaph.herokuapp.com/api/pawn" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"category_id\": \"voluptatem\",
+    \"item_features\": \"ea\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/pawn"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "category_id": "voluptatem",
+    "item_features": "ea"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-pawn">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;Request successful&quot;,
+   &quot;data&quot;: {
+      &quot;pawn&quot;: {...}
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Failure):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Pawn Request Failed&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-pawn" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-pawn"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-pawn"></code></pre>
+</span>
+<span id="execution-error-POSTapi-pawn" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-pawn"></code></pre>
+</span>
+<form id="form-POSTapi-pawn" data-method="POST"
+      data-path="api/pawn"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-pawn', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-pawn"
+                    onclick="tryItOut('POSTapi-pawn');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-pawn"
+                    onclick="cancelTryOut('POSTapi-pawn');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-pawn" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/pawn</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>category_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="category_id"
+               data-endpoint="POSTapi-pawn"
+               value="voluptatem"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>item_features</code></b>&nbsp;&nbsp;<small>json</small>  &nbsp;
+                <input type="text"
+               name="item_features"
+               data-endpoint="POSTapi-pawn"
+               value="ea"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
+
+            <h2 id="pawn-apis-GETapi-pawn">Fetch User Pawns</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-pawn">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/pawn" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/pawn"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-pawn">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;&quot;,
+   &quot;data&quot;: {
+      &quot;pawns&quot;: {
+          ...
+      }
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Error&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-pawn" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-pawn"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-pawn"></code></pre>
+</span>
+<span id="execution-error-GETapi-pawn" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-pawn"></code></pre>
+</span>
+<form id="form-GETapi-pawn" data-method="GET"
+      data-path="api/pawn"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-pawn', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-pawn"
+                    onclick="tryItOut('GETapi-pawn');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-pawn"
+                    onclick="cancelTryOut('GETapi-pawn');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-pawn" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/pawn</code></b>
+        </p>
+                    </form>
+
+            <h2 id="pawn-apis-GETapi-pawn--id-">Fetch Single Pawn Item</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-pawn--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/pawn/aut" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/pawn/aut"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-pawn--id-">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;&quot;,
+   &quot;data&quot;: {
+      &quot;pawn&quot;: {
+          ...
+      }
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&quot; {
+   &quot;success&quot;: false,
+   &quot;message&quot;: Error&quot;
+ }</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-pawn--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-pawn--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-pawn--id-"></code></pre>
+</span>
+<span id="execution-error-GETapi-pawn--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-pawn--id-"></code></pre>
+</span>
+<form id="form-GETapi-pawn--id-" data-method="GET"
+      data-path="api/pawn/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-pawn--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-pawn--id-"
+                    onclick="tryItOut('GETapi-pawn--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-pawn--id-"
+                    onclick="cancelTryOut('GETapi-pawn--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-pawn--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/pawn/{id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="id"
+               data-endpoint="GETapi-pawn--id-"
+               value="aut"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the pawn.</p>
+            </p>
+                    </form>
+
+        <h1 id="open-no-auth-apis">Open (No Auth) APIs</h1>
+
+    
+
+            <h2 id="open-no-auth-apis-GETapi-categories">Fetch Categories</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-categories">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/categories" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/categories"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-categories">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;&quot;,
+   &quot;data&quot;: {
+      &quot;categories&quot;: {
+          ...
+      }
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Error&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-categories" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-categories"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-categories"></code></pre>
+</span>
+<span id="execution-error-GETapi-categories" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-categories"></code></pre>
+</span>
+<form id="form-GETapi-categories" data-method="GET"
+      data-path="api/categories"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-categories', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-categories"
+                    onclick="tryItOut('GETapi-categories');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-categories"
+                    onclick="cancelTryOut('GETapi-categories');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-categories" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/categories</code></b>
+        </p>
+                    </form>
+
+            <h2 id="open-no-auth-apis-GETapi-faqs">Fetch Faqs</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-faqs">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/faqs" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/faqs"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-faqs">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;&quot;,
+   &quot;data&quot;: {
+      &quot;faqs&quot;: {
+          ...
+      }
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Error&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-faqs" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-faqs"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-faqs"></code></pre>
+</span>
+<span id="execution-error-GETapi-faqs" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-faqs"></code></pre>
+</span>
+<form id="form-GETapi-faqs" data-method="GET"
+      data-path="api/faqs"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-faqs', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-faqs"
+                    onclick="tryItOut('GETapi-faqs');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-faqs"
+                    onclick="cancelTryOut('GETapi-faqs');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-faqs" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/faqs</code></b>
+        </p>
+                    </form>
+
         <h1 id="endpoints">Endpoints</h1>
 
     
@@ -1855,6 +2385,307 @@ access-control-allow-origin: *
             <p>
             <small class="badge badge-green">GET</small>
             <b><code>api/filter/currencies</code></b>
+        </p>
+                    </form>
+
+            <h2 id="endpoints-GETapi-filter-users">GET api/filter/users</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-filter-users">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/filter/users" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/filter/users"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-filter-users">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 58
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;current_page&quot;: 1,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 290800,
+            &quot;first_name&quot;: &quot;Testing&quot;,
+            &quot;last_name&quot;: &quot;Love&quot;,
+            &quot;email&quot;: &quot;alelebealsjoshua@gmail.com&quot;,
+            &quot;email_verified_at&quot;: null,
+            &quot;account_type&quot;: &quot;individual&quot;,
+            &quot;gender&quot;: &quot;male&quot;,
+            &quot;birthday&quot;: &quot;1999-04-22&quot;,
+            &quot;phone&quot;: &quot;phone&quot;,
+            &quot;address&quot;: &quot;ghjklskla&quot;,
+            &quot;company_name&quot;: &quot;ghjklskla&quot;,
+            &quot;company_phone&quot;: &quot;ghjklskla&quot;,
+            &quot;rc_number&quot;: null,
+            &quot;country&quot;: null,
+            &quot;postal_code&quot;: &quot;ghjklskla&quot;,
+            &quot;house_number&quot;: &quot;ghjklskla&quot;,
+            &quot;street&quot;: &quot;ghjklskla&quot;,
+            &quot;lcda&quot;: &quot;ghjklskla&quot;,
+            &quot;lga&quot;: &quot;ghjklskla&quot;,
+            &quot;city&quot;: &quot;ghjklskla&quot;,
+            &quot;state&quot;: &quot;ghjklskla&quot;,
+            &quot;avatar&quot;: null,
+            &quot;avatar_thumb&quot;: null,
+            &quot;is_active&quot;: 0,
+            &quot;is_blocked&quot;: 0,
+            &quot;must_change_password&quot;: 0,
+            &quot;referral_code&quot;: &quot;2yDdc3O4&quot;,
+            &quot;referred_by&quot;: null,
+            &quot;created_at&quot;: &quot;2022-08-12T16:34:45.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-23T21:40:58.000000Z&quot;,
+            &quot;name&quot;: &quot;Testing Love&quot;,
+            &quot;avatar_url&quot;: &quot;https://phythaph.s3.amazonaws.com/users/_user_default.svg&quot;,
+            &quot;name_with_email&quot;: &quot;Testing Love - alelebealsjoshua@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 290802,
+            &quot;first_name&quot;: &quot;Testing&quot;,
+            &quot;last_name&quot;: &quot;Love&quot;,
+            &quot;email&quot;: &quot;alelebealsjoshua1@gmail.com&quot;,
+            &quot;email_verified_at&quot;: null,
+            &quot;account_type&quot;: &quot;individual&quot;,
+            &quot;gender&quot;: null,
+            &quot;birthday&quot;: null,
+            &quot;phone&quot;: &quot;08092834743&quot;,
+            &quot;address&quot;: null,
+            &quot;company_name&quot;: null,
+            &quot;company_phone&quot;: null,
+            &quot;rc_number&quot;: null,
+            &quot;country&quot;: null,
+            &quot;postal_code&quot;: null,
+            &quot;house_number&quot;: null,
+            &quot;street&quot;: null,
+            &quot;lcda&quot;: null,
+            &quot;lga&quot;: null,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;avatar&quot;: null,
+            &quot;avatar_thumb&quot;: null,
+            &quot;is_active&quot;: 0,
+            &quot;is_blocked&quot;: 0,
+            &quot;must_change_password&quot;: 0,
+            &quot;referral_code&quot;: &quot;EP2kpt1y&quot;,
+            &quot;referred_by&quot;: null,
+            &quot;created_at&quot;: &quot;2022-08-12T16:46:21.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-22T13:54:40.000000Z&quot;,
+            &quot;name&quot;: &quot;Testing Love&quot;,
+            &quot;avatar_url&quot;: &quot;https://phythaph.s3.amazonaws.com/users/_user_default.svg&quot;,
+            &quot;name_with_email&quot;: &quot;Testing Love - alelebealsjoshua1@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 290803,
+            &quot;first_name&quot;: &quot;Testing&quot;,
+            &quot;last_name&quot;: &quot;Love&quot;,
+            &quot;email&quot;: &quot;alelebealsjoshua10@gmail.com&quot;,
+            &quot;email_verified_at&quot;: null,
+            &quot;account_type&quot;: &quot;individual&quot;,
+            &quot;gender&quot;: null,
+            &quot;birthday&quot;: null,
+            &quot;phone&quot;: null,
+            &quot;address&quot;: null,
+            &quot;company_name&quot;: null,
+            &quot;company_phone&quot;: null,
+            &quot;rc_number&quot;: null,
+            &quot;country&quot;: null,
+            &quot;postal_code&quot;: null,
+            &quot;house_number&quot;: null,
+            &quot;street&quot;: null,
+            &quot;lcda&quot;: null,
+            &quot;lga&quot;: null,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;avatar&quot;: null,
+            &quot;avatar_thumb&quot;: null,
+            &quot;is_active&quot;: 0,
+            &quot;is_blocked&quot;: 0,
+            &quot;must_change_password&quot;: 0,
+            &quot;referral_code&quot;: &quot;rkCoOjx4&quot;,
+            &quot;referred_by&quot;: null,
+            &quot;created_at&quot;: &quot;2022-08-12T16:46:46.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-13T17:35:59.000000Z&quot;,
+            &quot;name&quot;: &quot;Testing Love&quot;,
+            &quot;avatar_url&quot;: &quot;https://phythaph.s3.amazonaws.com/users/_user_default.svg&quot;,
+            &quot;name_with_email&quot;: &quot;Testing Love - alelebealsjoshua10@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 290804,
+            &quot;first_name&quot;: &quot;Testing&quot;,
+            &quot;last_name&quot;: &quot;Love&quot;,
+            &quot;email&quot;: &quot;alelebealsjoshua101@gmail.com&quot;,
+            &quot;email_verified_at&quot;: &quot;2022-08-12T16:49:00.000000Z&quot;,
+            &quot;account_type&quot;: &quot;individual&quot;,
+            &quot;gender&quot;: null,
+            &quot;birthday&quot;: null,
+            &quot;phone&quot;: null,
+            &quot;address&quot;: null,
+            &quot;company_name&quot;: null,
+            &quot;company_phone&quot;: null,
+            &quot;rc_number&quot;: null,
+            &quot;country&quot;: null,
+            &quot;postal_code&quot;: null,
+            &quot;house_number&quot;: null,
+            &quot;street&quot;: null,
+            &quot;lcda&quot;: null,
+            &quot;lga&quot;: null,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;avatar&quot;: null,
+            &quot;avatar_thumb&quot;: null,
+            &quot;is_active&quot;: 0,
+            &quot;is_blocked&quot;: 0,
+            &quot;must_change_password&quot;: 0,
+            &quot;referral_code&quot;: &quot;w6snHTrK&quot;,
+            &quot;referred_by&quot;: null,
+            &quot;created_at&quot;: &quot;2022-08-12T16:47:34.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-12T16:52:25.000000Z&quot;,
+            &quot;name&quot;: &quot;Testing Love&quot;,
+            &quot;avatar_url&quot;: &quot;https://phythaph.s3.amazonaws.com/users/_user_default.svg&quot;,
+            &quot;name_with_email&quot;: &quot;Testing Love - alelebealsjoshua101@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 290805,
+            &quot;first_name&quot;: &quot;Testing&quot;,
+            &quot;last_name&quot;: &quot;Love&quot;,
+            &quot;email&quot;: &quot;alelebealsjoshua0@gmail.com&quot;,
+            &quot;email_verified_at&quot;: null,
+            &quot;account_type&quot;: &quot;individual&quot;,
+            &quot;gender&quot;: null,
+            &quot;birthday&quot;: null,
+            &quot;phone&quot;: null,
+            &quot;address&quot;: null,
+            &quot;company_name&quot;: null,
+            &quot;company_phone&quot;: null,
+            &quot;rc_number&quot;: null,
+            &quot;country&quot;: null,
+            &quot;postal_code&quot;: null,
+            &quot;house_number&quot;: null,
+            &quot;street&quot;: null,
+            &quot;lcda&quot;: null,
+            &quot;lga&quot;: null,
+            &quot;city&quot;: null,
+            &quot;state&quot;: null,
+            &quot;avatar&quot;: null,
+            &quot;avatar_thumb&quot;: null,
+            &quot;is_active&quot;: 0,
+            &quot;is_blocked&quot;: 0,
+            &quot;must_change_password&quot;: 0,
+            &quot;referral_code&quot;: &quot;0fmZMKYs&quot;,
+            &quot;referred_by&quot;: null,
+            &quot;created_at&quot;: &quot;2022-08-13T18:58:42.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-15T09:11:32.000000Z&quot;,
+            &quot;name&quot;: &quot;Testing Love&quot;,
+            &quot;avatar_url&quot;: &quot;https://phythaph.s3.amazonaws.com/users/_user_default.svg&quot;,
+            &quot;name_with_email&quot;: &quot;Testing Love - alelebealsjoshua0@gmail.com&quot;
+        }
+    ],
+    &quot;first_page_url&quot;: &quot;http://phythaph.herokuapp.com/api/filter/users?page=1&quot;,
+    &quot;from&quot;: 1,
+    &quot;last_page&quot;: 1,
+    &quot;last_page_url&quot;: &quot;http://phythaph.herokuapp.com/api/filter/users?page=1&quot;,
+    &quot;links&quot;: [
+        {
+            &quot;url&quot;: null,
+            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+            &quot;active&quot;: false
+        },
+        {
+            &quot;url&quot;: &quot;http://phythaph.herokuapp.com/api/filter/users?page=1&quot;,
+            &quot;label&quot;: &quot;1&quot;,
+            &quot;active&quot;: true
+        },
+        {
+            &quot;url&quot;: null,
+            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+            &quot;active&quot;: false
+        }
+    ],
+    &quot;next_page_url&quot;: null,
+    &quot;path&quot;: &quot;http://phythaph.herokuapp.com/api/filter/users&quot;,
+    &quot;per_page&quot;: 10,
+    &quot;prev_page_url&quot;: null,
+    &quot;to&quot;: 5,
+    &quot;total&quot;: 5
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-filter-users" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-filter-users"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-filter-users"></code></pre>
+</span>
+<span id="execution-error-GETapi-filter-users" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-filter-users"></code></pre>
+</span>
+<form id="form-GETapi-filter-users" data-method="GET"
+      data-path="api/filter/users"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-filter-users', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-filter-users"
+                    onclick="tryItOut('GETapi-filter-users');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-filter-users"
+                    onclick="cancelTryOut('GETapi-filter-users');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-filter-users" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/filter/users</code></b>
         </p>
                     </form>
 

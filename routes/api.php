@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ForgotPasswordController;
 use App\Http\Controllers\Api\FilterApiController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\FaqController;
+use App\Http\Controllers\Api\PawnController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +51,11 @@ Route::group([
     Route::get('/me', "AuthController@me")->name('user_detail');
 
     Route::middleware('registration_completion_api')->group(function () {
-
+        Route::prefix('pawn')->group(function () {
+            Route::post('/', "PawnController@create")->name('pawn.create');
+            Route::get('/', "PawnController@fetchUserPawns")->name('pawn.fetchall');
+            Route::get('/{id}', "PawnController@fetchPawn")->name('pawn.fetch');
+        });
     });
     
 });
