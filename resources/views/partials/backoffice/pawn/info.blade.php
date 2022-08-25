@@ -31,6 +31,7 @@ $top_level = $top_level ?? false;
                         @include('partials.backoffice.pawn.pawn_item', ['data' => $data])
                     </div>
                     <div role="tabpanel" class="tab-pane " id="tab_score">
+                        @include('partials.backoffice.pawn.score', ['data' => $data])
                     </div>
                 </div>
             </div>

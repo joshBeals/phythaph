@@ -51,7 +51,7 @@ class CategoryCrudController extends CrudController
         CRUD::column('image')->type('image');
         CRUD::column('name');
         CRUD::column('description');
-        CRUD::column('type');
+        CRUD::column('type')->type('cleanup');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
