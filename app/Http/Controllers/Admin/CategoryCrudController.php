@@ -131,15 +131,15 @@ class CategoryCrudController extends CrudController
             'new_item_label' => 'Add Check',
             'subfields' => [
                 [
-                    'wrapper' => ['class' => 'form-group col-md-6'],
+                    'wrapper' => ['class' => 'form-group col-md-12'],
                     'name' => 'variable',
                     'type' => 'text',
                     'label' => 'Variable',
                 ],
                 [
-                    'wrapper' => ['class' => 'form-group col-md-6'],
+                    'wrapper' => ['class' => 'form-group col-md-12'],
                     'name' => 'description',
-                    'type' => 'textarea',
+                    'type' => 'summernote',
                     'label' => 'Description',
                 ]
             ],

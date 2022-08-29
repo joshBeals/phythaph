@@ -16,11 +16,7 @@ class Transaction extends Model
     use SoftDeletes;
 
     const TYPES = [
-        'add_card', 'customer_charge', 'third_party_charges', 'loan_disbursal',
-        'loan_repayment', 'expense_disbursal',
-        'expense_retirement', 'investment_purchase', 'new_savings', 'savings_topup',
-        'investment_referral_payout', 'customer_payout_savings', 'customer_payout_investment',
-        'membership_subscription', 'investment_bonus_remittance', 'real_estate_purchase',
+        'add_card', 'customer_charge', 'third_party_charges', 'expense_retirement', 'membership_subscription', 'wallet_topup'
     ];
 
     const TRANSFER_CLASSES = [

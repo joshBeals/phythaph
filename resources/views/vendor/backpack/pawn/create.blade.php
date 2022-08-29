@@ -117,6 +117,7 @@ var users = @json($users);
 						<div class="form-group col-md-6">
 							<label>${requirement?.name}</label>
 							<select type="text" id='${requirement?.name}' class="form-control field" required>
+								<option value=''>-</option>
 								${op_temp}
 							</select>
 						</div>

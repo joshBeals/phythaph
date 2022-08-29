@@ -31,6 +31,10 @@ Route::post('/option', "CategoryController@options")->name('options');
 Route::get('/categories', "CategoryController@index")->name('categories');
 Route::get('/faqs', "FaqController@index")->name('faqs');
 
+Route::any('/payment/paystack-webhook', 'PaymentController@handleWebhook')->name('hide');
+Route::get('/payment/callback', 'PaymentController@handleGatewayCallback')->name('hide');
+Route::any('/transaction/initialize', "PaymentController@initializeTransaction")->name('initialize_txn');
+Route::any('/paystack', "PaymentController@paystackApi");
 
 Route::post('/file-upload/{id?}', "FileController@fileUpload")->name('file_upload');
 
