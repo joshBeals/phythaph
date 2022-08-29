@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Transaction extends Model
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use SoftDeletes;
 
     const TYPES = [

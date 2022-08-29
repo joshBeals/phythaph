@@ -38,4 +38,5 @@
     </ul>
 </li>
 
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('transaction') }}"><i class="nav-icon la la-credit-card"></i> Transactions</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('faq') }}"><i class="nav-icon la la-question-circle"></i> Faqs</a></li>
