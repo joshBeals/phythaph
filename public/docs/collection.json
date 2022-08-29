@@ -10,11 +10,120 @@
     ],
     "info": {
         "name": "Phythaph",
-        "_postman_id": "5168d683-9d5e-4e77-a2f7-4b911423e8fa",
+        "_postman_id": "ceebee70-1d44-4e0a-b7bd-bdb932aeea44",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
+        {
+            "name": "Payment APIs",
+            "description": "",
+            "item": [
+                {
+                    "name": "api\/transaction\/initialize",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/transaction\/initialize",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/transaction\/initialize"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"amount\":\"libero\",\"type\":\"adipisci\",\"scope\":\"totam\",\"description\":\"voluptas\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n   \"success\": true,\n   \"message\": \"Transaction generated\",\n   }",
+                            "name": "Ok"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n   \"success\": false,\n   \"message\": \"Cannot initialize transaction, please check your input and try again\"\n }",
+                            "name": "Bad request"
+                        }
+                    ]
+                },
+                {
+                    "name": "Handle request sent to paystack",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/paystack",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/paystack"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"endpoint\":\"fuga\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "57"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Call to undefined function App\\\\Http\\\\Controllers\\\\Api\\\\starts_with()\",\n    \"exception\": \"Error\",\n    \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\app\\\\Http\\\\Controllers\\\\Api\\\\PaymentController.php\",\n    \"line\": 620,\n    \"trace\": [\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Controller.php\",\n            \"line\": 54,\n            \"function\": \"paystackApi\",\n            \"class\": \"App\\\\Http\\\\Controllers\\\\Api\\\\PaymentController\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\ControllerDispatcher.php\",\n            \"line\": 45,\n            \"function\": \"callAction\",\n            \"class\": \"Illuminate\\\\Routing\\\\Controller\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Route.php\",\n            \"line\": 262,\n            \"function\": \"dispatch\",\n            \"class\": \"Illuminate\\\\Routing\\\\ControllerDispatcher\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Route.php\",\n            \"line\": 205,\n            \"function\": \"runController\",\n            \"class\": \"Illuminate\\\\Routing\\\\Route\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 721,\n            \"function\": \"run\",\n            \"class\": \"Illuminate\\\\Routing\\\\Route\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 128,\n            \"function\": \"Illuminate\\\\Routing\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings.php\",\n            \"line\": 50,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests.php\",\n            \"line\": 127,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests.php\",\n            \"line\": 103,\n            \"function\": \"handleRequest\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests.php\",\n            \"line\": 55,\n            \"function\": \"handleRequestUsingNamedLimiter\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 103,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 723,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 698,\n            \"function\": \"runRouteWithinStack\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 662,\n            \"function\": \"runRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 651,\n            \"function\": \"dispatchToRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n            \"line\": 167,\n            \"function\": \"dispatch\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 128,\n            \"function\": \"Illuminate\\\\Foundation\\\\Http\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull.php\",\n            \"line\": 31,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings.php\",\n            \"line\": 40,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ValidatePostSize.php\",\n            \"line\": 27,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ValidatePostSize\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance.php\",\n            \"line\": 86,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\fruitcake\\\\laravel-cors\\\\src\\\\HandleCors.php\",\n            \"line\": 52,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Fruitcake\\\\Cors\\\\HandleCors\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Http\\\\Middleware\\\\TrustProxies.php\",\n            \"line\": 39,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\TrustProxies\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 103,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n            \"line\": 142,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n            \"line\": 111,\n            \"function\": \"sendRequestThroughRouter\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls.php\",\n            \"line\": 299,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls.php\",\n            \"line\": 287,\n            \"function\": \"callLaravelOrLumenRoute\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls.php\",\n            \"line\": 89,\n            \"function\": \"makeApiCall\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls.php\",\n            \"line\": 45,\n            \"function\": \"makeResponseCall\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls.php\",\n            \"line\": 35,\n            \"function\": \"makeResponseCallIfConditionsPass\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Extractor.php\",\n            \"line\": 222,\n            \"function\": \"__invoke\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Extractor.php\",\n            \"line\": 179,\n            \"function\": \"iterateThroughStrategies\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Extractor\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Extractor.php\",\n            \"line\": 116,\n            \"function\": \"fetchResponses\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Extractor\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp.php\",\n            \"line\": 123,\n            \"function\": \"processRoute\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Extractor\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp.php\",\n            \"line\": 80,\n            \"function\": \"extractEndpointsInfoFromLaravelApp\",\n            \"class\": \"Knuckles\\\\Scribe\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp.php\",\n            \"line\": 56,\n            \"function\": \"extractEndpointsInfoAndWriteToDisk\",\n            \"class\": \"Knuckles\\\\Scribe\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Commands\\\\GenerateDocumentation.php\",\n            \"line\": 55,\n            \"function\": \"get\",\n            \"class\": \"Knuckles\\\\Scribe\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Container\\\\BoundMethod.php\",\n            \"line\": 36,\n            \"function\": \"handle\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Commands\\\\GenerateDocumentation\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Container\\\\Util.php\",\n            \"line\": 40,\n            \"function\": \"Illuminate\\\\Container\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Container\\\\BoundMethod\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Container\\\\BoundMethod.php\",\n            \"line\": 93,\n            \"function\": \"unwrapIfClosure\",\n            \"class\": \"Illuminate\\\\Container\\\\Util\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Container\\\\BoundMethod.php\",\n            \"line\": 37,\n            \"function\": \"callBoundMethod\",\n            \"class\": \"Illuminate\\\\Container\\\\BoundMethod\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Container\\\\Container.php\",\n            \"line\": 653,\n            \"function\": \"call\",\n            \"class\": \"Illuminate\\\\Container\\\\BoundMethod\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Console\\\\Command.php\",\n            \"line\": 136,\n            \"function\": \"call\",\n            \"class\": \"Illuminate\\\\Container\\\\Container\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\symfony\\\\console\\\\Command\\\\Command.php\",\n            \"line\": 298,\n            \"function\": \"execute\",\n            \"class\": \"Illuminate\\\\Console\\\\Command\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Console\\\\Command.php\",\n            \"line\": 121,\n            \"function\": \"run\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Command\\\\Command\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\symfony\\\\console\\\\Application.php\",\n            \"line\": 1024,\n            \"function\": \"run\",\n            \"class\": \"Illuminate\\\\Console\\\\Command\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\symfony\\\\console\\\\Application.php\",\n            \"line\": 299,\n            \"function\": \"doRunCommand\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\symfony\\\\console\\\\Application.php\",\n            \"line\": 171,\n            \"function\": \"doRun\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Console\\\\Application.php\",\n            \"line\": 94,\n            \"function\": \"run\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Console\\\\Kernel.php\",\n            \"line\": 129,\n            \"function\": \"run\",\n            \"class\": \"Illuminate\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\xampp\\\\htdocs\\\\laravel\\\\phytaph\\\\artisan\",\n            \"line\": 37,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Console\\\\Kernel\",\n            \"type\": \"->\"\n        }\n    ]\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
         {
             "name": "Auth APIs",
             "description": "",
@@ -41,7 +150,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"soluta\",\"last_name\":\"distinctio\",\"email\":\"aspernatur\",\"password\":\"cumque\"}"
+                            "raw": "{\"first_name\":\"quas\",\"last_name\":\"rerum\",\"email\":\"accusantium\",\"password\":\"nisi\"}"
                         },
                         "description": "",
                         "auth": {
@@ -85,7 +194,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"facere\",\"password\":\"aspernatur\"}"
+                            "raw": "{\"email\":\"beatae\",\"password\":\"dolor\"}"
                         },
                         "description": "",
                         "auth": {
@@ -119,7 +228,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "sed",
+                                    "value": "ut",
                                     "description": "The ID of the verify."
                                 }
                             ]
@@ -162,7 +271,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "57"
+                                    "value": "56"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -187,7 +296,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "sed",
+                                    "value": "aliquam",
                                     "description": "The ID of the resend."
                                 }
                             ]
@@ -246,7 +355,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"sit\"}"
+                            "raw": "{\"email\":\"ut\"}"
                         },
                         "description": "",
                         "auth": {
@@ -290,7 +399,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"aut\",\"token\":\"ea\",\"password\":\"architecto\"}"
+                            "raw": "{\"email\":\"voluptate\",\"token\":\"consequuntur\",\"password\":\"doloribus\"}"
                         },
                         "description": "",
                         "auth": {
@@ -334,7 +443,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"account_type\":\"eos\",\"phone\":\"eum\",\"gender\":\"quaerat\",\"birthday\":\"et\",\"address\":\"sit\",\"house_number\":\"et\",\"street\":\"ea\",\"lga\":\"ipsam\",\"lcda\":\"autem\",\"company_name\":\"quidem\",\"company_phone\":\"et\",\"country\":\"sequi\",\"postal_code\":\"vero\",\"rc_number\":\"fugit\",\"city\":\"dignissimos\",\"state\":\"non\"}"
+                            "raw": "{\"account_type\":\"harum\",\"phone\":\"consequatur\",\"gender\":\"cupiditate\",\"birthday\":\"impedit\",\"address\":\"sint\",\"house_number\":\"esse\",\"street\":\"labore\",\"lga\":\"magni\",\"lcda\":\"aut\",\"company_name\":\"dolore\",\"company_phone\":\"beatae\",\"country\":\"eveniet\",\"postal_code\":\"dolor\",\"rc_number\":\"possimus\",\"city\":\"ad\",\"state\":\"quia\"}"
                         },
                         "description": "Complete user registration.",
                         "auth": {
@@ -470,298 +579,6 @@
             ]
         },
         {
-            "name": "Pawn APIs",
-            "description": "",
-            "item": [
-                {
-                    "name": "Upload file",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/file-upload\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/file-upload\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "eveniet",
-                                    "description": "The ID of the ."
-                                }
-                            ]
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "multipart\/form-data"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "formdata",
-                            "formdata": [
-                                {
-                                    "key": "title",
-                                    "value": "amet",
-                                    "type": "text",
-                                    "description": ""
-                                },
-                                {
-                                    "key": "file",
-                                    "src": [],
-                                    "type": "file"
-                                }
-                            ]
-                        },
-                        "description": "The title parameter can either be ('image' or 'file')",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\n   \"success\": true,\n   \"message\": \"File Uploaded Successfully\",\n   }",
-                            "name": "Ok"
-                        },
-                        {
-                            "header": [],
-                            "code": 400,
-                            "body": "{\n   \"success\": false,\n   \"message\": \"No file uploaded\"\n }",
-                            "name": "Failure"
-                        }
-                    ]
-                },
-                {
-                    "name": "Pawn item",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/pawn",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/pawn"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"category_id\":\"voluptatem\",\"item_features\":\"ea\"}"
-                        },
-                        "description": "Make a new pawn request",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\n   \"success\": true,\n   \"message\": \"Request successful\",\n   \"data\": {\n      \"pawn\": {...}\n   }",
-                            "name": "Ok"
-                        },
-                        {
-                            "header": [],
-                            "code": 400,
-                            "body": "{\n   \"success\": false,\n   \"message\": \"Pawn Request Failed\"\n }",
-                            "name": "Failure"
-                        }
-                    ]
-                },
-                {
-                    "name": "Fetch User Pawns",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/pawn",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/pawn"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"pawns\": {\n          ...\n      }\n   }",
-                            "name": "Ok"
-                        },
-                        {
-                            "header": [],
-                            "code": 404,
-                            "body": "{\n   \"success\": false,\n   \"message\": \"Error\"\n }",
-                            "name": "Error"
-                        }
-                    ]
-                },
-                {
-                    "name": "Fetch Single Pawn Item",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/pawn\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/pawn\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "aut",
-                                    "description": "The ID of the pawn."
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"pawn\": {\n          ...\n      }\n   }",
-                            "name": "Ok"
-                        },
-                        {
-                            "header": [],
-                            "code": 404,
-                            "body": "\" {\n   \"success\": false,\n   \"message\": Error\"\n }",
-                            "name": "Error"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Open (No Auth) APIs",
-            "description": "",
-            "item": [
-                {
-                    "name": "Fetch Categories",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/categories",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/categories"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"categories\": {\n          ...\n      }\n   }",
-                            "name": "Ok"
-                        },
-                        {
-                            "header": [],
-                            "code": 400,
-                            "body": "{\n   \"success\": false,\n   \"message\": \"Error\"\n }",
-                            "name": "Error"
-                        }
-                    ]
-                },
-                {
-                    "name": "Fetch Faqs",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/faqs",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/faqs"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"faqs\": {\n          ...\n      }\n   }",
-                            "name": "Ok"
-                        },
-                        {
-                            "header": [],
-                            "code": 400,
-                            "body": "{\n   \"success\": false,\n   \"message\": \"Error\"\n }",
-                            "name": "Error"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             "name": "Endpoints",
             "description": "",
             "item": [
@@ -874,6 +691,339 @@
                             "code": 200,
                             "body": "{\"current_page\":1,\"data\":[{\"id\":290800,\"first_name\":\"Testing\",\"last_name\":\"Love\",\"email\":\"alelebealsjoshua@gmail.com\",\"email_verified_at\":null,\"account_type\":\"individual\",\"gender\":\"male\",\"birthday\":\"1999-04-22\",\"phone\":\"phone\",\"address\":\"ghjklskla\",\"company_name\":\"ghjklskla\",\"company_phone\":\"ghjklskla\",\"rc_number\":null,\"country\":null,\"postal_code\":\"ghjklskla\",\"house_number\":\"ghjklskla\",\"street\":\"ghjklskla\",\"lcda\":\"ghjklskla\",\"lga\":\"ghjklskla\",\"city\":\"ghjklskla\",\"state\":\"ghjklskla\",\"avatar\":null,\"avatar_thumb\":null,\"is_active\":0,\"is_blocked\":0,\"must_change_password\":0,\"referral_code\":\"2yDdc3O4\",\"referred_by\":null,\"created_at\":\"2022-08-12T16:34:45.000000Z\",\"updated_at\":\"2022-08-23T21:40:58.000000Z\",\"name\":\"Testing Love\",\"avatar_url\":\"https:\\\/\\\/phythaph.s3.amazonaws.com\\\/users\\\/_user_default.svg\",\"name_with_email\":\"Testing Love - alelebealsjoshua@gmail.com\"},{\"id\":290802,\"first_name\":\"Testing\",\"last_name\":\"Love\",\"email\":\"alelebealsjoshua1@gmail.com\",\"email_verified_at\":null,\"account_type\":\"individual\",\"gender\":null,\"birthday\":null,\"phone\":\"08092834743\",\"address\":null,\"company_name\":null,\"company_phone\":null,\"rc_number\":null,\"country\":null,\"postal_code\":null,\"house_number\":null,\"street\":null,\"lcda\":null,\"lga\":null,\"city\":null,\"state\":null,\"avatar\":null,\"avatar_thumb\":null,\"is_active\":0,\"is_blocked\":0,\"must_change_password\":0,\"referral_code\":\"EP2kpt1y\",\"referred_by\":null,\"created_at\":\"2022-08-12T16:46:21.000000Z\",\"updated_at\":\"2022-08-22T13:54:40.000000Z\",\"name\":\"Testing Love\",\"avatar_url\":\"https:\\\/\\\/phythaph.s3.amazonaws.com\\\/users\\\/_user_default.svg\",\"name_with_email\":\"Testing Love - alelebealsjoshua1@gmail.com\"},{\"id\":290803,\"first_name\":\"Testing\",\"last_name\":\"Love\",\"email\":\"alelebealsjoshua10@gmail.com\",\"email_verified_at\":null,\"account_type\":\"individual\",\"gender\":null,\"birthday\":null,\"phone\":null,\"address\":null,\"company_name\":null,\"company_phone\":null,\"rc_number\":null,\"country\":null,\"postal_code\":null,\"house_number\":null,\"street\":null,\"lcda\":null,\"lga\":null,\"city\":null,\"state\":null,\"avatar\":null,\"avatar_thumb\":null,\"is_active\":0,\"is_blocked\":0,\"must_change_password\":0,\"referral_code\":\"rkCoOjx4\",\"referred_by\":null,\"created_at\":\"2022-08-12T16:46:46.000000Z\",\"updated_at\":\"2022-08-13T17:35:59.000000Z\",\"name\":\"Testing Love\",\"avatar_url\":\"https:\\\/\\\/phythaph.s3.amazonaws.com\\\/users\\\/_user_default.svg\",\"name_with_email\":\"Testing Love - alelebealsjoshua10@gmail.com\"},{\"id\":290804,\"first_name\":\"Testing\",\"last_name\":\"Love\",\"email\":\"alelebealsjoshua101@gmail.com\",\"email_verified_at\":\"2022-08-12T16:49:00.000000Z\",\"account_type\":\"individual\",\"gender\":null,\"birthday\":null,\"phone\":null,\"address\":null,\"company_name\":null,\"company_phone\":null,\"rc_number\":null,\"country\":null,\"postal_code\":null,\"house_number\":null,\"street\":null,\"lcda\":null,\"lga\":null,\"city\":null,\"state\":null,\"avatar\":null,\"avatar_thumb\":null,\"is_active\":0,\"is_blocked\":0,\"must_change_password\":0,\"referral_code\":\"w6snHTrK\",\"referred_by\":null,\"created_at\":\"2022-08-12T16:47:34.000000Z\",\"updated_at\":\"2022-08-12T16:52:25.000000Z\",\"name\":\"Testing Love\",\"avatar_url\":\"https:\\\/\\\/phythaph.s3.amazonaws.com\\\/users\\\/_user_default.svg\",\"name_with_email\":\"Testing Love - alelebealsjoshua101@gmail.com\"},{\"id\":290805,\"first_name\":\"Testing\",\"last_name\":\"Love\",\"email\":\"alelebealsjoshua0@gmail.com\",\"email_verified_at\":null,\"account_type\":\"individual\",\"gender\":null,\"birthday\":null,\"phone\":null,\"address\":null,\"company_name\":null,\"company_phone\":null,\"rc_number\":null,\"country\":null,\"postal_code\":null,\"house_number\":null,\"street\":null,\"lcda\":null,\"lga\":null,\"city\":null,\"state\":null,\"avatar\":null,\"avatar_thumb\":null,\"is_active\":0,\"is_blocked\":0,\"must_change_password\":0,\"referral_code\":\"0fmZMKYs\",\"referred_by\":null,\"created_at\":\"2022-08-13T18:58:42.000000Z\",\"updated_at\":\"2022-08-15T09:11:32.000000Z\",\"name\":\"Testing Love\",\"avatar_url\":\"https:\\\/\\\/phythaph.s3.amazonaws.com\\\/users\\\/_user_default.svg\",\"name_with_email\":\"Testing Love - alelebealsjoshua0@gmail.com\"}],\"first_page_url\":\"http:\\\/\\\/phythaph.herokuapp.com\\\/api\\\/filter\\\/users?page=1\",\"from\":1,\"last_page\":1,\"last_page_url\":\"http:\\\/\\\/phythaph.herokuapp.com\\\/api\\\/filter\\\/users?page=1\",\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"active\":false},{\"url\":\"http:\\\/\\\/phythaph.herokuapp.com\\\/api\\\/filter\\\/users?page=1\",\"label\":\"1\",\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"active\":false}],\"next_page_url\":null,\"path\":\"http:\\\/\\\/phythaph.herokuapp.com\\\/api\\\/filter\\\/users\",\"per_page\":10,\"prev_page_url\":null,\"to\":5,\"total\":5}",
                             "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Open (No Auth) APIs",
+            "description": "",
+            "item": [
+                {
+                    "name": "Fetch Categories",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/categories",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/categories"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"categories\": {\n          ...\n      }\n   }",
+                            "name": "Ok"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n   \"success\": false,\n   \"message\": \"Error\"\n }",
+                            "name": "Error"
+                        }
+                    ]
+                },
+                {
+                    "name": "Fetch Faqs",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/faqs",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/faqs"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"faqs\": {\n          ...\n      }\n   }",
+                            "name": "Ok"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n   \"success\": false,\n   \"message\": \"Error\"\n }",
+                            "name": "Error"
+                        }
+                    ]
+                },
+                {
+                    "name": "Fetch Subscription Plans",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/subscription-plans",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/subscription-plans"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"plans\": {\n          ...\n      }\n   }",
+                            "name": "Ok"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n   \"success\": false,\n   \"message\": \"Error\"\n }",
+                            "name": "Error"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Pawn APIs",
+            "description": "",
+            "item": [
+                {
+                    "name": "Upload file",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/file-upload\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/file-upload\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "totam",
+                                    "description": "The ID of the ."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "odio",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "file",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": "The title parameter can either be ('image' or 'file')",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n   \"success\": true,\n   \"message\": \"File Uploaded Successfully\",\n   }",
+                            "name": "Ok"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n   \"success\": false,\n   \"message\": \"No file uploaded\"\n }",
+                            "name": "Failure"
+                        }
+                    ]
+                },
+                {
+                    "name": "Pawn item",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/pawn",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/pawn"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"category_id\":\"quod\",\"item_features\":\"excepturi\"}"
+                        },
+                        "description": "Make a new pawn request",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n   \"success\": true,\n   \"message\": \"Request successful\",\n   \"data\": {\n      \"pawn\": {...}\n   }",
+                            "name": "Ok"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n   \"success\": false,\n   \"message\": \"Pawn Request Failed\"\n }",
+                            "name": "Failure"
+                        }
+                    ]
+                },
+                {
+                    "name": "Fetch User Pawns",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/pawn",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/pawn"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"pawns\": {\n          ...\n      }\n   }",
+                            "name": "Ok"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n   \"success\": false,\n   \"message\": \"Error\"\n }",
+                            "name": "Error"
+                        }
+                    ]
+                },
+                {
+                    "name": "Fetch Single Pawn Item",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/pawn\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/pawn\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "rerum",
+                                    "description": "The ID of the pawn."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n   \"success\": true,\n   \"message\": \"\",\n   \"data\": {\n      \"pawn\": {\n          ...\n      }\n   }",
+                            "name": "Ok"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "\" {\n   \"success\": false,\n   \"message\": Error\"\n }",
+                            "name": "Error"
                         }
                     ]
                 }

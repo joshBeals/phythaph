@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\FilterApiController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\FaqController;
 use App\Http\Controllers\Api\PawnController;
+use App\Http\Controllers\Api\SubscriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +27,11 @@ Route::prefix('filter')->group(function () {
     Route::get('/users', 'FilterApiController@users');
 });
 
-Route::post('/option', "CategoryController@options")->name('options');
+Route::post('/option', "CategoryController@options")->name('hide');
 
 Route::get('/categories', "CategoryController@index")->name('categories');
 Route::get('/faqs', "FaqController@index")->name('faqs');
+Route::get('/subscription-plans', "SubscriptionController@index")->name('subscription_plans');
 
 Route::any('/payment/paystack-webhook', 'PaymentController@handleWebhook')->name('hide');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback')->name('hide');

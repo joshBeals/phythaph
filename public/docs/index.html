@@ -70,6 +70,19 @@
                                                 </ul>
                     
                     <ul id="tocify-header-2" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="payment-apis">
+                    <a href="#payment-apis">Payment APIs</a>
+                </li>
+                                    <ul id="tocify-subheader-payment-apis" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="payment-apis-GETapi-transaction-initialize">
+                        <a href="#payment-apis-GETapi-transaction-initialize">GET api/transaction/initialize</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="payment-apis-GETapi-paystack">
+                        <a href="#payment-apis-GETapi-paystack">Handle request sent to paystack</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+                    <ul id="tocify-header-3" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="auth-apis">
                     <a href="#auth-apis">Auth APIs</a>
                 </li>
@@ -106,7 +119,36 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-3" class="tocify-header">
+                    <ul id="tocify-header-4" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-filter-currencies">
+                        <a href="#endpoints-GETapi-filter-currencies">GET api/filter/currencies</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-filter-users">
+                        <a href="#endpoints-GETapi-filter-users">GET api/filter/users</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+                    <ul id="tocify-header-5" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="open-no-auth-apis">
+                    <a href="#open-no-auth-apis">Open (No Auth) APIs</a>
+                </li>
+                                    <ul id="tocify-subheader-open-no-auth-apis" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="open-no-auth-apis-GETapi-categories">
+                        <a href="#open-no-auth-apis-GETapi-categories">Fetch Categories</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="open-no-auth-apis-GETapi-faqs">
+                        <a href="#open-no-auth-apis-GETapi-faqs">Fetch Faqs</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="open-no-auth-apis-GETapi-subscription-plans">
+                        <a href="#open-no-auth-apis-GETapi-subscription-plans">Fetch Subscription Plans</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+                    <ul id="tocify-header-6" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="pawn-apis">
                     <a href="#pawn-apis">Pawn APIs</a>
                 </li>
@@ -125,32 +167,6 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-4" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="open-no-auth-apis">
-                    <a href="#open-no-auth-apis">Open (No Auth) APIs</a>
-                </li>
-                                    <ul id="tocify-subheader-open-no-auth-apis" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="open-no-auth-apis-GETapi-categories">
-                        <a href="#open-no-auth-apis-GETapi-categories">Fetch Categories</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="open-no-auth-apis-GETapi-faqs">
-                        <a href="#open-no-auth-apis-GETapi-faqs">Fetch Faqs</a>
-                    </li>
-                                                    </ul>
-                            </ul>
-                    <ul id="tocify-header-5" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="endpoints">
-                    <a href="#endpoints">Endpoints</a>
-                </li>
-                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-filter-currencies">
-                        <a href="#endpoints-GETapi-filter-currencies">GET api/filter/currencies</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-filter-users">
-                        <a href="#endpoints-GETapi-filter-users">GET api/filter/users</a>
-                    </li>
-                                                    </ul>
-                            </ul>
         
                         
             </div>
@@ -161,7 +177,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: August 25 2022</li>
+        <li>Last updated: August 29 2022</li>
     </ul>
 </div>
 
@@ -179,6 +195,760 @@ You can switch the language used with the tabs at the top right (or from the nav
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
+
+        <h1 id="payment-apis">Payment APIs</h1>
+
+    
+
+            <h2 id="payment-apis-GETapi-transaction-initialize">GET api/transaction/initialize</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-transaction-initialize">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/transaction/initialize" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"amount\": \"libero\",
+    \"type\": \"adipisci\",
+    \"scope\": \"totam\",
+    \"description\": \"voluptas\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/transaction/initialize"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "amount": "libero",
+    "type": "adipisci",
+    "scope": "totam",
+    "description": "voluptas"
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-transaction-initialize">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;Transaction generated&quot;,
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Bad request):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Cannot initialize transaction, please check your input and try again&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-transaction-initialize" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-transaction-initialize"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-transaction-initialize"></code></pre>
+</span>
+<span id="execution-error-GETapi-transaction-initialize" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-transaction-initialize"></code></pre>
+</span>
+<form id="form-GETapi-transaction-initialize" data-method="GET"
+      data-path="api/transaction/initialize"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-transaction-initialize', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-transaction-initialize"
+                    onclick="tryItOut('GETapi-transaction-initialize');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-transaction-initialize"
+                    onclick="cancelTryOut('GETapi-transaction-initialize');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-transaction-initialize" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/transaction/initialize</code></b>
+        </p>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/transaction/initialize</code></b>
+        </p>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/transaction/initialize</code></b>
+        </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/transaction/initialize</code></b>
+        </p>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/transaction/initialize</code></b>
+        </p>
+            <p>
+            <small class="badge badge-grey">OPTIONS</small>
+            <b><code>api/transaction/initialize</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>amount</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="amount"
+               data-endpoint="GETapi-transaction-initialize"
+               value="libero"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>type</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="type"
+               data-endpoint="GETapi-transaction-initialize"
+               value="adipisci"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>scope</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="scope"
+               data-endpoint="GETapi-transaction-initialize"
+               value="totam"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>description</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="description"
+               data-endpoint="GETapi-transaction-initialize"
+               value="voluptas"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
+
+            <h2 id="payment-apis-GETapi-paystack">Handle request sent to paystack</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-paystack">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/paystack" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"endpoint\": \"fuga\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/paystack"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "endpoint": "fuga"
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-paystack">
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 57
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Call to undefined function App\\Http\\Controllers\\Api\\starts_with()&quot;,
+    &quot;exception&quot;: &quot;Error&quot;,
+    &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\app\\Http\\Controllers\\Api\\PaymentController.php&quot;,
+    &quot;line&quot;: 620,
+    &quot;trace&quot;: [
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php&quot;,
+            &quot;line&quot;: 54,
+            &quot;function&quot;: &quot;paystackApi&quot;,
+            &quot;class&quot;: &quot;App\\Http\\Controllers\\Api\\PaymentController&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php&quot;,
+            &quot;line&quot;: 45,
+            &quot;function&quot;: &quot;callAction&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Controller&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php&quot;,
+            &quot;line&quot;: 262,
+            &quot;function&quot;: &quot;dispatch&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\ControllerDispatcher&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php&quot;,
+            &quot;line&quot;: 205,
+            &quot;function&quot;: &quot;runController&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
+            &quot;line&quot;: 721,
+            &quot;function&quot;: &quot;run&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
+            &quot;line&quot;: 128,
+            &quot;function&quot;: &quot;Illuminate\\Routing\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php&quot;,
+            &quot;line&quot;: 50,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
+            &quot;line&quot;: 167,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\SubstituteBindings&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php&quot;,
+            &quot;line&quot;: 127,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php&quot;,
+            &quot;line&quot;: 103,
+            &quot;function&quot;: &quot;handleRequest&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php&quot;,
+            &quot;line&quot;: 55,
+            &quot;function&quot;: &quot;handleRequestUsingNamedLimiter&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
+            &quot;line&quot;: 167,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
+            &quot;line&quot;: 103,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
+            &quot;line&quot;: 723,
+            &quot;function&quot;: &quot;then&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
+            &quot;line&quot;: 698,
+            &quot;function&quot;: &quot;runRouteWithinStack&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
+            &quot;line&quot;: 662,
+            &quot;function&quot;: &quot;runRoute&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
+            &quot;line&quot;: 651,
+            &quot;function&quot;: &quot;dispatchToRoute&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php&quot;,
+            &quot;line&quot;: 167,
+            &quot;function&quot;: &quot;dispatch&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
+            &quot;line&quot;: 128,
+            &quot;function&quot;: &quot;Illuminate\\Foundation\\Http\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php&quot;,
+            &quot;line&quot;: 21,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php&quot;,
+            &quot;line&quot;: 31,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
+            &quot;line&quot;: 167,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php&quot;,
+            &quot;line&quot;: 21,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php&quot;,
+            &quot;line&quot;: 40,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
+            &quot;line&quot;: 167,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TrimStrings&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php&quot;,
+            &quot;line&quot;: 27,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
+            &quot;line&quot;: 167,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php&quot;,
+            &quot;line&quot;: 86,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
+            &quot;line&quot;: 167,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\fruitcake\\laravel-cors\\src\\HandleCors.php&quot;,
+            &quot;line&quot;: 52,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
+            &quot;line&quot;: 167,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Fruitcake\\Cors\\HandleCors&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php&quot;,
+            &quot;line&quot;: 39,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
+            &quot;line&quot;: 167,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\TrustProxies&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
+            &quot;line&quot;: 103,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php&quot;,
+            &quot;line&quot;: 142,
+            &quot;function&quot;: &quot;then&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php&quot;,
+            &quot;line&quot;: 111,
+            &quot;function&quot;: &quot;sendRequestThroughRouter&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
+            &quot;line&quot;: 299,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
+            &quot;line&quot;: 287,
+            &quot;function&quot;: &quot;callLaravelOrLumenRoute&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
+            &quot;line&quot;: 89,
+            &quot;function&quot;: &quot;makeApiCall&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
+            &quot;line&quot;: 45,
+            &quot;function&quot;: &quot;makeResponseCall&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
+            &quot;line&quot;: 35,
+            &quot;function&quot;: &quot;makeResponseCallIfConditionsPass&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Extractor.php&quot;,
+            &quot;line&quot;: 222,
+            &quot;function&quot;: &quot;__invoke&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Extractor.php&quot;,
+            &quot;line&quot;: 179,
+            &quot;function&quot;: &quot;iterateThroughStrategies&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Extractor.php&quot;,
+            &quot;line&quot;: 116,
+            &quot;function&quot;: &quot;fetchResponses&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\GroupedEndpoints\\GroupedEndpointsFromApp.php&quot;,
+            &quot;line&quot;: 123,
+            &quot;function&quot;: &quot;processRoute&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\GroupedEndpoints\\GroupedEndpointsFromApp.php&quot;,
+            &quot;line&quot;: 80,
+            &quot;function&quot;: &quot;extractEndpointsInfoFromLaravelApp&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\GroupedEndpoints\\GroupedEndpointsFromApp.php&quot;,
+            &quot;line&quot;: 56,
+            &quot;function&quot;: &quot;extractEndpointsInfoAndWriteToDisk&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Commands\\GenerateDocumentation.php&quot;,
+            &quot;line&quot;: 55,
+            &quot;function&quot;: &quot;get&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php&quot;,
+            &quot;line&quot;: 36,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Commands\\GenerateDocumentation&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php&quot;,
+            &quot;line&quot;: 40,
+            &quot;function&quot;: &quot;Illuminate\\Container\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
+            &quot;type&quot;: &quot;::&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php&quot;,
+            &quot;line&quot;: 93,
+            &quot;function&quot;: &quot;unwrapIfClosure&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Util&quot;,
+            &quot;type&quot;: &quot;::&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php&quot;,
+            &quot;line&quot;: 37,
+            &quot;function&quot;: &quot;callBoundMethod&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
+            &quot;type&quot;: &quot;::&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
+            &quot;line&quot;: 653,
+            &quot;function&quot;: &quot;call&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
+            &quot;type&quot;: &quot;::&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php&quot;,
+            &quot;line&quot;: 136,
+            &quot;function&quot;: &quot;call&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\symfony\\console\\Command\\Command.php&quot;,
+            &quot;line&quot;: 298,
+            &quot;function&quot;: &quot;execute&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php&quot;,
+            &quot;line&quot;: 121,
+            &quot;function&quot;: &quot;run&quot;,
+            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Command\\Command&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\symfony\\console\\Application.php&quot;,
+            &quot;line&quot;: 1024,
+            &quot;function&quot;: &quot;run&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\symfony\\console\\Application.php&quot;,
+            &quot;line&quot;: 299,
+            &quot;function&quot;: &quot;doRunCommand&quot;,
+            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\symfony\\console\\Application.php&quot;,
+            &quot;line&quot;: 171,
+            &quot;function&quot;: &quot;doRun&quot;,
+            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php&quot;,
+            &quot;line&quot;: 94,
+            &quot;function&quot;: &quot;run&quot;,
+            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php&quot;,
+            &quot;line&quot;: 129,
+            &quot;function&quot;: &quot;run&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Console\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\artisan&quot;,
+            &quot;line&quot;: 37,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Console\\Kernel&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-paystack" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-paystack"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-paystack"></code></pre>
+</span>
+<span id="execution-error-GETapi-paystack" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-paystack"></code></pre>
+</span>
+<form id="form-GETapi-paystack" data-method="GET"
+      data-path="api/paystack"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-paystack', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-paystack"
+                    onclick="tryItOut('GETapi-paystack');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-paystack"
+                    onclick="cancelTryOut('GETapi-paystack');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-paystack" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/paystack</code></b>
+        </p>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/paystack</code></b>
+        </p>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/paystack</code></b>
+        </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/paystack</code></b>
+        </p>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/paystack</code></b>
+        </p>
+            <p>
+            <small class="badge badge-grey">OPTIONS</small>
+            <b><code>api/paystack</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>endpoint</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="endpoint"
+               data-endpoint="GETapi-paystack"
+               value="fuga"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
 
         <h1 id="auth-apis">Auth APIs</h1>
 
@@ -201,10 +971,10 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"first_name\": \"soluta\",
-    \"last_name\": \"distinctio\",
-    \"email\": \"aspernatur\",
-    \"password\": \"cumque\"
+    \"first_name\": \"quas\",
+    \"last_name\": \"rerum\",
+    \"email\": \"accusantium\",
+    \"password\": \"nisi\"
 }"
 </code></pre></div>
 
@@ -220,10 +990,10 @@ const headers = {
 };
 
 let body = {
-    "first_name": "soluta",
-    "last_name": "distinctio",
-    "email": "aspernatur",
-    "password": "cumque"
+    "first_name": "quas",
+    "last_name": "rerum",
+    "email": "accusantium",
+    "password": "nisi"
 };
 
 fetch(url, {
@@ -303,7 +1073,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="POSTapi-auth-register"
-               value="soluta"
+               value="quas"
                data-component="body" hidden>
     <br>
 
@@ -313,7 +1083,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="POSTapi-auth-register"
-               value="distinctio"
+               value="rerum"
                data-component="body" hidden>
     <br>
 
@@ -323,7 +1093,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-register"
-               value="aspernatur"
+               value="accusantium"
                data-component="body" hidden>
     <br>
 
@@ -333,7 +1103,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-register"
-               value="cumque"
+               value="nisi"
                data-component="body" hidden>
     <br>
 
@@ -357,8 +1127,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"facere\",
-    \"password\": \"aspernatur\"
+    \"email\": \"beatae\",
+    \"password\": \"dolor\"
 }"
 </code></pre></div>
 
@@ -374,8 +1144,8 @@ const headers = {
 };
 
 let body = {
-    "email": "facere",
-    "password": "aspernatur"
+    "email": "beatae",
+    "password": "dolor"
 };
 
 fetch(url, {
@@ -458,7 +1228,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-login"
-               value="facere"
+               value="beatae"
                data-component="body" hidden>
     <br>
 
@@ -468,7 +1238,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-login"
-               value="aspernatur"
+               value="dolor"
                data-component="body" hidden>
     <br>
 
@@ -488,14 +1258,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/auth/email/verify/sed" \
+    --get "http://phythaph.herokuapp.com/api/auth/email/verify/ut" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/auth/email/verify/sed"
+    "http://phythaph.herokuapp.com/api/auth/email/verify/ut"
 );
 
 const headers = {
@@ -522,7 +1292,7 @@ fetch(url, {
 location: https://phythaph-web-app-new.herokuapp.com/email/verify/fail
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 57
+x-ratelimit-remaining: 56
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -586,7 +1356,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="id"
                data-endpoint="GETapi-auth-email-verify--id-"
-               value="sed"
+               value="ut"
                data-component="url" hidden>
     <br>
 <p>The ID of the verify.</p>
@@ -606,14 +1376,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/auth/email/resend/sed" \
+    --get "http://phythaph.herokuapp.com/api/auth/email/resend/aliquam" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/auth/email/resend/sed"
+    "http://phythaph.herokuapp.com/api/auth/email/resend/aliquam"
 );
 
 const headers = {
@@ -695,7 +1465,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETapi-auth-email-resend--id-"
-               value="sed"
+               value="aliquam"
                data-component="url" hidden>
     <br>
 <p>The ID of the resend.</p>
@@ -719,7 +1489,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"sit\"
+    \"email\": \"ut\"
 }"
 </code></pre></div>
 
@@ -735,7 +1505,7 @@ const headers = {
 };
 
 let body = {
-    "email": "sit"
+    "email": "ut"
 };
 
 fetch(url, {
@@ -813,7 +1583,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-password-forgot-password"
-               value="sit"
+               value="ut"
                data-component="body" hidden>
     <br>
 
@@ -837,9 +1607,9 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"aut\",
-    \"token\": \"ea\",
-    \"password\": \"architecto\"
+    \"email\": \"voluptate\",
+    \"token\": \"consequuntur\",
+    \"password\": \"doloribus\"
 }"
 </code></pre></div>
 
@@ -855,9 +1625,9 @@ const headers = {
 };
 
 let body = {
-    "email": "aut",
-    "token": "ea",
-    "password": "architecto"
+    "email": "voluptate",
+    "token": "consequuntur",
+    "password": "doloribus"
 };
 
 fetch(url, {
@@ -935,7 +1705,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-password-reset"
-               value="aut"
+               value="voluptate"
                data-component="body" hidden>
     <br>
 
@@ -945,7 +1715,7 @@ fetch(url, {
                 <input type="text"
                name="token"
                data-endpoint="POSTapi-auth-password-reset"
-               value="ea"
+               value="consequuntur"
                data-component="body" hidden>
     <br>
 
@@ -955,7 +1725,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-password-reset"
-               value="architecto"
+               value="doloribus"
                data-component="body" hidden>
     <br>
 
@@ -979,22 +1749,22 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"account_type\": \"eos\",
-    \"phone\": \"eum\",
-    \"gender\": \"quaerat\",
-    \"birthday\": \"et\",
-    \"address\": \"sit\",
-    \"house_number\": \"et\",
-    \"street\": \"ea\",
-    \"lga\": \"ipsam\",
-    \"lcda\": \"autem\",
-    \"company_name\": \"quidem\",
-    \"company_phone\": \"et\",
-    \"country\": \"sequi\",
-    \"postal_code\": \"vero\",
-    \"rc_number\": \"fugit\",
-    \"city\": \"dignissimos\",
-    \"state\": \"non\"
+    \"account_type\": \"harum\",
+    \"phone\": \"consequatur\",
+    \"gender\": \"cupiditate\",
+    \"birthday\": \"impedit\",
+    \"address\": \"sint\",
+    \"house_number\": \"esse\",
+    \"street\": \"labore\",
+    \"lga\": \"magni\",
+    \"lcda\": \"aut\",
+    \"company_name\": \"dolore\",
+    \"company_phone\": \"beatae\",
+    \"country\": \"eveniet\",
+    \"postal_code\": \"dolor\",
+    \"rc_number\": \"possimus\",
+    \"city\": \"ad\",
+    \"state\": \"quia\"
 }"
 </code></pre></div>
 
@@ -1010,22 +1780,22 @@ const headers = {
 };
 
 let body = {
-    "account_type": "eos",
-    "phone": "eum",
-    "gender": "quaerat",
-    "birthday": "et",
-    "address": "sit",
-    "house_number": "et",
-    "street": "ea",
-    "lga": "ipsam",
-    "lcda": "autem",
-    "company_name": "quidem",
-    "company_phone": "et",
-    "country": "sequi",
-    "postal_code": "vero",
-    "rc_number": "fugit",
-    "city": "dignissimos",
-    "state": "non"
+    "account_type": "harum",
+    "phone": "consequatur",
+    "gender": "cupiditate",
+    "birthday": "impedit",
+    "address": "sint",
+    "house_number": "esse",
+    "street": "labore",
+    "lga": "magni",
+    "lcda": "aut",
+    "company_name": "dolore",
+    "company_phone": "beatae",
+    "country": "eveniet",
+    "postal_code": "dolor",
+    "rc_number": "possimus",
+    "city": "ad",
+    "state": "quia"
 };
 
 fetch(url, {
@@ -1097,7 +1867,7 @@ fetch(url, {
                 <input type="text"
                name="account_type"
                data-endpoint="POSTapi-setup"
-               value="eos"
+               value="harum"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1107,7 +1877,7 @@ fetch(url, {
                 <input type="text"
                name="phone"
                data-endpoint="POSTapi-setup"
-               value="eum"
+               value="consequatur"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1117,7 +1887,7 @@ fetch(url, {
                 <input type="text"
                name="gender"
                data-endpoint="POSTapi-setup"
-               value="quaerat"
+               value="cupiditate"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1127,7 +1897,7 @@ fetch(url, {
                 <input type="text"
                name="birthday"
                data-endpoint="POSTapi-setup"
-               value="et"
+               value="impedit"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1137,7 +1907,7 @@ fetch(url, {
                 <input type="text"
                name="address"
                data-endpoint="POSTapi-setup"
-               value="sit"
+               value="sint"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1147,7 +1917,7 @@ fetch(url, {
                 <input type="text"
                name="house_number"
                data-endpoint="POSTapi-setup"
-               value="et"
+               value="esse"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1157,7 +1927,7 @@ fetch(url, {
                 <input type="text"
                name="street"
                data-endpoint="POSTapi-setup"
-               value="ea"
+               value="labore"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1167,7 +1937,7 @@ fetch(url, {
                 <input type="text"
                name="lga"
                data-endpoint="POSTapi-setup"
-               value="ipsam"
+               value="magni"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1177,7 +1947,7 @@ fetch(url, {
                 <input type="text"
                name="lcda"
                data-endpoint="POSTapi-setup"
-               value="autem"
+               value="aut"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1187,7 +1957,7 @@ fetch(url, {
                 <input type="text"
                name="company_name"
                data-endpoint="POSTapi-setup"
-               value="quidem"
+               value="dolore"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1197,7 +1967,7 @@ fetch(url, {
                 <input type="text"
                name="company_phone"
                data-endpoint="POSTapi-setup"
-               value="et"
+               value="beatae"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1207,7 +1977,7 @@ fetch(url, {
                 <input type="text"
                name="country"
                data-endpoint="POSTapi-setup"
-               value="sequi"
+               value="eveniet"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1217,7 +1987,7 @@ fetch(url, {
                 <input type="text"
                name="postal_code"
                data-endpoint="POSTapi-setup"
-               value="vero"
+               value="dolor"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1227,7 +1997,7 @@ fetch(url, {
                 <input type="text"
                name="rc_number"
                data-endpoint="POSTapi-setup"
-               value="fugit"
+               value="possimus"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1237,7 +2007,7 @@ fetch(url, {
                 <input type="text"
                name="city"
                data-endpoint="POSTapi-setup"
-               value="dignissimos"
+               value="ad"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1247,7 +2017,7 @@ fetch(url, {
                 <input type="text"
                name="state"
                data-endpoint="POSTapi-setup"
-               value="non"
+               value="quia"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1543,702 +2313,6 @@ fetch(url, {
             <p>
             <small class="badge badge-green">GET</small>
             <b><code>api/me</code></b>
-        </p>
-                    </form>
-
-        <h1 id="pawn-apis">Pawn APIs</h1>
-
-    
-
-            <h2 id="pawn-apis-POSTapi-file-upload--id--">Upload file</h2>
-
-<p>
-</p>
-
-<p>The title parameter can either be ('image' or 'file')</p>
-
-<span id="example-requests-POSTapi-file-upload--id--">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://phythaph.herokuapp.com/api/file-upload/eveniet" \
-    --header "Content-Type: multipart/form-data" \
-    --header "Accept: application/json" \
-    --form "title=amet" \
-    --form "file=@C:\Users\USER\AppData\Local\Temp\phpE9DC.tmp" </code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/file-upload/eveniet"
-);
-
-const headers = {
-    "Content-Type": "multipart/form-data",
-    "Accept": "application/json",
-};
-
-const body = new FormData();
-body.append('title', 'amet');
-body.append('file', document.querySelector('input[name="file"]').files[0]);
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-file-upload--id--">
-            <blockquote>
-            <p>Example response (200, Ok):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-   &quot;success&quot;: true,
-   &quot;message&quot;: &quot;File Uploaded Successfully&quot;,
-   }</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Failure):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;No file uploaded&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-file-upload--id--" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-file-upload--id--"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-file-upload--id--"></code></pre>
-</span>
-<span id="execution-error-POSTapi-file-upload--id--" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-file-upload--id--"></code></pre>
-</span>
-<form id="form-POSTapi-file-upload--id--" data-method="POST"
-      data-path="api/file-upload/{id?}"
-      data-authed="0"
-      data-hasfiles="1"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"multipart\/form-data","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-file-upload--id--', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-file-upload--id--"
-                    onclick="tryItOut('POSTapi-file-upload--id--');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-file-upload--id--"
-                    onclick="cancelTryOut('POSTapi-file-upload--id--');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-file-upload--id--" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/file-upload/{id?}</code></b>
-        </p>
-                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
-                <input type="text"
-               name="id"
-               data-endpoint="POSTapi-file-upload--id--"
-               value="eveniet"
-               data-component="url" hidden>
-    <br>
-<p>The ID of the .</p>
-            </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <p>
-            <b><code>file</code></b>&nbsp;&nbsp;<small>file</small>  &nbsp;
-                <input type="file"
-               name="file"
-               data-endpoint="POSTapi-file-upload--id--"
-               value=""
-               data-component="body" hidden>
-    <br>
-
-        </p>
-                <p>
-            <b><code>title</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="title"
-               data-endpoint="POSTapi-file-upload--id--"
-               value="amet"
-               data-component="body" hidden>
-    <br>
-
-        </p>
-        </form>
-
-            <h2 id="pawn-apis-POSTapi-pawn">Pawn item</h2>
-
-<p>
-</p>
-
-<p>Make a new pawn request</p>
-
-<span id="example-requests-POSTapi-pawn">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://phythaph.herokuapp.com/api/pawn" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"category_id\": \"voluptatem\",
-    \"item_features\": \"ea\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/pawn"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "category_id": "voluptatem",
-    "item_features": "ea"
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-pawn">
-            <blockquote>
-            <p>Example response (200, Ok):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-   &quot;success&quot;: true,
-   &quot;message&quot;: &quot;Request successful&quot;,
-   &quot;data&quot;: {
-      &quot;pawn&quot;: {...}
-   }</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Failure):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Pawn Request Failed&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-pawn" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-pawn"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-pawn"></code></pre>
-</span>
-<span id="execution-error-POSTapi-pawn" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-pawn"></code></pre>
-</span>
-<form id="form-POSTapi-pawn" data-method="POST"
-      data-path="api/pawn"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-pawn', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-pawn"
-                    onclick="tryItOut('POSTapi-pawn');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-pawn"
-                    onclick="cancelTryOut('POSTapi-pawn');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-pawn" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/pawn</code></b>
-        </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <p>
-            <b><code>category_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="category_id"
-               data-endpoint="POSTapi-pawn"
-               value="voluptatem"
-               data-component="body" hidden>
-    <br>
-
-        </p>
-                <p>
-            <b><code>item_features</code></b>&nbsp;&nbsp;<small>json</small>  &nbsp;
-                <input type="text"
-               name="item_features"
-               data-endpoint="POSTapi-pawn"
-               value="ea"
-               data-component="body" hidden>
-    <br>
-
-        </p>
-        </form>
-
-            <h2 id="pawn-apis-GETapi-pawn">Fetch User Pawns</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-pawn">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/pawn" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/pawn"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-pawn">
-            <blockquote>
-            <p>Example response (200, Ok):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-   &quot;success&quot;: true,
-   &quot;message&quot;: &quot;&quot;,
-   &quot;data&quot;: {
-      &quot;pawns&quot;: {
-          ...
-      }
-   }</code>
- </pre>
-            <blockquote>
-            <p>Example response (404, Error):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Error&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-pawn" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-pawn"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-pawn"></code></pre>
-</span>
-<span id="execution-error-GETapi-pawn" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-pawn"></code></pre>
-</span>
-<form id="form-GETapi-pawn" data-method="GET"
-      data-path="api/pawn"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-pawn', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-pawn"
-                    onclick="tryItOut('GETapi-pawn');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-pawn"
-                    onclick="cancelTryOut('GETapi-pawn');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-pawn" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/pawn</code></b>
-        </p>
-                    </form>
-
-            <h2 id="pawn-apis-GETapi-pawn--id-">Fetch Single Pawn Item</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-pawn--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/pawn/aut" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/pawn/aut"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-pawn--id-">
-            <blockquote>
-            <p>Example response (200, Ok):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-   &quot;success&quot;: true,
-   &quot;message&quot;: &quot;&quot;,
-   &quot;data&quot;: {
-      &quot;pawn&quot;: {
-          ...
-      }
-   }</code>
- </pre>
-            <blockquote>
-            <p>Example response (404, Error):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">&quot; {
-   &quot;success&quot;: false,
-   &quot;message&quot;: Error&quot;
- }</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-pawn--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-pawn--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-pawn--id-"></code></pre>
-</span>
-<span id="execution-error-GETapi-pawn--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-pawn--id-"></code></pre>
-</span>
-<form id="form-GETapi-pawn--id-" data-method="GET"
-      data-path="api/pawn/{id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-pawn--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-pawn--id-"
-                    onclick="tryItOut('GETapi-pawn--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-pawn--id-"
-                    onclick="cancelTryOut('GETapi-pawn--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-pawn--id-" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/pawn/{id}</code></b>
-        </p>
-                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="id"
-               data-endpoint="GETapi-pawn--id-"
-               value="aut"
-               data-component="url" hidden>
-    <br>
-<p>The ID of the pawn.</p>
-            </p>
-                    </form>
-
-        <h1 id="open-no-auth-apis">Open (No Auth) APIs</h1>
-
-    
-
-            <h2 id="open-no-auth-apis-GETapi-categories">Fetch Categories</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-categories">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/categories" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/categories"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-categories">
-            <blockquote>
-            <p>Example response (200, Ok):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-   &quot;success&quot;: true,
-   &quot;message&quot;: &quot;&quot;,
-   &quot;data&quot;: {
-      &quot;categories&quot;: {
-          ...
-      }
-   }</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Error):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Error&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-categories" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-categories"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-categories"></code></pre>
-</span>
-<span id="execution-error-GETapi-categories" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-categories"></code></pre>
-</span>
-<form id="form-GETapi-categories" data-method="GET"
-      data-path="api/categories"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-categories', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-categories"
-                    onclick="tryItOut('GETapi-categories');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-categories"
-                    onclick="cancelTryOut('GETapi-categories');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-categories" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/categories</code></b>
-        </p>
-                    </form>
-
-            <h2 id="open-no-auth-apis-GETapi-faqs">Fetch Faqs</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-faqs">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/faqs" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/faqs"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-faqs">
-            <blockquote>
-            <p>Example response (200, Ok):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-   &quot;success&quot;: true,
-   &quot;message&quot;: &quot;&quot;,
-   &quot;data&quot;: {
-      &quot;faqs&quot;: {
-          ...
-      }
-   }</code>
- </pre>
-            <blockquote>
-            <p>Example response (400, Error):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Error&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-faqs" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-faqs"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-faqs"></code></pre>
-</span>
-<span id="execution-error-GETapi-faqs" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-faqs"></code></pre>
-</span>
-<form id="form-GETapi-faqs" data-method="GET"
-      data-path="api/faqs"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-faqs', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-faqs"
-                    onclick="tryItOut('GETapi-faqs');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-faqs"
-                    onclick="cancelTryOut('GETapi-faqs');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-faqs" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/faqs</code></b>
         </p>
                     </form>
 
@@ -2687,6 +2761,804 @@ access-control-allow-origin: *
             <small class="badge badge-green">GET</small>
             <b><code>api/filter/users</code></b>
         </p>
+                    </form>
+
+        <h1 id="open-no-auth-apis">Open (No Auth) APIs</h1>
+
+    
+
+            <h2 id="open-no-auth-apis-GETapi-categories">Fetch Categories</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-categories">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/categories" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/categories"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-categories">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;&quot;,
+   &quot;data&quot;: {
+      &quot;categories&quot;: {
+          ...
+      }
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Error&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-categories" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-categories"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-categories"></code></pre>
+</span>
+<span id="execution-error-GETapi-categories" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-categories"></code></pre>
+</span>
+<form id="form-GETapi-categories" data-method="GET"
+      data-path="api/categories"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-categories', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-categories"
+                    onclick="tryItOut('GETapi-categories');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-categories"
+                    onclick="cancelTryOut('GETapi-categories');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-categories" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/categories</code></b>
+        </p>
+                    </form>
+
+            <h2 id="open-no-auth-apis-GETapi-faqs">Fetch Faqs</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-faqs">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/faqs" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/faqs"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-faqs">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;&quot;,
+   &quot;data&quot;: {
+      &quot;faqs&quot;: {
+          ...
+      }
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Error&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-faqs" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-faqs"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-faqs"></code></pre>
+</span>
+<span id="execution-error-GETapi-faqs" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-faqs"></code></pre>
+</span>
+<form id="form-GETapi-faqs" data-method="GET"
+      data-path="api/faqs"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-faqs', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-faqs"
+                    onclick="tryItOut('GETapi-faqs');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-faqs"
+                    onclick="cancelTryOut('GETapi-faqs');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-faqs" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/faqs</code></b>
+        </p>
+                    </form>
+
+            <h2 id="open-no-auth-apis-GETapi-subscription-plans">Fetch Subscription Plans</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-subscription-plans">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/subscription-plans" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/subscription-plans"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-subscription-plans">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;&quot;,
+   &quot;data&quot;: {
+      &quot;plans&quot;: {
+          ...
+      }
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Error&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-subscription-plans" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-subscription-plans"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-subscription-plans"></code></pre>
+</span>
+<span id="execution-error-GETapi-subscription-plans" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-subscription-plans"></code></pre>
+</span>
+<form id="form-GETapi-subscription-plans" data-method="GET"
+      data-path="api/subscription-plans"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-subscription-plans', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-subscription-plans"
+                    onclick="tryItOut('GETapi-subscription-plans');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-subscription-plans"
+                    onclick="cancelTryOut('GETapi-subscription-plans');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-subscription-plans" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/subscription-plans</code></b>
+        </p>
+                    </form>
+
+        <h1 id="pawn-apis">Pawn APIs</h1>
+
+    
+
+            <h2 id="pawn-apis-POSTapi-file-upload--id--">Upload file</h2>
+
+<p>
+</p>
+
+<p>The title parameter can either be ('image' or 'file')</p>
+
+<span id="example-requests-POSTapi-file-upload--id--">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://phythaph.herokuapp.com/api/file-upload/totam" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "title=odio" \
+    --form "file=@C:\Users\USER\AppData\Local\Temp\php5954.tmp" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/file-upload/totam"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('title', 'odio');
+body.append('file', document.querySelector('input[name="file"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-file-upload--id--">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;File Uploaded Successfully&quot;,
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Failure):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;No file uploaded&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-file-upload--id--" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-file-upload--id--"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-file-upload--id--"></code></pre>
+</span>
+<span id="execution-error-POSTapi-file-upload--id--" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-file-upload--id--"></code></pre>
+</span>
+<form id="form-POSTapi-file-upload--id--" data-method="POST"
+      data-path="api/file-upload/{id?}"
+      data-authed="0"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"multipart\/form-data","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-file-upload--id--', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-file-upload--id--"
+                    onclick="tryItOut('POSTapi-file-upload--id--');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-file-upload--id--"
+                    onclick="cancelTryOut('POSTapi-file-upload--id--');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-file-upload--id--" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/file-upload/{id?}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="id"
+               data-endpoint="POSTapi-file-upload--id--"
+               value="totam"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the .</p>
+            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>file</code></b>&nbsp;&nbsp;<small>file</small>  &nbsp;
+                <input type="file"
+               name="file"
+               data-endpoint="POSTapi-file-upload--id--"
+               value=""
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>title</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="title"
+               data-endpoint="POSTapi-file-upload--id--"
+               value="odio"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
+
+            <h2 id="pawn-apis-POSTapi-pawn">Pawn item</h2>
+
+<p>
+</p>
+
+<p>Make a new pawn request</p>
+
+<span id="example-requests-POSTapi-pawn">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://phythaph.herokuapp.com/api/pawn" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"category_id\": \"quod\",
+    \"item_features\": \"excepturi\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/pawn"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "category_id": "quod",
+    "item_features": "excepturi"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-pawn">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;Request successful&quot;,
+   &quot;data&quot;: {
+      &quot;pawn&quot;: {...}
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Failure):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Pawn Request Failed&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-pawn" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-pawn"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-pawn"></code></pre>
+</span>
+<span id="execution-error-POSTapi-pawn" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-pawn"></code></pre>
+</span>
+<form id="form-POSTapi-pawn" data-method="POST"
+      data-path="api/pawn"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-pawn', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-pawn"
+                    onclick="tryItOut('POSTapi-pawn');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-pawn"
+                    onclick="cancelTryOut('POSTapi-pawn');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-pawn" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/pawn</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>category_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="category_id"
+               data-endpoint="POSTapi-pawn"
+               value="quod"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>item_features</code></b>&nbsp;&nbsp;<small>json</small>  &nbsp;
+                <input type="text"
+               name="item_features"
+               data-endpoint="POSTapi-pawn"
+               value="excepturi"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
+
+            <h2 id="pawn-apis-GETapi-pawn">Fetch User Pawns</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-pawn">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/pawn" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/pawn"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-pawn">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;&quot;,
+   &quot;data&quot;: {
+      &quot;pawns&quot;: {
+          ...
+      }
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Error&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-pawn" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-pawn"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-pawn"></code></pre>
+</span>
+<span id="execution-error-GETapi-pawn" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-pawn"></code></pre>
+</span>
+<form id="form-GETapi-pawn" data-method="GET"
+      data-path="api/pawn"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-pawn', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-pawn"
+                    onclick="tryItOut('GETapi-pawn');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-pawn"
+                    onclick="cancelTryOut('GETapi-pawn');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-pawn" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/pawn</code></b>
+        </p>
+                    </form>
+
+            <h2 id="pawn-apis-GETapi-pawn--id-">Fetch Single Pawn Item</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-pawn--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/pawn/rerum" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/pawn/rerum"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-pawn--id-">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;&quot;,
+   &quot;data&quot;: {
+      &quot;pawn&quot;: {
+          ...
+      }
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&quot; {
+   &quot;success&quot;: false,
+   &quot;message&quot;: Error&quot;
+ }</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-pawn--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-pawn--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-pawn--id-"></code></pre>
+</span>
+<span id="execution-error-GETapi-pawn--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-pawn--id-"></code></pre>
+</span>
+<form id="form-GETapi-pawn--id-" data-method="GET"
+      data-path="api/pawn/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-pawn--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-pawn--id-"
+                    onclick="tryItOut('GETapi-pawn--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-pawn--id-"
+                    onclick="cancelTryOut('GETapi-pawn--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-pawn--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/pawn/{id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="id"
+               data-endpoint="GETapi-pawn--id-"
+               value="rerum"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the pawn.</p>
+            </p>
                     </form>
 
     
