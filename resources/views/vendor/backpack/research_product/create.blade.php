@@ -137,6 +137,8 @@ $currencies = \App\Models\Currency::get();
 @endsection
 
 @push('after_scripts')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
 
 var categories = @json($categories);
@@ -173,13 +175,19 @@ var currencies = @json($currencies);
 				if(requirement?.field == 'dropdown'){
 					var options = requirement?.options?.split('|');
 					var op_temp = '';
-					options?.forEach(function(op){
+					var opt_test = options?.sort(function(b, a){
+						a = typeof a === 'string' ? a.toLowerCase() : a.toString();
+						b = typeof b === 'string' ? b.toLowerCase() : b.toString();
+						return a.localeCompare(b);
+					});
+					console.log(opt_test);
+					opt_test?.forEach(function(op){
 						op_temp += `<option value='${op}'>${op}</option>`;
 					});
 					temp += `
 						<div class="form-group col-md-6">
 							<label>${requirement?.name}</label>
-							<select type="text" id='${requirement?.name}' class="form-control field" required>
+							<select type="text" id='${requirement?.name}' class="form-control select2 field" required>
 								<option value=''>-</option>
 								${op_temp}
 							</select>
@@ -213,12 +221,12 @@ var currencies = @json($currencies);
 			formFields.html(temp);
 			priceFields.html(temp_price);
 			$('#options').html(option);
+			$('.select2').select2();
 		}
 	}
 
     $(function() {
         categoryDropdown.on('change', generateForm);
-		
 		$('#myModal').on('shown.bs.modal', function () {
 			$('#myInput').trigger('focus')
 		});
