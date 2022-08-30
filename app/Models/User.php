@@ -9,12 +9,16 @@ use App\Models\Base\User as UserBase;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\SubscriptionManager;
+use App\Traits\WalletManager;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends UserBase implements MustVerifyEmail, JWTSubject
 {
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use SoftDeletes;
+    use SubscriptionManager;
+    use WalletManager;
 
     public function sendPasswordResetNotification($token) {
         $this->notify(new \App\Notifications\MailResetPasswordNotification($token));
@@ -31,21 +35,7 @@ class User extends UserBase implements MustVerifyEmail, JWTSubject
      */
     public function getJWTCustomClaims() {
         return [];
-    }   
-
-    public function decorate()
-    {
-
-        Parent::decorate();
-
-        return $this;
-
-    }
-
-    public function Pawns()
-    {
-        return $this->hasMany(UserPawns::class)->orderBy('id', 'DESC');
-    }
+    } 
 
     /**
      * Check of the user has completed their registration
@@ -55,5 +45,21 @@ class User extends UserBase implements MustVerifyEmail, JWTSubject
     public function completedRegistration(): bool
     {
         return $this->getPhone() ? true : false;
+    }  
+
+    public function decorate()
+    {
+        Parent::decorate();
+        return $this;
+    }
+
+    public function Pawns()
+    {
+        return $this->hasMany(UserPawns::class)->orderBy('id', 'DESC');
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
     }
 }

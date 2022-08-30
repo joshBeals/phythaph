@@ -60,6 +60,8 @@ return [
 
     'use_https' => (bool) env('USE_HTTPS', true),
 
+    'public_key' => env('PAYSTACK_PUBLIC_KEY'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

@@ -234,7 +234,6 @@ class CategoryCrudController extends CrudController
             $message = "Error: " . \addslashes($th->getMessage());
             \Alert::error($message)->flash();
             return redirect(url()->previous());
-
         }
 
 

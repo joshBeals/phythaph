@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Models\MembershipPlan;
+use App\Models\SubscriptionPlans;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Models\UserSubscriptionHistory;
@@ -13,7 +13,7 @@ trait SubscriptionManager
 
     public function plan()
     {
-        return $this->belongsTo(MembershipPlan::class, 'plan_id');
+        return $this->belongsTo(SubscriptionPlans::class, 'plan_id');
     }
 
     public function subscription()
@@ -32,7 +32,7 @@ trait SubscriptionManager
      * @param Transaction|null $transaction     The transaction for the payment of the subscription
      * @param int|null $year     Number of years
      * @param Carbon|null $from  The date to begin the subscription from
-     * @param MembershipPlan|null $plan    The subscription plan;
+     * @param SubscriptionPlans|null $plan    The subscription plan;
      *
      * @return Self Return the new model
      */
@@ -40,7 +40,7 @@ trait SubscriptionManager
         Transaction $transaction = null,
         float $years = 1,
         Carbon $from = null,
-        MembershipPlan $plan = null
+        SubscriptionPlans $plan = null
     ): Self {
 
         if (!$from) {
@@ -142,7 +142,7 @@ trait SubscriptionManager
             return $this;
         }
 
-        $plan = MembershipPlan::findOrFail($plan);
+        $plan = SubscriptionPlans::findOrFail($plan);
         $currentSubscription = $this->subscription()->first();
 
         if ($meta->scope == "user_plan_change") {
