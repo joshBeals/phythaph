@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Classes\Helper;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -56,6 +57,13 @@ class User extends UserBase implements MustVerifyEmail, JWTSubject
         $this->subscription_expires_soon = $this->subscriptionExpiringSoon();
         $this->has_subscribed_once = $this->hasSubscribedOnce();
         $this->walletBalance = UserWallet::getWalletBalaceForUser('ngn', $this);
+
+        foreach ([
+            'created_at',
+            'updated_at',
+        ] as $date) {
+            $this->{"_" . $date} = Helper::formatDate($this->{$date});
+        }
 
         return $this;
     }

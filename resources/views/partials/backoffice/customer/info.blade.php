@@ -1,6 +1,6 @@
 @php
 $top_level = $top_level ?? false;
-$walletHistory = \App\Models\UserWalletBalanceHistory::where('user_id', $data->id)->get();
+$walletHistory = \App\Models\UserWalletBalanceHistory::where('user_id', $data->id)->orderBy('id', 'DESC')->get();
 $user = $data->decorate();
 @endphp
 <div class="tab-container mb-2 @if(!$top_level)tab-pane @endif" @if(!$top_level) role="tabpanel"

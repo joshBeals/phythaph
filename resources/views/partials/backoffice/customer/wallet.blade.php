@@ -54,7 +54,7 @@
                 <strong>Wallet Transactions</strong>
             </div>
             <div class="card-body">
-                <form id="topup">
+                <form id="topup" action="fund" method="POST">
                     @csrf
                     <input type="hidden" name="user_id" value="{{$user->id}}">
                     <div class="form-group">
@@ -69,9 +69,9 @@
                             </button>
                         </div>
                         <div class="col-md-6">
-                            <button id="withdraw" class="w-100 btn btn-danger btn-md">
+                            <div id="withdraw" class="w-100 btn btn-danger btn-md">
                                 Withdraw Funds
-                            </button>
+                            </div>
                         </div>
                     </div>
                     <div class="mt-3">
@@ -89,116 +89,116 @@
     $(function () {
 
         $('#withdraw').on('click', function(e) {
-            amount = $('#amount').val();
-            location.href = `/account/wallet/withdraw/${amount}`;
+            // amount = $('#amount').val();
+            // location.href = `/account/wallet/withdraw/${amount}`;
         })
 
-        $('#topup').on('submit', function(e) {
-            e.preventDefault();
+        // $('#topup').on('submit', function(e) {
+        //     e.preventDefault();
             
-            amount_temp = $('#amount').val();
+        //     amount_temp = $('#amount').val();
 
-            if (!amount_temp) return;
+        //     if (!amount_temp) return;
 
-            var 
-                type = 'wallet_topup',
-                scope = 'wallet_topup',
-                paymentMethod = 'Paystack',
-                publicKey = "{{ config('paystack.publicKey') }}",
-                amount = parseFloat(amount_temp);
-                handleError = function() {
-                    alert("Cannot initialize transaction, please try again later.");
-                    $('#spinner').hide();
-                }
+        //     var 
+        //         type = 'wallet_topup',
+        //         scope = 'wallet_topup',
+        //         paymentMethod = 'Paystack',
+        //         publicKey = "{{ config('paystack.publicKey') }}",
+        //         amount = parseFloat(amount_temp);
+        //         handleError = function() {
+        //             alert("Cannot initialize transaction, please try again later.");
+        //             $('#spinner').hide();
+        //         }
                 
-            // if(coupon_code) {
-            //     amount = amount / 2
-            // }
+        //     // if(coupon_code) {
+        //     //     amount = amount / 2
+        //     // }
 
             
-            $('#spinner').show();
+        //     $('#spinner').show();
 
-            var posting = $.post( '/api/transaction/initialize', {
-                amount: amount,
-                scope: scope,
-                type: type,
-                description: "Wallet Topup",
-                /* beautify preserve:start */
-                    user_id: {{$user->id}},
-                    /* beautify preserve:end */
-            });
+        //     var posting = $.post( '/api/transaction/initialize', {
+        //         amount: amount,
+        //         scope: scope,
+        //         type: type,
+        //         description: "Wallet Topup",
+        //         /* beautify preserve:start */
+        //             user_id: {{$user->id}},
+        //             /* beautify preserve:end */
+        //     });
  
-            // Put the results in a div
-            posting.done(function( data ) {
-                var resData = data
-                if (!resData.success) {
-                    handleError();
-                    return;
-                }
-                var data = resData.data;
-                var redirectTo = location.href;
+        //     // Put the results in a div
+        //     posting.done(function( data ) {
+        //         var resData = data
+        //         if (!resData.success) {
+        //             handleError();
+        //             return;
+        //         }
+        //         var data = resData.data;
+        //         var redirectTo = location.href;
 
-                var mergedData = Object.assign({
-                        /* beautify preserve:start */
-                    full_name: "{{$user->name}}",
-                    email: "{{$user->email}}",
-                    /* beautify preserve:end */
-                    },
-                    JSON.parse(data.payload),
-                    data
-                ),
-                metadata = [{
-                        display_name: "Customer Name",
-                        variable_name: "customer_name",
-                        value: "{{$user->name}}"
-                    },
-                    {
-                        display_name: "Customer ID",
-                        variable_name: "customer_id",
-                        value: "{{$user->id}}"
-                    },
-                    {
-                        display_name: "Transaction Scope",
-                        variable_name: "scope",
-                        value: "Wallet Topup"
-                    },
+        //         var mergedData = Object.assign({
+        //                 /* beautify preserve:start */
+        //             full_name: "{{$user->name}}",
+        //             email: "{{$user->email}}",
+        //             /* beautify preserve:end */
+        //             },
+        //             JSON.parse(data.payload),
+        //             data
+        //         ),
+        //         metadata = [{
+        //                 display_name: "Customer Name",
+        //                 variable_name: "customer_name",
+        //                 value: "{{$user->name}}"
+        //             },
+        //             {
+        //                 display_name: "Customer ID",
+        //                 variable_name: "customer_id",
+        //                 value: "{{$user->id}}"
+        //             },
+        //             {
+        //                 display_name: "Transaction Scope",
+        //                 variable_name: "scope",
+        //                 value: "Wallet Topup"
+        //             },
 
-                ];
+        //         ];
 
-                var paystack = function payWithPaystack() {
-                    var handler = PaystackPop.setup({
-                        key: publicKey, // Replace with your public key
-                        firstname: mergedData.full_name,
-                        email: mergedData.email,
-                        amount: mergedData.amount,
-                        ref: mergedData.reference,
-                        currency: "NGN",
-                        metadata: Object.assign({
-                            transaction_id: mergedData.id,
-                            scope: mergedData.scope || "payment",
-                            custom_fields: metadata || []
-                        }),
-                        callback: function(response) {
-                            alert('Transaction Successfull');
-                            // Make an AJAX call to your server with the reference to verify the transaction
-                            $('#spinner').hide();
-                        },
-                        onClose: function() {
-                            alert('Transaction was not completed, window closed.');
-                        $('#spinner').hide();
-                        },
-                    });
-                    handler.openIframe();
-                };
+        //         var paystack = function payWithPaystack() {
+        //             var handler = PaystackPop.setup({
+        //                 key: publicKey, // Replace with your public key
+        //                 firstname: mergedData.full_name,
+        //                 email: mergedData.email,
+        //                 amount: mergedData.amount,
+        //                 ref: mergedData.reference,
+        //                 currency: "NGN",
+        //                 metadata: Object.assign({
+        //                     transaction_id: mergedData.id,
+        //                     scope: mergedData.scope || "payment",
+        //                     custom_fields: metadata || []
+        //                 }),
+        //                 callback: function(response) {
+        //                     alert('Transaction Successfull');
+        //                     // Make an AJAX call to your server with the reference to verify the transaction
+        //                     $('#spinner').hide();
+        //                 },
+        //                 onClose: function() {
+        //                     alert('Transaction was not completed, window closed.');
+        //                 $('#spinner').hide();
+        //                 },
+        //             });
+        //             handler.openIframe();
+        //         };
 
-                paystack();
-            });
+        //         paystack();
+        //     });
 
-            posting.fail(function(xhr, status, error) {
-                handleError();
-            });
+        //     posting.fail(function(xhr, status, error) {
+        //         handleError();
+        //     });
 
-        })
+        // })
     })
 
 </script>

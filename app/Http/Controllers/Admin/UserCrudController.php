@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Classes\GlobalVars;
+use App\Classes\Helper;
+use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 use App\Models\SubscriptionPlans;
 use App\Models\Transaction;
 use App\Models\User;
@@ -145,7 +150,7 @@ class UserCrudController extends CrudController
 
         $save = $user->depositToWallet($amount, $obj->description, $txn);
 
-        return redirect(url()->previous());
+        return redirect('/admin/customer/' . $user->id . '/show#wallet');
     }
 
     public function subscribe(Request $request)

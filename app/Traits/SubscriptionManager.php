@@ -90,10 +90,10 @@ trait SubscriptionManager
             $this->subscription = $sub;
         }
 
-        if ($transaction) {
-            $transaction->entity_id = $this->id;
-            $transaction->save();
-        }
+        // if ($transaction) {
+        //     $transaction->entity_id = $this->id;
+        //     $transaction->save();
+        // }
 
         if($this->referred_by){
             $referred = User::where('id', $this->referred_by)->first();

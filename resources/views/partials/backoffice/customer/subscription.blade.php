@@ -5,6 +5,7 @@ $id = 0;
 
 <div class="row">
     <div class="col-md-7">
+        {{$error_message ?? ''}}
         @if(!$user->has_valid_subscription)
         <div class="alert alert-info">
             Customer has no subscription yet
@@ -88,7 +89,7 @@ $id = 0;
                     @csrf
                     <input type="hidden" name="user_id" value="{{$user->id}}">
                     <div class="form-group">
-                        <label>Membership Plans</label>
+                        <label>Subscription Plans</label>
                         <select class="form-control" name="plan_id" id="plan_id" required>
                             @foreach($plans as $plan)
                             <option value="{{ $plan->id }}" @if($plan->id == $user->plan_id) selected @endif>
@@ -104,10 +105,7 @@ $id = 0;
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>Years</label>
-                        <input type="number" min="1" class="form-control" name="years" id="years" value="1" required disabled>
-                    </div>
+                    <input type="hidden" min="1" class="form-control" name="years" id="years" value="1" required>
                     <div class=" form-group">
                         <label>Start Date</label>
                         <input type="date" name="from" class="form-control" id="from" required>
