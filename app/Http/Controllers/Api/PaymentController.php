@@ -100,7 +100,7 @@ class PaymentController extends Controller
             $ps = new Paystack;
             $pd = $ps->getPaymentData();
         } catch (\Throwable $e) {
-            return view('errors.transaction_failed');
+            Log::debug($e);
         }
 
         return $this->process($pd);
