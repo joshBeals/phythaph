@@ -5,11 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Base\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Classes\Helper;
 
 class UserPawns extends Model
 {
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory, SoftDeletes;
+
+    protected $hidden = [
+        'deleted_at',
+    ];
 
     public function User()
     {
@@ -50,6 +55,16 @@ class UserPawns extends Model
     {
 
         Parent::decorate();
+
+        $this->category_name = $this->category->name ?? '';
+        $this->pawn_files = $this->getFiles();
+
+        foreach ([
+            'created_at',
+            'updated_at',
+        ] as $date) {
+            $this->{"_" . $date} = Helper::formatDate($this->{$date});
+        }
 
         return $this;
 

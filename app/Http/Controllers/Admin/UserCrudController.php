@@ -6,6 +6,9 @@ use App\Http\Requests\UserRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+use App\Models\SubscriptionPlans;
+use App\Models\Transaction;
+use App\Models\User;
 
 /**
  * Class UserCrudController
@@ -111,5 +114,78 @@ class UserCrudController extends CrudController
         // cutom logic after
         return view("backpack::customer.show", $this->data);
 
+    }
+
+    public function fundWallet(Request $request){
+
+        $inputs = $request->except(['_token', '_method']);
+
+        $validate = Validator::make($inputs, [
+            'user_id' => 'required',
+            'amount' => 'required',
+        ]);
+
+        if ($validate->fails()) {
+            return redirect(url()->previous() . '#wallet')->with('error_message', 'Invalid form fields, please check your inputs');
+        }
+
+        $user = User::findOrFail($request->user_id);
+        
+        $obj = new \StdClass;
+
+        $amount = $request->amount;
+
+        $obj->description = "Wallet Topup";
+        $obj->user_id = $user->id;
+        $obj->amount = $amount;
+        $obj->type = 'wallet_topup';
+        $obj->scope = 'wallet_topup';
+
+        $txn = Transaction::initialize(floatval($amount), $obj);
+
+        $save = $user->depositToWallet($amount, $obj->description, $txn);
+
+        return redirect(url()->previous());
+    }
+
+    public function subscribe(Request $request)
+    {
+
+        $inputs = $request->except(['_token', '_method']);
+
+        $validate = Validator::make($inputs, [
+            'user_id' => 'required',
+            'plan_id' => 'required',
+            'years' => 'required',
+            'from' => 'required',
+        ]);
+
+        if ($validate->fails()) {
+            return redirect(url()->previous() . '#subscription')->with('error_message', 'Invalid form fields, please check your inputs');
+        }
+
+        $user = User::findOrFail($request->user_id);
+
+        $plan = SubscriptionPlans::findOrFail($request->plan_id);
+
+        $amount = $user->hasSubscribedOnce() ? $plan->renewal_fee : $plan->signon_fee;
+
+        $obj = new \StdClass;
+
+        $obj->description = "Customer Membership Subscription";
+        $obj->user_id = $user->id;
+        $obj->new_user = $user->hasSubscribedOnce();
+        $obj->amount = $amount;
+        $obj->type = 'membership_subscription';
+        $obj->scope = 'membership_subscription';
+        $obj->years = 1;
+
+        $txn = Transaction::initialize(floatval($amount), $obj);
+
+        $from = Carbon::parse($request->from);
+
+        $save = $user->addSubscription($txn, $request->years, $from, $plan, $user->hasSubscribedOnce());
+
+        return redirect('/admin/customer/' . $user->id . '/show#subscription');
     }
 }

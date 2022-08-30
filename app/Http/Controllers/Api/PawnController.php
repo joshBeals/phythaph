@@ -62,7 +62,7 @@ class PawnController extends Controller
             }
 
 
-            return Helper::apiSuccess(['pawn' => $pawn]);
+            return Helper::apiSuccess(['pawn' => $pawn->decorate()]);
 
         } catch (\Throwable $th) {
             return Helper::apiException($th);
@@ -89,18 +89,22 @@ class PawnController extends Controller
     public function fetchUserPawns(Request $request)
     {
         try {
+            $user = $request->user();
             if (!$user) {
                 return Helper::apiFail("User not found", 404);
             }
 
             $pawns = UserPawns::where('user_id', $user->id)->get();
 
+            foreach($pawns as $pawn){
+                $pawn->decorate();
+            }
+
             return Helper::apiSuccess(['pawns' => $pawns]);
 
         } catch (\Throwable $th) {
             return Helper::apiException($th);
-        }    $user = $request->user();
-        
+        }
     }
 
     /**
@@ -130,7 +134,7 @@ class PawnController extends Controller
 
             $pawn = UserPawns::where(['id' => $id, 'user_id' => $user->id])->first();
 
-            return Helper::apiSuccess(['pawn' => $pawn]);
+            return Helper::apiSuccess(['pawn' => $pawn->decorate()]);
 
         } catch (\Throwable $th) {
             return Helper::apiException($th);

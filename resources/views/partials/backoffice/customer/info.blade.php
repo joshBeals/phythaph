@@ -23,6 +23,10 @@ $user = $data->decorate();
                         <a href="#tab_wallet" aria-controls="tab_wallet" role="tab"
                             tab_name="wallet" data-toggle="tab" class="nav-link ">Wallet</a>
                     </li>
+                    <li role="presentation" class="nav-item">
+                        <a href="#tab_subscription" aria-controls="tab_subscription" role="tab"
+                            tab_name="subscription" data-toggle="tab" class="nav-link ">Subscription</a>
+                    </li>
                 </ul>
                 @if(!$top_level)
             </div>
@@ -34,6 +38,9 @@ $user = $data->decorate();
                     </div>
                     <div role="tabpanel" class="tab-pane " id="tab_wallet">
                         @include('partials.backoffice.customer.wallet', ['walletHistory' => $walletHistory, 'user' => $user])
+                    </div>
+                    <div role="tabpanel" class="tab-pane " id="tab_subscription">
+                        @include('partials.backoffice.customer.subscription', ['user' => $user])
                     </div>
                 </div>
             </div>

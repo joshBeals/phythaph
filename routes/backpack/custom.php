@@ -26,4 +26,7 @@ Route::group([
     
     Route::crud('subscription-plans', 'SubscriptionPlansCrudController');
     Route::crud('transaction', 'TransactionCrudController');
+    
+    Route::post('customer/{user}/update-plan', 'UserCrudController@subscribe')->name('backoffice.plan.subscription');
+    Route::post('customer/{user}/fund-wallet', 'UserCrudController@fundWallet')->name('backoffice.plan.wallet');
 }); // this should be the absolute last line of this file

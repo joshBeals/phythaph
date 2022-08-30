@@ -29,6 +29,10 @@ class Category extends Model
         'checks' => 'array',
     ];
 
+    protected $hidden = [
+        'deleted_at',
+    ];
+
     public function research_produsts()
     {
         return $this->hasMany(ResearchProduct::class);
