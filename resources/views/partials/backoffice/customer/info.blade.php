@@ -1,6 +1,7 @@
 @php
 $top_level = $top_level ?? false;
 $walletHistory = \App\Models\UserWalletBalanceHistory::where('user_id', $data->id)->get();
+$user = $data->decorate();
 @endphp
 <div class="tab-container mb-2 @if(!$top_level)tab-pane @endif" @if(!$top_level) role="tabpanel"
     aria-labelledby="customer-tab" @endif>
@@ -32,7 +33,7 @@ $walletHistory = \App\Models\UserWalletBalanceHistory::where('user_id', $data->i
                         @include('partials.backoffice.customer.customer_data', ['data' => $data])
                     </div>
                     <div role="tabpanel" class="tab-pane " id="tab_wallet">
-                        @include('partials.backoffice.customer.wallet', ['walletHistory' => $walletHistory, 'user' => $data])
+                        @include('partials.backoffice.customer.wallet', ['walletHistory' => $walletHistory, 'user' => $user])
                     </div>
                 </div>
             </div>

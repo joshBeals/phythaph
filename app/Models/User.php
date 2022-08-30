@@ -50,6 +50,9 @@ class User extends UserBase implements MustVerifyEmail, JWTSubject
     public function decorate()
     {
         Parent::decorate();
+        
+        $this->walletBalance = UserWallet::getWalletBalaceForUser('ngn', $this);
+
         return $this;
     }
 

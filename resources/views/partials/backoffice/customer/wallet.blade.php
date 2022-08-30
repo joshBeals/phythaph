@@ -1,6 +1,12 @@
 <div class="row">
     <div class="col-md-7">
         <div class="card">
+            <div class="card-header">Wallet Balance</div>
+            <div class="card-body">
+                <h2>{{ Helper::formatToCurrency($user->walletBalance) }}</h2>
+            </div>
+        </div>
+        <div class="card">
             <div class="card-header">
                 <strong>Wallet Transactions History</strong>
             </div>
