@@ -175,7 +175,7 @@ var currencies = @json($currencies);
 				if(requirement?.field == 'dropdown'){
 					var options = requirement?.options?.split('|');
 					var op_temp = '';
-					var opt_test = options?.sort(function(b, a){
+					var opt_test = options?.sort(function(a, b){
 						a = typeof a === 'string' ? a.toLowerCase() : a.toString();
 						b = typeof b === 'string' ? b.toLowerCase() : b.toString();
 						return a.localeCompare(b);
