@@ -170,11 +170,6 @@
                         amount: mergedData.amount,
                         ref: mergedData.reference,
                         currency: "NGN",
-                        metadata: {
-                            transaction_id: mergedData.id,
-                            scope: mergedData.scope || "payment",
-                            custom_fields: mergedData.metadata || []
-                        }
                         callback: function(response) {
                             alert('Transaction Successfull');
                             // Make an AJAX call to your server with the reference to verify the transaction
