@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\FaqController;
 use App\Http\Controllers\Api\PawnController;
 use App\Http\Controllers\Api\SubscriptionController;
 use App\Http\Controllers\Api\PaymentController;
+use App\Http\Controllers\Api\WalletController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,7 @@ Route::group([
 
     Route::get('/user', "AuthController@getUser")->name('user');
     Route::get('/me', "AuthController@me")->name('user_detail');
+    Route::post('/fund', "WalletController@fundWallet")->name('wallet.fund');
 
     Route::middleware('registration_completion_api')->group(function () {
         Route::prefix('pawn')->group(function () {

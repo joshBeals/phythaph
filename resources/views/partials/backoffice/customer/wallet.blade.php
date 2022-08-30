@@ -36,9 +36,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="mt-3 d-flex justify-content-center">
-                            {!! $walletHistory->links() !!}
-                        </div>
                     </div>
                 </div>
             </div>
@@ -170,6 +167,11 @@
                         amount: mergedData.amount,
                         ref: mergedData.reference,
                         currency: "NGN",
+                        metadata: Object.assign({
+                            transaction_id: mergedData.id,
+                            scope: mergedData.scope || "payment",
+                            custom_fields: metadata || []
+                        }),
                         callback: function(response) {
                             alert('Transaction Successfull');
                             // Make an AJAX call to your server with the reference to verify the transaction
