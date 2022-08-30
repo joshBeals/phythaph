@@ -110,13 +110,18 @@ var users = @json($users);
 				if(requirement?.field == 'dropdown'){
 					var options = requirement?.options?.split('|');
 					var op_temp = '';
-					options?.forEach(function(op){
+					var opt_test = options?.sort(function(a, b){
+						a = typeof a === 'string' ? a.toLowerCase() : a.toString();
+						b = typeof b === 'string' ? b.toLowerCase() : b.toString();
+						return a.localeCompare(b);
+					});
+					opt_test?.forEach(function(op){
 						op_temp += `<option value='${op}'>${op}</option>`;
 					});
 					temp += `
 						<div class="form-group col-md-6">
 							<label>${requirement?.name}</label>
-							<select type="text" id='${requirement?.name}' class="form-control field" required>
+							<select type="text" id='${requirement?.name}' class="form-control select2 field" required>
 								<option value=''>-</option>
 								${op_temp}
 							</select>
@@ -133,6 +138,7 @@ var users = @json($users);
 			});
 
 			formFields.html(temp);
+			$('.select2').select2();
 		}
 	}
 

@@ -180,7 +180,6 @@ var currencies = @json($currencies);
 						b = typeof b === 'string' ? b.toLowerCase() : b.toString();
 						return a.localeCompare(b);
 					});
-					console.log(opt_test);
 					opt_test?.forEach(function(op){
 						op_temp += `<option value='${op}'>${op}</option>`;
 					});
