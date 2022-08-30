@@ -22,28 +22,28 @@ endpoints:
         name: first_name
         description: ''
         required: true
-        example: quas
+        example: voluptate
         type: string
         custom: []
       last_name:
         name: last_name
         description: ''
         required: true
-        example: rerum
+        example: blanditiis
         type: string
         custom: []
       email:
         name: email
         description: ''
         required: true
-        example: accusantium
+        example: voluptate
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: nisi
+        example: similique
         type: string
         custom: []
     responses:
@@ -87,14 +87,14 @@ endpoints:
         name: email
         description: ''
         required: true
-        example: beatae
+        example: et
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: dolor
+        example: est
         type: string
         custom: []
     responses:
@@ -139,7 +139,7 @@ endpoints:
         name: id
         description: 'The ID of the verify.'
         required: true
-        example: ut
+        example: et
         type: string
         custom: []
     queryParameters: []
@@ -165,7 +165,7 @@ endpoints:
           location: 'https://phythaph-web-app-new.herokuapp.com/email/verify/fail'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '56'
+          x-ratelimit-remaining: '57'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -186,7 +186,7 @@ endpoints:
         name: id
         description: 'The ID of the resend.'
         required: true
-        example: aliquam
+        example: nam
         type: string
         custom: []
     queryParameters: []
@@ -230,7 +230,7 @@ endpoints:
         name: email
         description: ''
         required: true
-        example: ut
+        example: iure
         type: string
         custom: []
     responses:
@@ -272,21 +272,21 @@ endpoints:
         name: email
         description: ''
         required: true
-        example: voluptate
+        example: ea
         type: string
         custom: []
       token:
         name: token
         description: ''
         required: true
-        example: consequuntur
+        example: sit
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: doloribus
+        example: voluptatibus
         type: string
         custom: []
     responses:
@@ -328,112 +328,112 @@ endpoints:
         name: account_type
         description: optional
         required: false
-        example: harum
+        example: sed
         type: string
         custom: []
       phone:
         name: phone
         description: optional
         required: false
-        example: consequatur
+        example: est
         type: string
         custom: []
       gender:
         name: gender
         description: optional
         required: false
-        example: cupiditate
+        example: blanditiis
         type: string
         custom: []
       birthday:
         name: birthday
         description: optional
         required: false
-        example: impedit
+        example: est
         type: date
         custom: []
       address:
         name: address
         description: optional
         required: false
-        example: sint
+        example: saepe
         type: string
         custom: []
       house_number:
         name: house_number
         description: optional
         required: false
-        example: esse
+        example: quas
         type: string
         custom: []
       street:
         name: street
         description: optional
         required: false
-        example: labore
+        example: amet
         type: string
         custom: []
       lga:
         name: lga
         description: optional
         required: false
-        example: magni
+        example: exercitationem
         type: string
         custom: []
       lcda:
         name: lcda
         description: optional
         required: false
-        example: aut
+        example: consequatur
         type: string
         custom: []
       company_name:
         name: company_name
         description: optional
         required: false
-        example: dolore
+        example: fuga
         type: string
         custom: []
       company_phone:
         name: company_phone
         description: optional
         required: false
-        example: beatae
+        example: quam
         type: string
         custom: []
       country:
         name: country
         description: optional
         required: false
-        example: eveniet
+        example: quidem
         type: string
         custom: []
       postal_code:
         name: postal_code
         description: optional
         required: false
-        example: dolor
+        example: sunt
         type: string
         custom: []
       rc_number:
         name: rc_number
         description: optional
         required: false
-        example: possimus
+        example: consequatur
         type: string
         custom: []
       city:
         name: city
         description: optional
         required: false
-        example: ad
+        example: eligendi
         type: string
         custom: []
       state:
         name: state
         description: optional
         required: false
-        example: quia
+        example: ut
         type: string
         custom: []
     responses:

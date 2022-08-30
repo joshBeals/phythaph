@@ -18,7 +18,7 @@ endpoints:
         name: id
         description: 'The ID of the .'
         required: false
-        example: totam
+        example: maiores
         type: string
         custom: []
     queryParameters: []
@@ -34,7 +34,7 @@ endpoints:
         name: title
         description: ''
         required: true
-        example: odio
+        example: voluptate
         type: string
         custom: []
     responses:
@@ -76,14 +76,14 @@ endpoints:
         name: category_id
         description: ''
         required: true
-        example: quod
+        example: assumenda
         type: string
         custom: []
       item_features:
         name: item_features
         description: ''
         required: true
-        example: excepturi
+        example: enim
         type: json
         custom: []
     responses:
@@ -164,7 +164,7 @@ endpoints:
         name: id
         description: 'The ID of the pawn.'
         required: true
-        example: rerum
+        example: odio
         type: string
         custom: []
     queryParameters: []

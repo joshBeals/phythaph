@@ -89,7 +89,6 @@ class PawnController extends Controller
     public function fetchUserPawns(Request $request)
     {
         try {
-            $user = $request->user();
             if (!$user) {
                 return Helper::apiFail("User not found", 404);
             }
@@ -100,7 +99,8 @@ class PawnController extends Controller
 
         } catch (\Throwable $th) {
             return Helper::apiException($th);
-        }
+        }    $user = $request->user();
+        
     }
 
     /**

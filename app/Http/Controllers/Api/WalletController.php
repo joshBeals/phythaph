@@ -9,14 +9,41 @@ use App\Models\UserWallet;
 use App\Models\UserWalletBalanceHistory;
 use Carbon\Carbon;
 
+/**
+ * @group Wallet APIs
+ */
 class WalletController extends Controller
 {
+    /**
+     * Fetch Wallet History
+     *
+     *
+     *@response status=200 scenario=Ok {
+     *    "success": true,
+     *    "message": "Request successful",
+     *    "data": {
+     *          "walletHistory": {...}
+     *      }
+     *  }
+     *@response status=404 scenario=Error" {
+     *    "success": false,
+     *    "message": Error"
+     *  }
+     */
     public function index(Request $request){
-        $user = $request->user();
-        $user->decorate();
-        // dd($user->wallets);
-        $walletHistory = UserWalletBalanceHistory::where('user_id', $user->id)->orderBy('id', 'DESC')->paginate(5);
-        return view('account.kyc.wallet', compact('user', 'walletHistory'));
+        try {
+            $user = $request->user();
+            if (!$user) {
+                return Helper::apiFail("User not found", 404);
+            }
+
+            $walletHistory = UserWalletBalanceHistory::where('user_id', $user->id)->orderBy('id', 'DESC');
+
+            return Helper::apiSuccess(['walletHistory' => $walletHistory]);
+
+        } catch (\Throwable $th) {
+            return Helper::apiException($th);
+        }
     }
 
     public function fundWallet(Request $request){
@@ -39,11 +66,32 @@ class WalletController extends Controller
         return redirect(url()->previous());
     }
 
+    /**
+     * Withdraw Funds
+     *
+     *
+     *@response status=200 scenario=Ok {
+     *    "success": true,
+     *    "message": "Withdrawal successful"
+     *  }
+     *@response status=404 scenario=Error" {
+     *    "success": false,
+     *    "message": Error"
+     *  }
+     */
     public function withdrawFunds(Request $request, $amount){
-        $user = $request->user();
+        try {
+            $user = $request->user();
+            if (!$user) {
+                return Helper::apiFail("User not found", 404);
+            }
 
-        $save = $user->withdraw('ngn', floatval($amount));
+            $save = $user->withdraw('ngn', floatval($amount));
 
-        return redirect(url()->previous());
+            return Helper::apiSuccess("Withdrawal successful");
+
+        } catch (\Throwable $th) {
+            return Helper::apiException($th);
+        }
     }
 }

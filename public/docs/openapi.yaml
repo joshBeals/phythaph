@@ -7,9 +7,9 @@ servers:
   -
     url: 'http://phythaph.herokuapp.com'
 paths:
-  /api/transaction/initialize:
+  /api/wallet/history:
     get:
-      summary: ''
+      summary: 'Fetch Wallet History'
       description: ''
       parameters:
         -
@@ -33,57 +33,20 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: "{\n   \"success\": true,\n   \"message\": \"Transaction generated\",\n   }"
-        400:
-          description: 'Bad request'
+                example: "{\n   \"success\": true,\n   \"message\": \"Request successful\",\n   \"data\": {\n         \"walletHistory\": {...}\n     }\n }"
+        404:
+          description: Error
           content:
-            application/json:
+            text/plain:
               schema:
-                type: object
-                example:
-                  success: false
-                  message: 'Cannot initialize transaction, please check your input and try again'
-                properties:
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Cannot initialize transaction, please check your input and try again'
+                type: string
+                example: "\" {\n   \"success\": false,\n   \"message\": Error\"\n }"
       tags:
-        - 'Payment APIs'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                amount:
-                  type: string
-                  description: ''
-                  example: libero
-                type:
-                  type: string
-                  description: ''
-                  example: adipisci
-                scope:
-                  type: string
-                  description: ''
-                  example: totam
-                description:
-                  type: string
-                  description: ''
-                  example: voluptas
-              required:
-                - amount
-                - type
-                - scope
-                - description
+        - 'Wallet APIs'
       security: []
-  /api/paystack:
+  '/api/wallet/withdraw/{amount}':
     get:
-      summary: 'Handle request sent to paystack'
+      summary: 'Withdraw Funds'
       description: ''
       parameters:
         -
@@ -101,796 +64,41 @@ paths:
           schema:
             type: string
       responses:
-        500:
-          description: ''
+        200:
+          description: Ok
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: 'Call to undefined function App\Http\Controllers\Api\starts_with()'
-                  exception: Error
-                  file: 'C:\xampp\htdocs\laravel\phytaph\app\Http\Controllers\Api\PaymentController.php'
-                  line: 620
-                  trace:
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Controller.php'
-                      line: 54
-                      function: paystackApi
-                      class: App\Http\Controllers\Api\PaymentController
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php'
-                      line: 45
-                      function: callAction
-                      class: Illuminate\Routing\Controller
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
-                      line: 262
-                      function: dispatch
-                      class: Illuminate\Routing\ControllerDispatcher
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
-                      line: 205
-                      function: runController
-                      class: Illuminate\Routing\Route
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 721
-                      function: run
-                      class: Illuminate\Routing\Route
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 128
-                      function: 'Illuminate\Routing\{closure}'
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Middleware\SubstituteBindings.php'
-                      line: 50
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 167
-                      function: handle
-                      class: Illuminate\Routing\Middleware\SubstituteBindings
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
-                      line: 127
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
-                      line: 103
-                      function: handleRequest
-                      class: Illuminate\Routing\Middleware\ThrottleRequests
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
-                      line: 55
-                      function: handleRequestUsingNamedLimiter
-                      class: Illuminate\Routing\Middleware\ThrottleRequests
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 167
-                      function: handle
-                      class: Illuminate\Routing\Middleware\ThrottleRequests
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 103
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 723
-                      function: then
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 698
-                      function: runRouteWithinStack
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 662
-                      function: runRoute
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 651
-                      function: dispatchToRoute
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                      line: 167
-                      function: dispatch
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 128
-                      function: 'Illuminate\Foundation\Http\{closure}'
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                      line: 21
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php'
-                      line: 31
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 167
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                      line: 21
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php'
-                      line: 40
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 167
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TrimStrings
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ValidatePostSize.php'
-                      line: 27
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 167
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php'
-                      line: 86
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 167
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\fruitcake\laravel-cors\src\HandleCors.php'
-                      line: 52
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 167
-                      function: handle
-                      class: Fruitcake\Cors\HandleCors
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php'
-                      line: 39
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 167
-                      function: handle
-                      class: Illuminate\Http\Middleware\TrustProxies
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 103
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                      line: 142
-                      function: then
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                      line: 111
-                      function: sendRequestThroughRouter
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 299
-                      function: handle
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 287
-                      function: callLaravelOrLumenRoute
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 89
-                      function: makeApiCall
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 45
-                      function: makeResponseCall
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 35
-                      function: makeResponseCallIfConditionsPass
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                      line: 222
-                      function: __invoke
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                      line: 179
-                      function: iterateThroughStrategies
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                      line: 116
-                      function: fetchResponses
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                      line: 123
-                      function: processRoute
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                      line: 80
-                      function: extractEndpointsInfoFromLaravelApp
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                      line: 56
-                      function: extractEndpointsInfoAndWriteToDisk
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Commands\GenerateDocumentation.php'
-                      line: 55
-                      function: get
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                      line: 36
-                      function: handle
-                      class: Knuckles\Scribe\Commands\GenerateDocumentation
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Container\Util.php'
-                      line: 40
-                      function: 'Illuminate\Container\{closure}'
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                      line: 93
-                      function: unwrapIfClosure
-                      class: Illuminate\Container\Util
-                      type: '::'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                      line: 37
-                      function: callBoundMethod
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 653
-                      function: call
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                      line: 136
-                      function: call
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\symfony\console\Command\Command.php'
-                      line: 298
-                      function: execute
-                      class: Illuminate\Console\Command
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                      line: 121
-                      function: run
-                      class: Symfony\Component\Console\Command\Command
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\symfony\console\Application.php'
-                      line: 1024
-                      function: run
-                      class: Illuminate\Console\Command
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\symfony\console\Application.php'
-                      line: 299
-                      function: doRunCommand
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\symfony\console\Application.php'
-                      line: 171
-                      function: doRun
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Console\Application.php'
-                      line: 94
-                      function: run
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php'
-                      line: 129
-                      function: run
-                      class: Illuminate\Console\Application
-                      type: '->'
-                    -
-                      file: 'C:\xampp\htdocs\laravel\phytaph\artisan'
-                      line: 37
-                      function: handle
-                      class: Illuminate\Foundation\Console\Kernel
-                      type: '->'
+                  success: true
+                  message: 'Withdrawal successful'
                 properties:
+                  success:
+                    type: boolean
+                    example: true
                   message:
                     type: string
-                    example: 'Call to undefined function App\Http\Controllers\Api\starts_with()'
-                  exception:
-                    type: string
-                    example: Error
-                  file:
-                    type: string
-                    example: 'C:\xampp\htdocs\laravel\phytaph\app\Http\Controllers\Api\PaymentController.php'
-                  line:
-                    type: integer
-                    example: 620
-                  trace:
-                    type: array
-                    example:
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Controller.php'
-                        line: 54
-                        function: paystackApi
-                        class: App\Http\Controllers\Api\PaymentController
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php'
-                        line: 45
-                        function: callAction
-                        class: Illuminate\Routing\Controller
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
-                        line: 262
-                        function: dispatch
-                        class: Illuminate\Routing\ControllerDispatcher
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
-                        line: 205
-                        function: runController
-                        class: Illuminate\Routing\Route
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 721
-                        function: run
-                        class: Illuminate\Routing\Route
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 128
-                        function: 'Illuminate\Routing\{closure}'
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Middleware\SubstituteBindings.php'
-                        line: 50
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 167
-                        function: handle
-                        class: Illuminate\Routing\Middleware\SubstituteBindings
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
-                        line: 127
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
-                        line: 103
-                        function: handleRequest
-                        class: Illuminate\Routing\Middleware\ThrottleRequests
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Middleware\ThrottleRequests.php'
-                        line: 55
-                        function: handleRequestUsingNamedLimiter
-                        class: Illuminate\Routing\Middleware\ThrottleRequests
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 167
-                        function: handle
-                        class: Illuminate\Routing\Middleware\ThrottleRequests
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 103
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 723
-                        function: then
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 698
-                        function: runRouteWithinStack
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 662
-                        function: runRoute
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 651
-                        function: dispatchToRoute
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                        line: 167
-                        function: dispatch
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 128
-                        function: 'Illuminate\Foundation\Http\{closure}'
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                        line: 21
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php'
-                        line: 31
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 167
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                        line: 21
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php'
-                        line: 40
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 167
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TrimStrings
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ValidatePostSize.php'
-                        line: 27
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 167
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php'
-                        line: 86
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 167
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\fruitcake\laravel-cors\src\HandleCors.php'
-                        line: 52
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 167
-                        function: handle
-                        class: Fruitcake\Cors\HandleCors
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php'
-                        line: 39
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 167
-                        function: handle
-                        class: Illuminate\Http\Middleware\TrustProxies
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 103
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                        line: 142
-                        function: then
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                        line: 111
-                        function: sendRequestThroughRouter
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 299
-                        function: handle
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 287
-                        function: callLaravelOrLumenRoute
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 89
-                        function: makeApiCall
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 45
-                        function: makeResponseCall
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 35
-                        function: makeResponseCallIfConditionsPass
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                        line: 222
-                        function: __invoke
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                        line: 179
-                        function: iterateThroughStrategies
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                        line: 116
-                        function: fetchResponses
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                        line: 123
-                        function: processRoute
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                        line: 80
-                        function: extractEndpointsInfoFromLaravelApp
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                        line: 56
-                        function: extractEndpointsInfoAndWriteToDisk
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\knuckleswtf\scribe\src\Commands\GenerateDocumentation.php'
-                        line: 55
-                        function: get
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                        line: 36
-                        function: handle
-                        class: Knuckles\Scribe\Commands\GenerateDocumentation
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Container\Util.php'
-                        line: 40
-                        function: 'Illuminate\Container\{closure}'
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                        line: 93
-                        function: unwrapIfClosure
-                        class: Illuminate\Container\Util
-                        type: '::'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                        line: 37
-                        function: callBoundMethod
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 653
-                        function: call
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                        line: 136
-                        function: call
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\symfony\console\Command\Command.php'
-                        line: 298
-                        function: execute
-                        class: Illuminate\Console\Command
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                        line: 121
-                        function: run
-                        class: Symfony\Component\Console\Command\Command
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\symfony\console\Application.php'
-                        line: 1024
-                        function: run
-                        class: Illuminate\Console\Command
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\symfony\console\Application.php'
-                        line: 299
-                        function: doRunCommand
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\symfony\console\Application.php'
-                        line: 171
-                        function: doRun
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Console\Application.php'
-                        line: 94
-                        function: run
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php'
-                        line: 129
-                        function: run
-                        class: Illuminate\Console\Application
-                        type: '->'
-                      -
-                        file: 'C:\xampp\htdocs\laravel\phytaph\artisan'
-                        line: 37
-                        function: handle
-                        class: Illuminate\Foundation\Console\Kernel
-                        type: '->'
-                    items:
-                      type: object
+                    example: 'Withdrawal successful'
+        404:
+          description: Error
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "\" {\n   \"success\": false,\n   \"message\": Error\"\n }"
       tags:
-        - 'Payment APIs'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                endpoint:
-                  type: string
-                  description: ''
-                  example: fuga
-              required:
-                - endpoint
+        - 'Wallet APIs'
       security: []
+    parameters:
+      -
+        in: path
+        name: amount
+        description: ''
+        example: unde
+        required: true
+        schema:
+          type: string
   /api/auth/register:
     post:
       summary: 'Register new user'
@@ -946,19 +154,19 @@ paths:
                 first_name:
                   type: string
                   description: ''
-                  example: quas
+                  example: voluptate
                 last_name:
                   type: string
                   description: ''
-                  example: rerum
+                  example: blanditiis
                 email:
                   type: string
                   description: ''
-                  example: accusantium
+                  example: voluptate
                 password:
                   type: string
                   description: ''
-                  example: nisi
+                  example: similique
               required:
                 - first_name
                 - last_name
@@ -1020,11 +228,11 @@ paths:
                 email:
                   type: string
                   description: ''
-                  example: beatae
+                  example: et
                 password:
                   type: string
                   description: ''
-                  example: dolor
+                  example: est
               required:
                 - email
                 - password
@@ -1064,7 +272,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the verify.'
-        example: ut
+        example: et
         required: true
         schema:
           type: string
@@ -1119,7 +327,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the resend.'
-        example: aliquam
+        example: nam
         required: true
         schema:
           type: string
@@ -1178,7 +386,7 @@ paths:
                 email:
                   type: string
                   description: ''
-                  example: ut
+                  example: iure
               required:
                 - email
       security: []
@@ -1237,15 +445,15 @@ paths:
                 email:
                   type: string
                   description: ''
-                  example: voluptate
+                  example: ea
                 token:
                   type: string
                   description: ''
-                  example: consequuntur
+                  example: sit
                 password:
                   type: string
                   description: ''
-                  example: doloribus
+                  example: voluptatibus
               required:
                 - email
                 - token
@@ -1290,67 +498,67 @@ paths:
                 account_type:
                   type: string
                   description: optional
-                  example: harum
+                  example: sed
                 phone:
                   type: string
                   description: optional
-                  example: consequatur
+                  example: est
                 gender:
                   type: string
                   description: optional
-                  example: cupiditate
+                  example: blanditiis
                 birthday:
                   type: date
                   description: optional
-                  example: impedit
+                  example: est
                 address:
                   type: string
                   description: optional
-                  example: sint
+                  example: saepe
                 house_number:
                   type: string
                   description: optional
-                  example: esse
+                  example: quas
                 street:
                   type: string
                   description: optional
-                  example: labore
+                  example: amet
                 lga:
                   type: string
                   description: optional
-                  example: magni
+                  example: exercitationem
                 lcda:
                   type: string
                   description: optional
-                  example: aut
+                  example: consequatur
                 company_name:
                   type: string
                   description: optional
-                  example: dolore
+                  example: fuga
                 company_phone:
                   type: string
                   description: optional
-                  example: beatae
+                  example: quam
                 country:
                   type: string
                   description: optional
-                  example: eveniet
+                  example: quidem
                 postal_code:
                   type: string
                   description: optional
-                  example: dolor
+                  example: sunt
                 rc_number:
                   type: string
                   description: optional
-                  example: possimus
+                  example: consequatur
                 city:
                   type: string
                   description: optional
-                  example: ad
+                  example: eligendi
                 state:
                   type: string
                   description: optional
-                  example: quia
+                  example: ut
       security: []
   /api/auth/logout:
     get:
@@ -1658,6 +866,9 @@ paths:
                       email: alelebealsjoshua@gmail.com
                       email_verified_at: null
                       account_type: individual
+                      pawn_master: 0
+                      plan_id: null
+                      subscription_id: null
                       gender: male
                       birthday: '1999-04-22'
                       phone: phone
@@ -1692,6 +903,9 @@ paths:
                       email: alelebealsjoshua1@gmail.com
                       email_verified_at: null
                       account_type: individual
+                      pawn_master: 0
+                      plan_id: null
+                      subscription_id: null
                       gender: null
                       birthday: null
                       phone: '08092834743'
@@ -1726,6 +940,9 @@ paths:
                       email: alelebealsjoshua10@gmail.com
                       email_verified_at: null
                       account_type: individual
+                      pawn_master: 0
+                      plan_id: null
+                      subscription_id: null
                       gender: null
                       birthday: null
                       phone: null
@@ -1760,6 +977,9 @@ paths:
                       email: alelebealsjoshua101@gmail.com
                       email_verified_at: '2022-08-12T16:49:00.000000Z'
                       account_type: individual
+                      pawn_master: 0
+                      plan_id: null
+                      subscription_id: null
                       gender: null
                       birthday: null
                       phone: null
@@ -1794,6 +1014,9 @@ paths:
                       email: alelebealsjoshua0@gmail.com
                       email_verified_at: null
                       account_type: individual
+                      pawn_master: 0
+                      plan_id: null
+                      subscription_id: null
                       gender: null
                       birthday: null
                       phone: null
@@ -1858,6 +1081,9 @@ paths:
                         email: alelebealsjoshua@gmail.com
                         email_verified_at: null
                         account_type: individual
+                        pawn_master: 0
+                        plan_id: null
+                        subscription_id: null
                         gender: male
                         birthday: '1999-04-22'
                         phone: phone
@@ -1892,6 +1118,9 @@ paths:
                         email: alelebealsjoshua1@gmail.com
                         email_verified_at: null
                         account_type: individual
+                        pawn_master: 0
+                        plan_id: null
+                        subscription_id: null
                         gender: null
                         birthday: null
                         phone: '08092834743'
@@ -1926,6 +1155,9 @@ paths:
                         email: alelebealsjoshua10@gmail.com
                         email_verified_at: null
                         account_type: individual
+                        pawn_master: 0
+                        plan_id: null
+                        subscription_id: null
                         gender: null
                         birthday: null
                         phone: null
@@ -1960,6 +1192,9 @@ paths:
                         email: alelebealsjoshua101@gmail.com
                         email_verified_at: '2022-08-12T16:49:00.000000Z'
                         account_type: individual
+                        pawn_master: 0
+                        plan_id: null
+                        subscription_id: null
                         gender: null
                         birthday: null
                         phone: null
@@ -1994,6 +1229,9 @@ paths:
                         email: alelebealsjoshua0@gmail.com
                         email_verified_at: null
                         account_type: individual
+                        pawn_master: 0
+                        plan_id: null
+                        subscription_id: null
                         gender: null
                         birthday: null
                         phone: null
@@ -2270,7 +1508,7 @@ paths:
                 title:
                   type: string
                   description: ''
-                  example: odio
+                  example: voluptate
               required:
                 - file
                 - title
@@ -2289,7 +1527,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: totam
+            value: maiores
   /api/pawn:
     post:
       summary: 'Pawn item'
@@ -2345,11 +1583,11 @@ paths:
                 category_id:
                   type: string
                   description: ''
-                  example: quod
+                  example: assumenda
                 item_features:
                   type: json
                   description: ''
-                  example: excepturi
+                  example: enim
               required:
                 - category_id
                 - item_features
@@ -2441,13 +1679,87 @@ paths:
         in: path
         name: id
         description: 'The ID of the pawn.'
-        example: rerum
+        example: odio
         required: true
         schema:
           type: string
+  /api/transaction/initialize:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n   \"success\": true,\n   \"message\": \"Transaction generated\",\n   }"
+        400:
+          description: 'Bad request'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Cannot initialize transaction, please check your input and try again'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Cannot initialize transaction, please check your input and try again'
+      tags:
+        - 'Payment APIs'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: string
+                  description: ''
+                  example: aut
+                type:
+                  type: string
+                  description: ''
+                  example: nihil
+                scope:
+                  type: string
+                  description: ''
+                  example: consectetur
+                description:
+                  type: string
+                  description: ''
+                  example: at
+              required:
+                - amount
+                - type
+                - scope
+                - description
+      security: []
 tags:
   -
-    name: 'Payment APIs'
+    name: 'Wallet APIs'
     description: ''
   -
     name: 'Auth APIs'
@@ -2460,4 +1772,7 @@ tags:
     description: ''
   -
     name: 'Pawn APIs'
+    description: ''
+  -
+    name: 'Payment APIs'
     description: ''

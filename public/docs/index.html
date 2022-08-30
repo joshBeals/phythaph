@@ -70,15 +70,15 @@
                                                 </ul>
                     
                     <ul id="tocify-header-2" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="payment-apis">
-                    <a href="#payment-apis">Payment APIs</a>
+                <li class="tocify-item level-1" data-unique="wallet-apis">
+                    <a href="#wallet-apis">Wallet APIs</a>
                 </li>
-                                    <ul id="tocify-subheader-payment-apis" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="payment-apis-GETapi-transaction-initialize">
-                        <a href="#payment-apis-GETapi-transaction-initialize">GET api/transaction/initialize</a>
+                                    <ul id="tocify-subheader-wallet-apis" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="wallet-apis-GETapi-wallet-history">
+                        <a href="#wallet-apis-GETapi-wallet-history">Fetch Wallet History</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="payment-apis-GETapi-paystack">
-                        <a href="#payment-apis-GETapi-paystack">Handle request sent to paystack</a>
+                                    <li class="tocify-item level-2" data-unique="wallet-apis-GETapi-wallet-withdraw--amount-">
+                        <a href="#wallet-apis-GETapi-wallet-withdraw--amount-">Withdraw Funds</a>
                     </li>
                                                     </ul>
                             </ul>
@@ -167,6 +167,16 @@
                     </li>
                                                     </ul>
                             </ul>
+                    <ul id="tocify-header-7" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="payment-apis">
+                    <a href="#payment-apis">Payment APIs</a>
+                </li>
+                                    <ul id="tocify-subheader-payment-apis" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="payment-apis-GETapi-transaction-initialize">
+                        <a href="#payment-apis-GETapi-transaction-initialize">GET api/transaction/initialize</a>
+                    </li>
+                                                    </ul>
+                            </ul>
         
                         
             </div>
@@ -177,7 +187,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: August 29 2022</li>
+        <li>Last updated: August 30 2022</li>
     </ul>
 </div>
 
@@ -196,38 +206,31 @@ You can switch the language used with the tabs at the top right (or from the nav
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
 
-        <h1 id="payment-apis">Payment APIs</h1>
+        <h1 id="wallet-apis">Wallet APIs</h1>
 
     
 
-            <h2 id="payment-apis-GETapi-transaction-initialize">GET api/transaction/initialize</h2>
+            <h2 id="wallet-apis-GETapi-wallet-history">Fetch Wallet History</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-transaction-initialize">
+<span id="example-requests-GETapi-wallet-history">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/transaction/initialize" \
+    --get "http://phythaph.herokuapp.com/api/wallet/history" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"amount\": \"libero\",
-    \"type\": \"adipisci\",
-    \"scope\": \"totam\",
-    \"description\": \"voluptas\"
-}"
-</code></pre></div>
+    --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/transaction/initialize"
+    "http://phythaph.herokuapp.com/api/wallet/history"
 );
 
 const headers = {
@@ -235,22 +238,14 @@ const headers = {
     "Accept": "application/json",
 };
 
-let body = {
-    "amount": "libero",
-    "type": "adipisci",
-    "scope": "totam",
-    "description": "voluptas"
-};
-
 fetch(url, {
     method: "GET",
     headers,
-    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-GETapi-transaction-initialize">
+<span id="example-responses-GETapi-wallet-history">
             <blockquote>
             <p>Example response (200, Ok):</p>
         </blockquote>
@@ -258,147 +253,85 @@ fetch(url, {
 
 <code class="language-json">{
    &quot;success&quot;: true,
-   &quot;message&quot;: &quot;Transaction generated&quot;,
-   }</code>
+   &quot;message&quot;: &quot;Request successful&quot;,
+   &quot;data&quot;: {
+         &quot;walletHistory&quot;: {...}
+     }
+ }</code>
  </pre>
             <blockquote>
-            <p>Example response (400, Bad request):</p>
+            <p>Example response (404, Error):</p>
         </blockquote>
                 <pre>
 
-<code class="language-json">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Cannot initialize transaction, please check your input and try again&quot;
-}</code>
+<code class="language-json">&quot; {
+   &quot;success&quot;: false,
+   &quot;message&quot;: Error&quot;
+ }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-transaction-initialize" hidden>
+<span id="execution-results-GETapi-wallet-history" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-transaction-initialize"></span>:
+                id="execution-response-status-GETapi-wallet-history"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-transaction-initialize"></code></pre>
+    <pre class="json"><code id="execution-response-content-GETapi-wallet-history"></code></pre>
 </span>
-<span id="execution-error-GETapi-transaction-initialize" hidden>
+<span id="execution-error-GETapi-wallet-history" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-transaction-initialize"></code></pre>
+    <pre><code id="execution-error-message-GETapi-wallet-history"></code></pre>
 </span>
-<form id="form-GETapi-transaction-initialize" data-method="GET"
-      data-path="api/transaction/initialize"
+<form id="form-GETapi-wallet-history" data-method="GET"
+      data-path="api/wallet/history"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-transaction-initialize', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-wallet-history', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-transaction-initialize"
-                    onclick="tryItOut('GETapi-transaction-initialize');">Try it out ⚡
+                    id="btn-tryout-GETapi-wallet-history"
+                    onclick="tryItOut('GETapi-wallet-history');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-transaction-initialize"
-                    onclick="cancelTryOut('GETapi-transaction-initialize');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-wallet-history"
+                    onclick="cancelTryOut('GETapi-wallet-history');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-transaction-initialize" hidden>Send Request 💥
+                    id="btn-executetryout-GETapi-wallet-history" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/transaction/initialize</code></b>
+            <b><code>api/wallet/history</code></b>
         </p>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/transaction/initialize</code></b>
-        </p>
-            <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/transaction/initialize</code></b>
-        </p>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/transaction/initialize</code></b>
-        </p>
-            <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>api/transaction/initialize</code></b>
-        </p>
-            <p>
-            <small class="badge badge-grey">OPTIONS</small>
-            <b><code>api/transaction/initialize</code></b>
-        </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <p>
-            <b><code>amount</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="amount"
-               data-endpoint="GETapi-transaction-initialize"
-               value="libero"
-               data-component="body" hidden>
-    <br>
+                    </form>
 
-        </p>
-                <p>
-            <b><code>type</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="type"
-               data-endpoint="GETapi-transaction-initialize"
-               value="adipisci"
-               data-component="body" hidden>
-    <br>
-
-        </p>
-                <p>
-            <b><code>scope</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="scope"
-               data-endpoint="GETapi-transaction-initialize"
-               value="totam"
-               data-component="body" hidden>
-    <br>
-
-        </p>
-                <p>
-            <b><code>description</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="description"
-               data-endpoint="GETapi-transaction-initialize"
-               value="voluptas"
-               data-component="body" hidden>
-    <br>
-
-        </p>
-        </form>
-
-            <h2 id="payment-apis-GETapi-paystack">Handle request sent to paystack</h2>
+            <h2 id="wallet-apis-GETapi-wallet-withdraw--amount-">Withdraw Funds</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-paystack">
+<span id="example-requests-GETapi-wallet-withdraw--amount-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/paystack" \
+    --get "http://phythaph.herokuapp.com/api/wallet/withdraw/unde" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"endpoint\": \"fuga\"
-}"
-</code></pre></div>
+    --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/paystack"
+    "http://phythaph.herokuapp.com/api/wallet/withdraw/unde"
 );
 
 const headers = {
@@ -406,549 +339,86 @@ const headers = {
     "Accept": "application/json",
 };
 
-let body = {
-    "endpoint": "fuga"
-};
-
 fetch(url, {
     method: "GET",
     headers,
-    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-GETapi-paystack">
+<span id="example-responses-GETapi-wallet-withdraw--amount-">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (200, Ok):</p>
         </blockquote>
-                <details class="annotation">
-            <summary>
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 57
-access-control-allow-origin: *
- </code></pre>
-        </details>         <pre>
+                <pre>
 
 <code class="language-json">{
-    &quot;message&quot;: &quot;Call to undefined function App\\Http\\Controllers\\Api\\starts_with()&quot;,
-    &quot;exception&quot;: &quot;Error&quot;,
-    &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\app\\Http\\Controllers\\Api\\PaymentController.php&quot;,
-    &quot;line&quot;: 620,
-    &quot;trace&quot;: [
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php&quot;,
-            &quot;line&quot;: 54,
-            &quot;function&quot;: &quot;paystackApi&quot;,
-            &quot;class&quot;: &quot;App\\Http\\Controllers\\Api\\PaymentController&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php&quot;,
-            &quot;line&quot;: 45,
-            &quot;function&quot;: &quot;callAction&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Controller&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php&quot;,
-            &quot;line&quot;: 262,
-            &quot;function&quot;: &quot;dispatch&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\ControllerDispatcher&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php&quot;,
-            &quot;line&quot;: 205,
-            &quot;function&quot;: &quot;runController&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
-            &quot;line&quot;: 721,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 128,
-            &quot;function&quot;: &quot;Illuminate\\Routing\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php&quot;,
-            &quot;line&quot;: 50,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 167,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\SubstituteBindings&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php&quot;,
-            &quot;line&quot;: 127,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php&quot;,
-            &quot;line&quot;: 103,
-            &quot;function&quot;: &quot;handleRequest&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php&quot;,
-            &quot;line&quot;: 55,
-            &quot;function&quot;: &quot;handleRequestUsingNamedLimiter&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 167,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 103,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
-            &quot;line&quot;: 723,
-            &quot;function&quot;: &quot;then&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
-            &quot;line&quot;: 698,
-            &quot;function&quot;: &quot;runRouteWithinStack&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
-            &quot;line&quot;: 662,
-            &quot;function&quot;: &quot;runRoute&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
-            &quot;line&quot;: 651,
-            &quot;function&quot;: &quot;dispatchToRoute&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php&quot;,
-            &quot;line&quot;: 167,
-            &quot;function&quot;: &quot;dispatch&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 128,
-            &quot;function&quot;: &quot;Illuminate\\Foundation\\Http\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php&quot;,
-            &quot;line&quot;: 21,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php&quot;,
-            &quot;line&quot;: 31,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 167,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php&quot;,
-            &quot;line&quot;: 21,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php&quot;,
-            &quot;line&quot;: 40,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 167,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TrimStrings&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php&quot;,
-            &quot;line&quot;: 27,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 167,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php&quot;,
-            &quot;line&quot;: 86,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 167,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\fruitcake\\laravel-cors\\src\\HandleCors.php&quot;,
-            &quot;line&quot;: 52,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 167,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Fruitcake\\Cors\\HandleCors&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php&quot;,
-            &quot;line&quot;: 39,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 167,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\TrustProxies&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 103,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php&quot;,
-            &quot;line&quot;: 142,
-            &quot;function&quot;: &quot;then&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php&quot;,
-            &quot;line&quot;: 111,
-            &quot;function&quot;: &quot;sendRequestThroughRouter&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
-            &quot;line&quot;: 299,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
-            &quot;line&quot;: 287,
-            &quot;function&quot;: &quot;callLaravelOrLumenRoute&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
-            &quot;line&quot;: 89,
-            &quot;function&quot;: &quot;makeApiCall&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
-            &quot;line&quot;: 45,
-            &quot;function&quot;: &quot;makeResponseCall&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
-            &quot;line&quot;: 35,
-            &quot;function&quot;: &quot;makeResponseCallIfConditionsPass&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Extractor.php&quot;,
-            &quot;line&quot;: 222,
-            &quot;function&quot;: &quot;__invoke&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Extractor.php&quot;,
-            &quot;line&quot;: 179,
-            &quot;function&quot;: &quot;iterateThroughStrategies&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Extractor.php&quot;,
-            &quot;line&quot;: 116,
-            &quot;function&quot;: &quot;fetchResponses&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\GroupedEndpoints\\GroupedEndpointsFromApp.php&quot;,
-            &quot;line&quot;: 123,
-            &quot;function&quot;: &quot;processRoute&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\GroupedEndpoints\\GroupedEndpointsFromApp.php&quot;,
-            &quot;line&quot;: 80,
-            &quot;function&quot;: &quot;extractEndpointsInfoFromLaravelApp&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\GroupedEndpoints\\GroupedEndpointsFromApp.php&quot;,
-            &quot;line&quot;: 56,
-            &quot;function&quot;: &quot;extractEndpointsInfoAndWriteToDisk&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\knuckleswtf\\scribe\\src\\Commands\\GenerateDocumentation.php&quot;,
-            &quot;line&quot;: 55,
-            &quot;function&quot;: &quot;get&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php&quot;,
-            &quot;line&quot;: 36,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Commands\\GenerateDocumentation&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php&quot;,
-            &quot;line&quot;: 40,
-            &quot;function&quot;: &quot;Illuminate\\Container\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php&quot;,
-            &quot;line&quot;: 93,
-            &quot;function&quot;: &quot;unwrapIfClosure&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Util&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php&quot;,
-            &quot;line&quot;: 37,
-            &quot;function&quot;: &quot;callBoundMethod&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-            &quot;line&quot;: 653,
-            &quot;function&quot;: &quot;call&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php&quot;,
-            &quot;line&quot;: 136,
-            &quot;function&quot;: &quot;call&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\symfony\\console\\Command\\Command.php&quot;,
-            &quot;line&quot;: 298,
-            &quot;function&quot;: &quot;execute&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php&quot;,
-            &quot;line&quot;: 121,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Command\\Command&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\symfony\\console\\Application.php&quot;,
-            &quot;line&quot;: 1024,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\symfony\\console\\Application.php&quot;,
-            &quot;line&quot;: 299,
-            &quot;function&quot;: &quot;doRunCommand&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\symfony\\console\\Application.php&quot;,
-            &quot;line&quot;: 171,
-            &quot;function&quot;: &quot;doRun&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php&quot;,
-            &quot;line&quot;: 94,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php&quot;,
-            &quot;line&quot;: 129,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\xampp\\htdocs\\laravel\\phytaph\\artisan&quot;,
-            &quot;line&quot;: 37,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Console\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        }
-    ]
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Withdrawal successful&quot;
 }</code>
  </pre>
+            <blockquote>
+            <p>Example response (404, Error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&quot; {
+   &quot;success&quot;: false,
+   &quot;message&quot;: Error&quot;
+ }</code>
+ </pre>
     </span>
-<span id="execution-results-GETapi-paystack" hidden>
+<span id="execution-results-GETapi-wallet-withdraw--amount-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-paystack"></span>:
+                id="execution-response-status-GETapi-wallet-withdraw--amount-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-paystack"></code></pre>
+    <pre class="json"><code id="execution-response-content-GETapi-wallet-withdraw--amount-"></code></pre>
 </span>
-<span id="execution-error-GETapi-paystack" hidden>
+<span id="execution-error-GETapi-wallet-withdraw--amount-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-paystack"></code></pre>
+    <pre><code id="execution-error-message-GETapi-wallet-withdraw--amount-"></code></pre>
 </span>
-<form id="form-GETapi-paystack" data-method="GET"
-      data-path="api/paystack"
+<form id="form-GETapi-wallet-withdraw--amount-" data-method="GET"
+      data-path="api/wallet/withdraw/{amount}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-paystack', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-wallet-withdraw--amount-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-paystack"
-                    onclick="tryItOut('GETapi-paystack');">Try it out ⚡
+                    id="btn-tryout-GETapi-wallet-withdraw--amount-"
+                    onclick="tryItOut('GETapi-wallet-withdraw--amount-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-paystack"
-                    onclick="cancelTryOut('GETapi-paystack');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-wallet-withdraw--amount-"
+                    onclick="cancelTryOut('GETapi-wallet-withdraw--amount-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-paystack" hidden>Send Request 💥
+                    id="btn-executetryout-GETapi-wallet-withdraw--amount-" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/paystack</code></b>
+            <b><code>api/wallet/withdraw/{amount}</code></b>
         </p>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/paystack</code></b>
-        </p>
-            <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/paystack</code></b>
-        </p>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/paystack</code></b>
-        </p>
-            <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>api/paystack</code></b>
-        </p>
-            <p>
-            <small class="badge badge-grey">OPTIONS</small>
-            <b><code>api/paystack</code></b>
-        </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <p>
-            <b><code>endpoint</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>amount</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
-               name="endpoint"
-               data-endpoint="GETapi-paystack"
-               value="fuga"
-               data-component="body" hidden>
+               name="amount"
+               data-endpoint="GETapi-wallet-withdraw--amount-"
+               value="unde"
+               data-component="url" hidden>
     <br>
 
-        </p>
-        </form>
+            </p>
+                    </form>
 
         <h1 id="auth-apis">Auth APIs</h1>
 
@@ -971,10 +441,10 @@ access-control-allow-origin: *
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"first_name\": \"quas\",
-    \"last_name\": \"rerum\",
-    \"email\": \"accusantium\",
-    \"password\": \"nisi\"
+    \"first_name\": \"voluptate\",
+    \"last_name\": \"blanditiis\",
+    \"email\": \"voluptate\",
+    \"password\": \"similique\"
 }"
 </code></pre></div>
 
@@ -990,10 +460,10 @@ const headers = {
 };
 
 let body = {
-    "first_name": "quas",
-    "last_name": "rerum",
-    "email": "accusantium",
-    "password": "nisi"
+    "first_name": "voluptate",
+    "last_name": "blanditiis",
+    "email": "voluptate",
+    "password": "similique"
 };
 
 fetch(url, {
@@ -1073,7 +543,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="POSTapi-auth-register"
-               value="quas"
+               value="voluptate"
                data-component="body" hidden>
     <br>
 
@@ -1083,7 +553,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="POSTapi-auth-register"
-               value="rerum"
+               value="blanditiis"
                data-component="body" hidden>
     <br>
 
@@ -1093,7 +563,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-register"
-               value="accusantium"
+               value="voluptate"
                data-component="body" hidden>
     <br>
 
@@ -1103,7 +573,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-register"
-               value="nisi"
+               value="similique"
                data-component="body" hidden>
     <br>
 
@@ -1127,8 +597,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"beatae\",
-    \"password\": \"dolor\"
+    \"email\": \"et\",
+    \"password\": \"est\"
 }"
 </code></pre></div>
 
@@ -1144,8 +614,8 @@ const headers = {
 };
 
 let body = {
-    "email": "beatae",
-    "password": "dolor"
+    "email": "et",
+    "password": "est"
 };
 
 fetch(url, {
@@ -1228,7 +698,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-login"
-               value="beatae"
+               value="et"
                data-component="body" hidden>
     <br>
 
@@ -1238,7 +708,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-login"
-               value="dolor"
+               value="est"
                data-component="body" hidden>
     <br>
 
@@ -1258,14 +728,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/auth/email/verify/ut" \
+    --get "http://phythaph.herokuapp.com/api/auth/email/verify/et" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/auth/email/verify/ut"
+    "http://phythaph.herokuapp.com/api/auth/email/verify/et"
 );
 
 const headers = {
@@ -1292,7 +762,7 @@ fetch(url, {
 location: https://phythaph-web-app-new.herokuapp.com/email/verify/fail
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 56
+x-ratelimit-remaining: 57
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1356,7 +826,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="id"
                data-endpoint="GETapi-auth-email-verify--id-"
-               value="ut"
+               value="et"
                data-component="url" hidden>
     <br>
 <p>The ID of the verify.</p>
@@ -1376,14 +846,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/auth/email/resend/aliquam" \
+    --get "http://phythaph.herokuapp.com/api/auth/email/resend/nam" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/auth/email/resend/aliquam"
+    "http://phythaph.herokuapp.com/api/auth/email/resend/nam"
 );
 
 const headers = {
@@ -1465,7 +935,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETapi-auth-email-resend--id-"
-               value="aliquam"
+               value="nam"
                data-component="url" hidden>
     <br>
 <p>The ID of the resend.</p>
@@ -1489,7 +959,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"ut\"
+    \"email\": \"iure\"
 }"
 </code></pre></div>
 
@@ -1505,7 +975,7 @@ const headers = {
 };
 
 let body = {
-    "email": "ut"
+    "email": "iure"
 };
 
 fetch(url, {
@@ -1583,7 +1053,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-password-forgot-password"
-               value="ut"
+               value="iure"
                data-component="body" hidden>
     <br>
 
@@ -1607,9 +1077,9 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"voluptate\",
-    \"token\": \"consequuntur\",
-    \"password\": \"doloribus\"
+    \"email\": \"ea\",
+    \"token\": \"sit\",
+    \"password\": \"voluptatibus\"
 }"
 </code></pre></div>
 
@@ -1625,9 +1095,9 @@ const headers = {
 };
 
 let body = {
-    "email": "voluptate",
-    "token": "consequuntur",
-    "password": "doloribus"
+    "email": "ea",
+    "token": "sit",
+    "password": "voluptatibus"
 };
 
 fetch(url, {
@@ -1705,7 +1175,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-password-reset"
-               value="voluptate"
+               value="ea"
                data-component="body" hidden>
     <br>
 
@@ -1715,7 +1185,7 @@ fetch(url, {
                 <input type="text"
                name="token"
                data-endpoint="POSTapi-auth-password-reset"
-               value="consequuntur"
+               value="sit"
                data-component="body" hidden>
     <br>
 
@@ -1725,7 +1195,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-password-reset"
-               value="doloribus"
+               value="voluptatibus"
                data-component="body" hidden>
     <br>
 
@@ -1749,22 +1219,22 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"account_type\": \"harum\",
-    \"phone\": \"consequatur\",
-    \"gender\": \"cupiditate\",
-    \"birthday\": \"impedit\",
-    \"address\": \"sint\",
-    \"house_number\": \"esse\",
-    \"street\": \"labore\",
-    \"lga\": \"magni\",
-    \"lcda\": \"aut\",
-    \"company_name\": \"dolore\",
-    \"company_phone\": \"beatae\",
-    \"country\": \"eveniet\",
-    \"postal_code\": \"dolor\",
-    \"rc_number\": \"possimus\",
-    \"city\": \"ad\",
-    \"state\": \"quia\"
+    \"account_type\": \"sed\",
+    \"phone\": \"est\",
+    \"gender\": \"blanditiis\",
+    \"birthday\": \"est\",
+    \"address\": \"saepe\",
+    \"house_number\": \"quas\",
+    \"street\": \"amet\",
+    \"lga\": \"exercitationem\",
+    \"lcda\": \"consequatur\",
+    \"company_name\": \"fuga\",
+    \"company_phone\": \"quam\",
+    \"country\": \"quidem\",
+    \"postal_code\": \"sunt\",
+    \"rc_number\": \"consequatur\",
+    \"city\": \"eligendi\",
+    \"state\": \"ut\"
 }"
 </code></pre></div>
 
@@ -1780,22 +1250,22 @@ const headers = {
 };
 
 let body = {
-    "account_type": "harum",
-    "phone": "consequatur",
-    "gender": "cupiditate",
-    "birthday": "impedit",
-    "address": "sint",
-    "house_number": "esse",
-    "street": "labore",
-    "lga": "magni",
-    "lcda": "aut",
-    "company_name": "dolore",
-    "company_phone": "beatae",
-    "country": "eveniet",
-    "postal_code": "dolor",
-    "rc_number": "possimus",
-    "city": "ad",
-    "state": "quia"
+    "account_type": "sed",
+    "phone": "est",
+    "gender": "blanditiis",
+    "birthday": "est",
+    "address": "saepe",
+    "house_number": "quas",
+    "street": "amet",
+    "lga": "exercitationem",
+    "lcda": "consequatur",
+    "company_name": "fuga",
+    "company_phone": "quam",
+    "country": "quidem",
+    "postal_code": "sunt",
+    "rc_number": "consequatur",
+    "city": "eligendi",
+    "state": "ut"
 };
 
 fetch(url, {
@@ -1867,7 +1337,7 @@ fetch(url, {
                 <input type="text"
                name="account_type"
                data-endpoint="POSTapi-setup"
-               value="harum"
+               value="sed"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1877,7 +1347,7 @@ fetch(url, {
                 <input type="text"
                name="phone"
                data-endpoint="POSTapi-setup"
-               value="consequatur"
+               value="est"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1887,7 +1357,7 @@ fetch(url, {
                 <input type="text"
                name="gender"
                data-endpoint="POSTapi-setup"
-               value="cupiditate"
+               value="blanditiis"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1897,7 +1367,7 @@ fetch(url, {
                 <input type="text"
                name="birthday"
                data-endpoint="POSTapi-setup"
-               value="impedit"
+               value="est"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1907,7 +1377,7 @@ fetch(url, {
                 <input type="text"
                name="address"
                data-endpoint="POSTapi-setup"
-               value="sint"
+               value="saepe"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1917,7 +1387,7 @@ fetch(url, {
                 <input type="text"
                name="house_number"
                data-endpoint="POSTapi-setup"
-               value="esse"
+               value="quas"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1927,7 +1397,7 @@ fetch(url, {
                 <input type="text"
                name="street"
                data-endpoint="POSTapi-setup"
-               value="labore"
+               value="amet"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1937,7 +1407,7 @@ fetch(url, {
                 <input type="text"
                name="lga"
                data-endpoint="POSTapi-setup"
-               value="magni"
+               value="exercitationem"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1947,7 +1417,7 @@ fetch(url, {
                 <input type="text"
                name="lcda"
                data-endpoint="POSTapi-setup"
-               value="aut"
+               value="consequatur"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1957,7 +1427,7 @@ fetch(url, {
                 <input type="text"
                name="company_name"
                data-endpoint="POSTapi-setup"
-               value="dolore"
+               value="fuga"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1967,7 +1437,7 @@ fetch(url, {
                 <input type="text"
                name="company_phone"
                data-endpoint="POSTapi-setup"
-               value="beatae"
+               value="quam"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1977,7 +1447,7 @@ fetch(url, {
                 <input type="text"
                name="country"
                data-endpoint="POSTapi-setup"
-               value="eveniet"
+               value="quidem"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1987,7 +1457,7 @@ fetch(url, {
                 <input type="text"
                name="postal_code"
                data-endpoint="POSTapi-setup"
-               value="dolor"
+               value="sunt"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1997,7 +1467,7 @@ fetch(url, {
                 <input type="text"
                name="rc_number"
                data-endpoint="POSTapi-setup"
-               value="possimus"
+               value="consequatur"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -2007,7 +1477,7 @@ fetch(url, {
                 <input type="text"
                name="city"
                data-endpoint="POSTapi-setup"
-               value="ad"
+               value="eligendi"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -2017,7 +1487,7 @@ fetch(url, {
                 <input type="text"
                name="state"
                data-endpoint="POSTapi-setup"
-               value="quia"
+               value="ut"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -2523,6 +1993,9 @@ access-control-allow-origin: *
             &quot;email&quot;: &quot;alelebealsjoshua@gmail.com&quot;,
             &quot;email_verified_at&quot;: null,
             &quot;account_type&quot;: &quot;individual&quot;,
+            &quot;pawn_master&quot;: 0,
+            &quot;plan_id&quot;: null,
+            &quot;subscription_id&quot;: null,
             &quot;gender&quot;: &quot;male&quot;,
             &quot;birthday&quot;: &quot;1999-04-22&quot;,
             &quot;phone&quot;: &quot;phone&quot;,
@@ -2558,6 +2031,9 @@ access-control-allow-origin: *
             &quot;email&quot;: &quot;alelebealsjoshua1@gmail.com&quot;,
             &quot;email_verified_at&quot;: null,
             &quot;account_type&quot;: &quot;individual&quot;,
+            &quot;pawn_master&quot;: 0,
+            &quot;plan_id&quot;: null,
+            &quot;subscription_id&quot;: null,
             &quot;gender&quot;: null,
             &quot;birthday&quot;: null,
             &quot;phone&quot;: &quot;08092834743&quot;,
@@ -2593,6 +2069,9 @@ access-control-allow-origin: *
             &quot;email&quot;: &quot;alelebealsjoshua10@gmail.com&quot;,
             &quot;email_verified_at&quot;: null,
             &quot;account_type&quot;: &quot;individual&quot;,
+            &quot;pawn_master&quot;: 0,
+            &quot;plan_id&quot;: null,
+            &quot;subscription_id&quot;: null,
             &quot;gender&quot;: null,
             &quot;birthday&quot;: null,
             &quot;phone&quot;: null,
@@ -2628,6 +2107,9 @@ access-control-allow-origin: *
             &quot;email&quot;: &quot;alelebealsjoshua101@gmail.com&quot;,
             &quot;email_verified_at&quot;: &quot;2022-08-12T16:49:00.000000Z&quot;,
             &quot;account_type&quot;: &quot;individual&quot;,
+            &quot;pawn_master&quot;: 0,
+            &quot;plan_id&quot;: null,
+            &quot;subscription_id&quot;: null,
             &quot;gender&quot;: null,
             &quot;birthday&quot;: null,
             &quot;phone&quot;: null,
@@ -2663,6 +2145,9 @@ access-control-allow-origin: *
             &quot;email&quot;: &quot;alelebealsjoshua0@gmail.com&quot;,
             &quot;email_verified_at&quot;: null,
             &quot;account_type&quot;: &quot;individual&quot;,
+            &quot;pawn_master&quot;: 0,
+            &quot;plan_id&quot;: null,
+            &quot;subscription_id&quot;: null,
             &quot;gender&quot;: null,
             &quot;birthday&quot;: null,
             &quot;phone&quot;: null,
@@ -3090,16 +2575,16 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://phythaph.herokuapp.com/api/file-upload/totam" \
+    "http://phythaph.herokuapp.com/api/file-upload/maiores" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "title=odio" \
-    --form "file=@C:\Users\USER\AppData\Local\Temp\php5954.tmp" </code></pre></div>
+    --form "title=voluptate" \
+    --form "file=@C:\Users\USER\AppData\Local\Temp\phpFE41.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/file-upload/totam"
+    "http://phythaph.herokuapp.com/api/file-upload/maiores"
 );
 
 const headers = {
@@ -3108,7 +2593,7 @@ const headers = {
 };
 
 const body = new FormData();
-body.append('title', 'odio');
+body.append('title', 'voluptate');
 body.append('file', document.querySelector('input[name="file"]').files[0]);
 
 fetch(url, {
@@ -3186,7 +2671,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="POSTapi-file-upload--id--"
-               value="totam"
+               value="maiores"
                data-component="url" hidden>
     <br>
 <p>The ID of the .</p>
@@ -3207,7 +2692,7 @@ fetch(url, {
                 <input type="text"
                name="title"
                data-endpoint="POSTapi-file-upload--id--"
-               value="odio"
+               value="voluptate"
                data-component="body" hidden>
     <br>
 
@@ -3231,8 +2716,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"category_id\": \"quod\",
-    \"item_features\": \"excepturi\"
+    \"category_id\": \"assumenda\",
+    \"item_features\": \"enim\"
 }"
 </code></pre></div>
 
@@ -3248,8 +2733,8 @@ const headers = {
 };
 
 let body = {
-    "category_id": "quod",
-    "item_features": "excepturi"
+    "category_id": "assumenda",
+    "item_features": "enim"
 };
 
 fetch(url, {
@@ -3329,7 +2814,7 @@ fetch(url, {
                 <input type="text"
                name="category_id"
                data-endpoint="POSTapi-pawn"
-               value="quod"
+               value="assumenda"
                data-component="body" hidden>
     <br>
 
@@ -3339,7 +2824,7 @@ fetch(url, {
                 <input type="text"
                name="item_features"
                data-endpoint="POSTapi-pawn"
-               value="excepturi"
+               value="enim"
                data-component="body" hidden>
     <br>
 
@@ -3461,14 +2946,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/pawn/rerum" \
+    --get "http://phythaph.herokuapp.com/api/pawn/odio" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/pawn/rerum"
+    "http://phythaph.herokuapp.com/api/pawn/odio"
 );
 
 const headers = {
@@ -3554,12 +3039,190 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETapi-pawn--id-"
-               value="rerum"
+               value="odio"
                data-component="url" hidden>
     <br>
 <p>The ID of the pawn.</p>
             </p>
                     </form>
+
+        <h1 id="payment-apis">Payment APIs</h1>
+
+    
+
+            <h2 id="payment-apis-GETapi-transaction-initialize">GET api/transaction/initialize</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-transaction-initialize">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/transaction/initialize" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"amount\": \"aut\",
+    \"type\": \"nihil\",
+    \"scope\": \"consectetur\",
+    \"description\": \"at\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/transaction/initialize"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "amount": "aut",
+    "type": "nihil",
+    "scope": "consectetur",
+    "description": "at"
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-transaction-initialize">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;Transaction generated&quot;,
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Bad request):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Cannot initialize transaction, please check your input and try again&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-transaction-initialize" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-transaction-initialize"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-transaction-initialize"></code></pre>
+</span>
+<span id="execution-error-GETapi-transaction-initialize" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-transaction-initialize"></code></pre>
+</span>
+<form id="form-GETapi-transaction-initialize" data-method="GET"
+      data-path="api/transaction/initialize"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-transaction-initialize', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-transaction-initialize"
+                    onclick="tryItOut('GETapi-transaction-initialize');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-transaction-initialize"
+                    onclick="cancelTryOut('GETapi-transaction-initialize');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-transaction-initialize" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/transaction/initialize</code></b>
+        </p>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/transaction/initialize</code></b>
+        </p>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/transaction/initialize</code></b>
+        </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/transaction/initialize</code></b>
+        </p>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/transaction/initialize</code></b>
+        </p>
+            <p>
+            <small class="badge badge-grey">OPTIONS</small>
+            <b><code>api/transaction/initialize</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>amount</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="amount"
+               data-endpoint="GETapi-transaction-initialize"
+               value="aut"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>type</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="type"
+               data-endpoint="GETapi-transaction-initialize"
+               value="nihil"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>scope</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="scope"
+               data-endpoint="GETapi-transaction-initialize"
+               value="consectetur"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>description</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="description"
+               data-endpoint="GETapi-transaction-initialize"
+               value="at"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
 
     
 

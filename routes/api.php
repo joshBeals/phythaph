@@ -38,7 +38,7 @@ Route::get('/subscription-plans', "SubscriptionController@index")->name('subscri
 Route::any('/payment/paystack-webhook', 'PaymentController@handleWebhook')->name('hide');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback')->name('hide');
 Route::any('/transaction/initialize', "PaymentController@initializeTransaction")->name('initialize_txn');
-Route::any('/paystack', "PaymentController@paystackApi");
+Route::any('/paystack', "PaymentController@paystackApi")->name('hide');;
 
 Route::post('/file-upload/{id?}', "FileController@fileUpload")->name('file_upload');
 
@@ -59,13 +59,17 @@ Route::group([
 
     Route::get('/user', "AuthController@getUser")->name('user');
     Route::get('/me', "AuthController@me")->name('user_detail');
-    Route::post('/fund', "WalletController@fundWallet")->name('wallet.fund');
+    Route::post('/fund', "WalletController@fundWallet")->name('hide');
 
     Route::middleware('registration_completion_api')->group(function () {
         Route::prefix('pawn')->group(function () {
             Route::post('/', "PawnController@create")->name('pawn.create');
             Route::get('/', "PawnController@fetchUserPawns")->name('pawn.fetchall');
             Route::get('/{id}', "PawnController@fetchPawn")->name('pawn.fetch');
+        });
+        Route::prefix('wallet')->group(function () {
+            Route::get('/history', "WalletController@index")->name('history');
+            Route::get('/withdraw/{amount}', "WalletController@withdrawFunds")->name('withdraw');
         });
     });
     
