@@ -50,7 +50,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['single', 'slack'],
             'ignore_exceptions' => false,
         ],
 
@@ -69,10 +69,10 @@ return [
 
         'slack' => [
             'driver' => 'slack',
-            'url' => env('LOG_SLACK_WEBHOOK_URL'),
-            'username' => 'Laravel Log',
+            'url' => env('LOG_SLACK_WEBHOOK_URL', 'https://hooks.slack.com/services/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'),
+            'username' => env('SLACK_HOOK_NAME', 'Phythaph'),
             'emoji' => ':boom:',
-            'level' => env('LOG_LEVEL', 'critical'),
+            // 'level' => env('LOG_LEVEL', 'critical'),
         ],
 
         'papertrail' => [
