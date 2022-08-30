@@ -101,7 +101,7 @@
                 type = 'wallet_topup',
                 scope = 'wallet_topup',
                 paymentMethod = 'Paystack',
-                publicKey = "{{ config('app.public_key') }}",
+                publicKey = "{{ config('paystack.publicKey') }}",
                 amount = parseFloat(amount_temp);
                 handleError = function() {
                     alert("Cannot initialize transaction, please try again later.");
