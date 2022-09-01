@@ -140,7 +140,7 @@ class UserCrudController extends CrudController
 
         $amount = $request->amount;
 
-        $obj->description = "Wallet Topup";
+        $obj->description = "Bank Transfer";
         $obj->user_id = $user->id;
         $obj->amount = $amount;
         $obj->type = 'wallet_topup';

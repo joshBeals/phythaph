@@ -94,7 +94,7 @@ class PawnController extends Controller
                 return Helper::apiFail("User not found", 404);
             }
 
-            $pawns = UserPawns::where('user_id', $user->id)->get();
+            $pawns = UserPawns::where('user_id', $user->id)->orderBy('id', 'DESC')->get();
 
             foreach($pawns as $pawn){
                 $pawn->decorate();

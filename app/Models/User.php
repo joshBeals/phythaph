@@ -52,12 +52,12 @@ class User extends UserBase implements MustVerifyEmail, JWTSubject
     {
         Parent::decorate();
         
-        
         $this->has_valid_subscription = $this->hasValidSubscription();
         $this->subscription_expires_in = $this->geSubscriptiontDaysToExpire();
         $this->subscription_expires_soon = $this->subscriptionExpiringSoon();
         $this->has_subscribed_once = $this->hasSubscribedOnce();
-        $this->walletBalance = UserWallet::getWalletBalaceForUser('ngn', $this);
+        $this->walletBalance = UserWallet::getWalletBalaceForUserFormated('ngn', $this);
+        $this->totalPawned = UserPawns::getTotalPawned($this);
 
         foreach ([
             'created_at',

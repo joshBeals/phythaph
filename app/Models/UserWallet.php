@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Classes\Helper;
 use App\Exceptions\NotAWalletTypeException;
 use App\Models\Base\Model;
 use App\Traits\WalletManager;
@@ -64,6 +65,28 @@ class UserWallet extends Model
             ->where('user_id', $user->id)->first();
 
         return $get ? $get->balance / 100 : 0;
+
+    }
+
+    public static function getWalletBalaceForUserFormated(string $wallet, User $user = null): string
+    {
+
+        // if (!in_array($wallet, self::ACCOUNT_TYPES)) {
+        //     throw new NotAWalletTypeException;
+        // }
+
+        if (!$user) {
+            $user = auth()->user();
+        }
+
+        if (!$user) {
+            return 0;
+        }
+
+        $get = Self::where('account_type', $wallet)
+            ->where('user_id', $user->id)->first();
+
+        return $get ? Helper::formatToCurrency($get->balance / 100) : Helper::formatToCurrency(0);
 
     }
 

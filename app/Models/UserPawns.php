@@ -70,4 +70,30 @@ class UserPawns extends Model
 
     }
 
+    /**
+     * Get the total number of items pawned by a user;
+     *
+     * @param string $wallet        The wallet in question
+     */
+    public static function getTotalPawned(User $user = null): float
+    {
+
+        // if (!in_array($wallet, self::ACCOUNT_TYPES)) {
+        //     throw new NotAWalletTypeException;
+        // }
+
+        if (!$user) {
+            $user = auth()->user();
+        }
+
+        if (!$user) {
+            return 0;
+        }
+
+        $get = Self::where('user_id', $user->id)->count();
+
+        return $get ? $get : 0;
+
+    }
+
 }
