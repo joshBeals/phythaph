@@ -106,8 +106,8 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                 <strong class="card-title mb-0">Bank Information</strong>
             </div>
             <div class="card-body p-4">
+                @if($data->user->bank)
                 <div class="row">
-
                     <div class="col-md-6">
                         <p class="pb-2 m-0">Bank</p>
                         <h5 class="text-left" id="">{{ strtoupper($data->user->bank->bank_name) }}</h5>
@@ -131,6 +131,11 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                     </div>
 
                 </div>
+                @else
+                <div class="alert alert-info">
+                    Customer has no bank record yet!
+                </div>
+                @endif
             </div>
         </div>
 
@@ -174,8 +179,9 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                             </div>
                             @endif
                         </div>
-                        <div id="process-form-loader" class="ba-loader hidden">
-                            <img src="/backend/img/loader.svg" alt="" width="80px"> Processing payout, Please wait
+                        <div id="process-form-loader" class="ba-loader d-none">
+                            @include('partials.backoffice.spinner', ['hidden' => false])
+                            <span> Processing payout, Please wait</span>
                         </div>
 
 

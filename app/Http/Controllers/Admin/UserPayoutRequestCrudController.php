@@ -88,7 +88,6 @@ class UserPayoutRequestCrudController extends CrudController
 
         // cutom logic after
         return view("backpack::customer.withdrawal", $this->data);
-
     }
 
     public function mark_process(Request $request, UserPayoutRequest $id)
