@@ -23,8 +23,7 @@ class UserPayoutRequest extends Model
     ];
 
     const SOURCES = [
-        'id' => 'ID', // For backward comp only
-        'savings' => 'Saving',
+        'id' => 'ID',
         'wallet' => 'Wallet',
     ];
 

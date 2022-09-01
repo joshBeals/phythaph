@@ -5,6 +5,7 @@
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-lg la-users"></i> Customers</a>
     <ul class="nav-dropdown-items">
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('customer') }}'><i class='nav-icon la la-users'></i> Customers</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('withdrawal') }}"><i class="nav-icon la la-money"></i> Withdrawals</a></li>
     </ul>
 </li>
 

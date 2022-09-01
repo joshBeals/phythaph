@@ -28,6 +28,8 @@ Route::group([
     Route::crud('transaction', 'TransactionCrudController');
     
     Route::post('customer/{user}/update-plan', 'UserCrudController@subscribe')->name('backoffice.plan.subscription');
-    Route::post('customer/{user}/fund', 'UserCrudController@fundWallet')->name('backoffice.plan.wallet');
-    Route::post('customer/{user}/withdraw', 'UserCrudController@fundWallet')->name('backoffice.plan.wallet');
+    Route::post('customer/{user}/fund', 'UserCrudController@fundWallet')->name('backoffice.plan.fund');
+    Route::get('customer/{user_id}/withdraw/{amount}', 'UserCrudController@withdrawFunds')->name('backoffice.plan.withdraw');
+    Route::crud('withdrawal', 'UserPayoutRequestCrudController');
+    Route::get('withdraw/{id}/process', "UserPayoutRequestCrudController@mark_process")->name("backend.withdraw.process");
 }); // this should be the absolute last line of this file

@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-header">Wallet Balance</div>
             <div class="card-body">
-                <h2>{{ Helper::formatToCurrency($user->walletBalance) }}</h2>
+                <h2>{{ ($user->walletBalance) }}</h2>
             </div>
         </div>
         <div class="card">
@@ -56,7 +56,7 @@
             <div class="card-body">
                 <form id="topup" action="fund" method="POST">
                     @csrf
-                    <input type="hidden" name="user_id" value="{{$user->id}}">
+                    <input type="hidden" id="user_id" name="user_id" value="{{$user->id}}">
                     <div class="form-group">
                         <label>Amount</label>
                         <input type="number" min="1" class="form-control" name="amount" id="amount"
@@ -89,8 +89,13 @@
     $(function () {
 
         $('#withdraw').on('click', function(e) {
-            // amount = $('#amount').val();
-            // location.href = `/account/wallet/withdraw/${amount}`;
+            amount = $('#amount').val();
+            user = $('#user_id').val();
+            if(amount >= 100){
+              location.href = `/admin/customer/${user}/withdraw/${amount}`;
+            }else{
+                alert('Minimum withdrawal amount is 100');
+            }
         })
 
         // $('#topup').on('submit', function(e) {

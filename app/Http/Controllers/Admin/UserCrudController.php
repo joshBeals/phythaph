@@ -121,6 +121,18 @@ class UserCrudController extends CrudController
 
     }
 
+    public function withdrawFunds(Request $request, $user_id, $amount){
+        $user = User::findorfail($user_id);
+
+        if (!$user) {
+            return redirect(url()->previous() . '#wallet')->with('error_message', 'Invalid User');
+        }
+
+        $save = $user->withdraw('ngn', floatval($amount));
+
+        return redirect('/admin/customer/' . $user->id . '/show#wallet');
+    }
+
     public function fundWallet(Request $request){
 
         $inputs = $request->except(['_token', '_method']);

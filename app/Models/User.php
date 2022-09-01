@@ -48,6 +48,21 @@ class User extends UserBase implements MustVerifyEmail, JWTSubject
         return $this->getPhone() ? true : false;
     }  
 
+    public function Pawns()
+    {
+        return $this->hasMany(UserPawns::class)->orderBy('id', 'DESC');
+    }
+
+    public function bank()
+    {
+        return $this->hasOne(UserBank::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
     public function decorate()
     {
         Parent::decorate();
@@ -69,14 +84,41 @@ class User extends UserBase implements MustVerifyEmail, JWTSubject
         return $this;
     }
 
-    public function Pawns()
-    {
-        return $this->hasMany(UserPawns::class)->orderBy('id', 'DESC');
-    }
+    public function withdraw(
+        string $wallet,
+        float $amount,
+        UserBank $bank = null,
+        string $note = null,
+        Carbon $date = null
+    ): ?float{
+        
+        $user = $this;
 
-    public function transactions()
-    {
-        return $this->hasMany(Transaction::class);
+        $bank = UserBank::where('user_id', $user->id)->first();
+        
+        $newBalance = $this->withdrawFromWallet($amount, $note);
+
+        $payoutRequest = UserPayoutRequest::create([
+            'amount' => $amount,
+            'disburse_amount' => $amount,
+            'user_id' => $user->id,
+            'entity_id' => 1,
+            'penalty' => null,
+            'note' => $note,
+            'source' => 'wallet',
+            'wallet' => $wallet,
+            'bank_id' => $bank && $bank->id ? $bank->id : null,
+        ]);
+
+        $payoutRequest->wallet = $wallet;
+
+        if ($date) {
+            $payoutRequest->created_at = $date;
+        }
+        $payoutRequest->save();
+
+        return $newBalance;
+
     }
     
 }
