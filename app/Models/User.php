@@ -52,6 +52,7 @@ class User extends UserBase implements MustVerifyEmail, JWTSubject
     {
         Parent::decorate();
         
+        
         $this->has_valid_subscription = $this->hasValidSubscription();
         $this->subscription_expires_in = $this->geSubscriptiontDaysToExpire();
         $this->subscription_expires_soon = $this->subscriptionExpiringSoon();
