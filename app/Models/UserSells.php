@@ -28,7 +28,7 @@ class UserSells extends Model
 
     public function sell_files()
     {
-        return $this->hasMany(PawnFiles::class, 'pawn_id')->orderBy('id', 'DESC');
+        return $this->hasMany(SellFiles::class, 'sell_id')->orderBy('id', 'DESC');
     }
 
     public function getCustomerNameAttribute()
