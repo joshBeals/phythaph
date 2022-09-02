@@ -5,18 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Classes\GlobalVars;
 use App\Classes\Helper;
 use App\Models\User;
-use App\Http\Requests\UserPawnsRequest;
+use App\Http\Requests\UserSellsRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
 /**
- * Class UserPawnsCrudController
+ * Class UserSellsCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class UserPawnsCrudController extends CrudController
+class UserSellsCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     // use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
@@ -32,9 +32,9 @@ class UserPawnsCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\UserPawns::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/user-pawns');
-        CRUD::setEntityNameStrings('user pawns', 'user pawns');
+        CRUD::setModel(\App\Models\UserSells::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/user-sells');
+        CRUD::setEntityNameStrings('sell requests', 'sell requests');
     }
 
     /**
@@ -48,7 +48,11 @@ class UserPawnsCrudController extends CrudController
         CRUD::column('id')->type('text')->label('ID');
         CRUD::column('customer_name')->label("Customer");
         CRUD::column('category_id');
+        CRUD::column('type')->type('cleanup');
         CRUD::column('item_features');
+        CRUD::column('price')->type('amount');
+        CRUD::column('inspection_type')->type('cleanup');
+        CRUD::column('inspection_date');
         CRUD::column('status')->type('status');
         CRUD::column('created_at');
 
@@ -80,7 +84,7 @@ class UserPawnsCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(UserPawnsRequest::class);
+        CRUD::setValidation(UserSellsRequest::class);
 
         $this->crud->addField([
             'name' => 'user_id',
@@ -97,6 +101,10 @@ class UserPawnsCrudController extends CrudController
         ]);
         CRUD::field('category_id');
         CRUD::field('item_features');
+        CRUD::field('type');
+        CRUD::field('inspection_type');
+        CRUD::field('inspection_date');
+        CRUD::field('price');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -108,7 +116,7 @@ class UserPawnsCrudController extends CrudController
     public function create()
     {
         $this->traitCreate();
-        return view("backpack::pawn.create", $this->data);
+        return view("backpack::sell.create", $this->data);
     }
 
     /**
@@ -129,7 +137,7 @@ class UserPawnsCrudController extends CrudController
 
         $this->data['entry']->decorate();
         // cutom logic after
-        return view("backpack::pawn.show", $this->data);
+        return view("backpack::sell.show", $this->data);
 
     }
 }

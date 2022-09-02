@@ -12,6 +12,11 @@ class Files extends Model
 
     public function pawn_files()
     {
-        return $this->belongsTo(PawnFiles::class, 'category_id');
+        return $this->belongsTo(PawnFiles::class, 'file_id');
+    }
+
+    public function sell_files()
+    {
+        return $this->belongsTo(SellFiles::class, 'file_id');
     }
 }

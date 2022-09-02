@@ -41,6 +41,7 @@ Route::any('/transaction/initialize', "PaymentController@initializeTransaction")
 Route::any('/paystack', "PaymentController@paystackApi")->name('hide');;
 
 Route::post('/file-upload/{id?}', "FileController@fileUpload")->name('file_upload');
+Route::post('/sell-upload/{id?}', "FileController@sellUpload")->name('sell_upload');
 
 Route::prefix('auth')->group(function () {
     Route::post('register', "AuthController@register")->name('auth.register');

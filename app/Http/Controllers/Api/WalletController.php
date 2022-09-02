@@ -38,7 +38,7 @@ class WalletController extends Controller
                 return Helper::apiFail("User not found", 404);
             }
 
-            $walletHistory = UserWalletBalanceHistory::where('user_id', $user->id)->orderBy('id', 'DESC');
+            $walletHistory = UserWalletBalanceHistory::where('user_id', $user->id)->orderBy('id', 'DESC')->get();
 
             return Helper::apiSuccess(['walletHistory' => $walletHistory]);
 

@@ -32,4 +32,5 @@ Route::group([
     Route::get('customer/{user_id}/withdraw/{amount}', 'UserCrudController@withdrawFunds')->name('backoffice.plan.withdraw');
     Route::crud('withdrawal', 'UserPayoutRequestCrudController');
     Route::get('withdraw/{id}/process', "UserPayoutRequestCrudController@mark_process")->name("backend.withdraw.process");
+    Route::crud('user-sells', 'UserSellsCrudController');
 }); // this should be the absolute last line of this file
