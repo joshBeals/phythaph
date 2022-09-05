@@ -38,6 +38,8 @@ class UserWalletBalanceHistory extends Model
 
         Parent::decorate();
 
+        $this->transaction = $this->transaction;
+
         foreach ([
             'created_at',
             'updated_at',
