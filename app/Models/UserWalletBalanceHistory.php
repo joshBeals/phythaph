@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Base\Model;
+use App\Classes\Helper;
 
 class UserWalletBalanceHistory extends Model
 {
