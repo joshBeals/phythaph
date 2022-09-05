@@ -40,6 +40,10 @@ class WalletController extends Controller
 
             $walletHistory = UserWalletBalanceHistory::where('user_id', $user->id)->orderBy('id', 'DESC')->get();
 
+            foreach($walletHistory as $history){
+                $history->decorate();
+            }
+
             return Helper::apiSuccess(['walletHistory' => $walletHistory]);
 
         } catch (\Throwable $th) {
