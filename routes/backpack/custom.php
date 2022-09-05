@@ -23,6 +23,7 @@ Route::group([
     Route::crud('currency', 'CurrencyCrudController');
     Route::crud('faq', 'FaqCrudController');
     Route::crud('user-pawns', 'UserPawnsCrudController');
+    Route::get('user-pawns/{user_id}/score/{score}', 'UserPawnsCrudController@score')->name('backoffice.customer.score');
     
     Route::crud('subscription-plans', 'SubscriptionPlansCrudController');
     Route::crud('transaction', 'TransactionCrudController');
@@ -30,6 +31,7 @@ Route::group([
     Route::post('customer/{user}/update-plan', 'UserCrudController@subscribe')->name('backoffice.plan.subscription');
     Route::post('customer/{user}/fund', 'UserCrudController@fundWallet')->name('backoffice.plan.fund');
     Route::get('customer/{user_id}/withdraw/{amount}', 'UserCrudController@withdrawFunds')->name('backoffice.plan.withdraw');
+    Route::get('user-pawn/{user_id}/score/{score}', 'UserCrudController@score')->name('backoffice.customer.score');
     Route::crud('withdrawal', 'UserPayoutRequestCrudController');
     Route::get('withdraw/{id}/process', "UserPayoutRequestCrudController@mark_process")->name("backend.withdraw.process");
     Route::crud('user-sells', 'UserSellsCrudController');

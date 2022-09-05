@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Classes\GlobalVars;
 use App\Classes\Helper;
 use App\Models\User;
+use App\Models\UserPawns;
+use Illuminate\Http\Request;
 use App\Http\Requests\UserPawnsRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -131,5 +133,17 @@ class UserPawnsCrudController extends CrudController
         // cutom logic after
         return view("backpack::pawn.show", $this->data);
 
+    }
+
+    public function score(Request $request, $pawn_id, $score){
+        $pawn = UserPawns::findorfail($pawn_id);
+
+        if (!$pawn) {
+            return redirect(url()->previous() . '#score')->with('error_message', 'Invalid Pawn Request');
+        }
+
+        $score = UserPawns::where('id', $pawn->id)->update(['score' => $score, 'status' => 'inspected']);
+
+        return redirect('/admin/user-pawns/' . $pawn->id . '/show#score');
     }
 }
