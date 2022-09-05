@@ -6,6 +6,17 @@ use App\Models\Base\Model;
 
 class UserWalletBalanceHistory extends Model
 {
+    protected $fillable = [
+        'user_id',
+        'wallet_id',
+        'type',
+        // 'previous_balance',
+        'amount',
+        // 'new_balance',
+        'description',
+        'transaction_id',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -21,15 +32,20 @@ class UserWalletBalanceHistory extends Model
         return $this->belongsTo(Transaction::class);
     }
 
-    protected $fillable = [
-        'user_id',
-        'wallet_id',
-        'type',
-        // 'previous_balance',
-        'amount',
-        // 'new_balance',
-        'description',
-        'transaction_id',
-    ];
+    public function decorate()
+    {
+
+        Parent::decorate();
+
+        foreach ([
+            'created_at',
+            'updated_at',
+        ] as $date) {
+            $this->{"_" . $date} = Helper::formatDate($this->{$date});
+        }
+
+        return $this;
+
+    }
 
 }
