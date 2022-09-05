@@ -117,4 +117,20 @@ class UserWallet extends Model
 
     }
 
+    public function decorate()
+    {
+
+        Parent::decorate();
+
+        foreach ([
+            'created_at',
+            'updated_at',
+        ] as $date) {
+            $this->{"_" . $date} = Helper::formatDate($this->{$date});
+        }
+
+        return $this;
+
+    }
+
 }
