@@ -18,7 +18,7 @@
                             <tr>
                                 <td>
                                     <label for="">{{$check['variable']}}</label>
-                                    <p>{{$check['description']}}</p>
+                                    <p>{!! $check['description'] !!}</p>
                                 </td>
                                 <td>
                                     <select class="form-control" name="" id="">

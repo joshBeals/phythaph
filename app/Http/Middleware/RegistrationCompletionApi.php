@@ -19,7 +19,7 @@ class RegistrationCompletionApi
     public function handle(Request $request, Closure $next)
     {
         if (!$request->user()->completedRegistration()) {
-            return Helper::apiFail('Registration setup not complete!');
+            return Helper::apiFail('Registration setup not complete!', 403);
         }
 
         return $next($request);

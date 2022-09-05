@@ -41,8 +41,8 @@ class SubscriptionPlansCrudController extends CrudController
     {
         CRUD::column('name');
         CRUD::column('description');
-        CRUD::column('signon_fee');
-        CRUD::column('renewal_fee');
+        CRUD::column('signon_fee')->type('amount');
+        CRUD::column('renewal_fee')->type('amount');
         CRUD::column('created_at');
 
         /**
