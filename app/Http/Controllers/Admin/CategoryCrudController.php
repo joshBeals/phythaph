@@ -102,7 +102,7 @@ class CategoryCrudController extends CrudController
             ],
         ]);
         $this->crud->addField([
-            'wrapper' => ['class' => 'form-group col-md-6'],
+            'wrapper' => ['class' => 'form-group col-md-12'],
             'name' => 'prices',
             'label' => 'Prices',
             'type' => 'repeatable',
@@ -124,7 +124,7 @@ class CategoryCrudController extends CrudController
             ],
         ]);
         $this->crud->addField([
-            'wrapper' => ['class' => 'form-group col-md-6'],
+            'wrapper' => ['class' => 'form-group col-md-12'],
             'name' => 'checks',
             'label' => 'checks',
             'type' => 'repeatable',
