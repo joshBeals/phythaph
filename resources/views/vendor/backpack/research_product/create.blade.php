@@ -68,7 +68,6 @@ $currencies = \App\Models\Currency::get();
 			@include('crud::inc.form_save_buttons')
 		</form>
 		<!-- Modal -->
-		
 	</div>
 </div>
 
