@@ -51,6 +51,7 @@ class WalletController extends Controller
         }
     }
 
+    
     // Fund Wallet
     public function fundWallet(Request $request){
         $user = $request->user();
