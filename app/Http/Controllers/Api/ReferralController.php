@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Classes\GlobalVars;
 use App\Classes\Helper;
+use App\Models\User;
 /**
  * @group Customer APIs
  */
