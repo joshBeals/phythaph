@@ -74,6 +74,30 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                 </div>
             </div>
         </div>
+        <div class="card">
+            <div class="card-header"><strong>Other Features</strong></div>
+            <div class="card-body">
+                <div class="row">
+                    <table class="table table-striped table-hover table-bordered">
+                        <tbody>
+                            @if($data->other_features)
+                            @foreach($data->other_features as $feature)
+                                <tr>
+                                @foreach($feature as $key => $value)
+                                    @if($value)
+                                        <td>{{ Helper::titleCase($value) }}</td>
+                                    @else
+                                        <td>-</td>
+                                    @endif
+                                @endforeach
+                                </tr>
+                            @endforeach
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

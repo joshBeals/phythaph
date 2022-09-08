@@ -16,7 +16,7 @@ use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 class ResearchProductCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    // use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     
     use CreateOperation {create as traitCreate;}
@@ -90,7 +90,27 @@ class ResearchProductCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        $this->setupCreateOperation();
+        $this->crud->addField([
+            'wrapper' => ['class' => 'form-group col-md-12'],
+            'name' => 'other_features',
+            'label' => 'Other Features',
+            'type' => 'repeatable',
+            'new_item_label' => 'Add Feature',
+            'subfields' => [
+                [
+                    'wrapper' => ['class' => 'form-group col-md-6'],
+                    'name' => 'name',
+                    'type' => 'text',
+                    'label' => 'Name',
+                ],
+                [
+                    'wrapper' => ['class' => 'form-group col-md-6'],
+                    'name' => 'description',
+                    'type' => 'text',
+                    'label' => 'Description',
+                ]
+            ],
+        ]);
     }
 
     public function show($id)

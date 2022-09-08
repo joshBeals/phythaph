@@ -14,7 +14,12 @@ class ResearchProduct extends Model
     protected $fillable = [
         'category_id',
         'features',
+        'other_features',
         'prices',
+    ];
+
+    protected $casts = [
+        'other_features' => 'array',
     ];
 
     public function category()

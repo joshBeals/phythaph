@@ -60,7 +60,7 @@ $currencies = \App\Models\Currency::get();
 					<input type="hidden" name="features" id="features">
 					<div id="formFields" class="row mt-3"></div>
 				</div>
-				<hr style="border: 1px solid gray;">
+				<hr style="border: 2px solid purple;">
 				<h5 class="mt-3 mb-3"><strong>Pricing Information</strong></h5>
 				<input type="hidden" name="prices" id="prices">
 				<div id="priceFields" class="row mt-3"></div>
