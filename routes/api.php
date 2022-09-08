@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\PawnController;
 use App\Http\Controllers\Api\SubscriptionController;
 use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\WalletController;
+use App\Http\Controllers\Api\ReferralController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,7 @@ Route::group([
     Route::post('/fund', "WalletController@fundWallet")->name('hide');
 
     Route::middleware('registration_completion_api')->group(function () {
+        Route::get('/referrals', "ReferralController@index")->name('referrals');
         Route::prefix('pawn')->group(function () {
             Route::post('/', "PawnController@create")->name('pawn.create');
             Route::get('/', "PawnController@fetchUserPawns")->name('pawn.fetchall');
