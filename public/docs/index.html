@@ -70,15 +70,12 @@
                                                 </ul>
                     
                     <ul id="tocify-header-2" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="wallet-apis">
-                    <a href="#wallet-apis">Wallet APIs</a>
+                <li class="tocify-item level-1" data-unique="customer-apis">
+                    <a href="#customer-apis">Customer APIs</a>
                 </li>
-                                    <ul id="tocify-subheader-wallet-apis" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="wallet-apis-GETapi-wallet-history">
-                        <a href="#wallet-apis-GETapi-wallet-history">Fetch Wallet History</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="wallet-apis-GETapi-wallet-withdraw--amount-">
-                        <a href="#wallet-apis-GETapi-wallet-withdraw--amount-">Withdraw Funds</a>
+                                    <ul id="tocify-subheader-customer-apis" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="customer-apis-GETapi-referrals">
+                        <a href="#customer-apis-GETapi-referrals">Referral Details</a>
                     </li>
                                                     </ul>
                             </ul>
@@ -165,6 +162,9 @@
                                     <li class="tocify-item level-2" data-unique="pawn-apis-GETapi-pawn--id-">
                         <a href="#pawn-apis-GETapi-pawn--id-">Fetch Single Pawn Item</a>
                     </li>
+                                    <li class="tocify-item level-2" data-unique="pawn-apis-POSTapi-sell-upload--id--">
+                        <a href="#pawn-apis-POSTapi-sell-upload--id--">Upload sell file</a>
+                    </li>
                                                     </ul>
                             </ul>
                     <ul id="tocify-header-7" class="tocify-header">
@@ -174,6 +174,19 @@
                                     <ul id="tocify-subheader-payment-apis" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="payment-apis-GETapi-transaction-initialize">
                         <a href="#payment-apis-GETapi-transaction-initialize">GET api/transaction/initialize</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+                    <ul id="tocify-header-8" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="wallet-apis">
+                    <a href="#wallet-apis">Wallet APIs</a>
+                </li>
+                                    <ul id="tocify-subheader-wallet-apis" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="wallet-apis-GETapi-wallet-history">
+                        <a href="#wallet-apis-GETapi-wallet-history">Fetch Wallet History</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="wallet-apis-GETapi-wallet-withdraw--amount-">
+                        <a href="#wallet-apis-GETapi-wallet-withdraw--amount-">Withdraw Funds</a>
                     </li>
                                                     </ul>
                             </ul>
@@ -187,7 +200,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: August 30 2022</li>
+        <li>Last updated: September 9 2022</li>
     </ul>
 </div>
 
@@ -206,31 +219,31 @@ You can switch the language used with the tabs at the top right (or from the nav
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
 
-        <h1 id="wallet-apis">Wallet APIs</h1>
+        <h1 id="customer-apis">Customer APIs</h1>
 
     
 
-            <h2 id="wallet-apis-GETapi-wallet-history">Fetch Wallet History</h2>
+            <h2 id="customer-apis-GETapi-referrals">Referral Details</h2>
 
 <p>
 </p>
 
+<p>Get details of a user's referalls.</p>
 
-
-<span id="example-requests-GETapi-wallet-history">
+<span id="example-requests-GETapi-referrals">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/wallet/history" \
+    --get "http://phythaph.herokuapp.com/api/referrals" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/wallet/history"
+    "http://phythaph.herokuapp.com/api/referrals"
 );
 
 const headers = {
@@ -245,7 +258,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-wallet-history">
+<span id="example-responses-GETapi-referrals">
             <blockquote>
             <p>Example response (200, Ok):</p>
         </blockquote>
@@ -253,171 +266,61 @@ fetch(url, {
 
 <code class="language-json">{
    &quot;success&quot;: true,
-   &quot;message&quot;: &quot;Request successful&quot;,
+   &quot;message&quot;,
    &quot;data&quot;: {
-         &quot;walletHistory&quot;: {...}
-     }
- }</code>
+      ...
+   }</code>
  </pre>
             <blockquote>
-            <p>Example response (404, Error):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">&quot; {
-   &quot;success&quot;: false,
-   &quot;message&quot;: Error&quot;
- }</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-wallet-history" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-wallet-history"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-wallet-history"></code></pre>
-</span>
-<span id="execution-error-GETapi-wallet-history" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-wallet-history"></code></pre>
-</span>
-<form id="form-GETapi-wallet-history" data-method="GET"
-      data-path="api/wallet/history"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-wallet-history', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-wallet-history"
-                    onclick="tryItOut('GETapi-wallet-history');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-wallet-history"
-                    onclick="cancelTryOut('GETapi-wallet-history');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-wallet-history" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/wallet/history</code></b>
-        </p>
-                    </form>
-
-            <h2 id="wallet-apis-GETapi-wallet-withdraw--amount-">Withdraw Funds</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-wallet-withdraw--amount-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/wallet/withdraw/unde" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/wallet/withdraw/unde"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-wallet-withdraw--amount-">
-            <blockquote>
-            <p>Example response (200, Ok):</p>
+            <p>Example response (400):</p>
         </blockquote>
                 <pre>
 
 <code class="language-json">{
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Withdrawal successful&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404, Error):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">&quot; {
    &quot;success&quot;: false,
-   &quot;message&quot;: Error&quot;
+   &quot;message&quot;
  }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-wallet-withdraw--amount-" hidden>
+<span id="execution-results-GETapi-referrals" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-wallet-withdraw--amount-"></span>:
+                id="execution-response-status-GETapi-referrals"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-wallet-withdraw--amount-"></code></pre>
+    <pre class="json"><code id="execution-response-content-GETapi-referrals"></code></pre>
 </span>
-<span id="execution-error-GETapi-wallet-withdraw--amount-" hidden>
+<span id="execution-error-GETapi-referrals" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-wallet-withdraw--amount-"></code></pre>
+    <pre><code id="execution-error-message-GETapi-referrals"></code></pre>
 </span>
-<form id="form-GETapi-wallet-withdraw--amount-" data-method="GET"
-      data-path="api/wallet/withdraw/{amount}"
+<form id="form-GETapi-referrals" data-method="GET"
+      data-path="api/referrals"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-wallet-withdraw--amount-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-referrals', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-wallet-withdraw--amount-"
-                    onclick="tryItOut('GETapi-wallet-withdraw--amount-');">Try it out ⚡
+                    id="btn-tryout-GETapi-referrals"
+                    onclick="tryItOut('GETapi-referrals');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-wallet-withdraw--amount-"
-                    onclick="cancelTryOut('GETapi-wallet-withdraw--amount-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-referrals"
+                    onclick="cancelTryOut('GETapi-referrals');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-wallet-withdraw--amount-" hidden>Send Request 💥
+                    id="btn-executetryout-GETapi-referrals" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/wallet/withdraw/{amount}</code></b>
+            <b><code>api/referrals</code></b>
         </p>
-                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>amount</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="amount"
-               data-endpoint="GETapi-wallet-withdraw--amount-"
-               value="unde"
-               data-component="url" hidden>
-    <br>
-
-            </p>
                     </form>
 
         <h1 id="auth-apis">Auth APIs</h1>
@@ -441,10 +344,10 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"first_name\": \"voluptate\",
-    \"last_name\": \"blanditiis\",
-    \"email\": \"voluptate\",
-    \"password\": \"similique\"
+    \"first_name\": \"magni\",
+    \"last_name\": \"eaque\",
+    \"email\": \"voluptatem\",
+    \"password\": \"velit\"
 }"
 </code></pre></div>
 
@@ -460,10 +363,10 @@ const headers = {
 };
 
 let body = {
-    "first_name": "voluptate",
-    "last_name": "blanditiis",
-    "email": "voluptate",
-    "password": "similique"
+    "first_name": "magni",
+    "last_name": "eaque",
+    "email": "voluptatem",
+    "password": "velit"
 };
 
 fetch(url, {
@@ -543,7 +446,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="POSTapi-auth-register"
-               value="voluptate"
+               value="magni"
                data-component="body" hidden>
     <br>
 
@@ -553,7 +456,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="POSTapi-auth-register"
-               value="blanditiis"
+               value="eaque"
                data-component="body" hidden>
     <br>
 
@@ -563,7 +466,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-register"
-               value="voluptate"
+               value="voluptatem"
                data-component="body" hidden>
     <br>
 
@@ -573,7 +476,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-register"
-               value="similique"
+               value="velit"
                data-component="body" hidden>
     <br>
 
@@ -597,8 +500,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"et\",
-    \"password\": \"est\"
+    \"email\": \"est\",
+    \"password\": \"eos\"
 }"
 </code></pre></div>
 
@@ -614,8 +517,8 @@ const headers = {
 };
 
 let body = {
-    "email": "et",
-    "password": "est"
+    "email": "est",
+    "password": "eos"
 };
 
 fetch(url, {
@@ -698,7 +601,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-login"
-               value="et"
+               value="est"
                data-component="body" hidden>
     <br>
 
@@ -708,7 +611,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-login"
-               value="est"
+               value="eos"
                data-component="body" hidden>
     <br>
 
@@ -728,14 +631,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/auth/email/verify/et" \
+    --get "http://phythaph.herokuapp.com/api/auth/email/verify/reiciendis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/auth/email/verify/et"
+    "http://phythaph.herokuapp.com/api/auth/email/verify/reiciendis"
 );
 
 const headers = {
@@ -826,7 +729,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="id"
                data-endpoint="GETapi-auth-email-verify--id-"
-               value="et"
+               value="reiciendis"
                data-component="url" hidden>
     <br>
 <p>The ID of the verify.</p>
@@ -846,14 +749,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/auth/email/resend/nam" \
+    --get "http://phythaph.herokuapp.com/api/auth/email/resend/omnis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/auth/email/resend/nam"
+    "http://phythaph.herokuapp.com/api/auth/email/resend/omnis"
 );
 
 const headers = {
@@ -935,7 +838,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETapi-auth-email-resend--id-"
-               value="nam"
+               value="omnis"
                data-component="url" hidden>
     <br>
 <p>The ID of the resend.</p>
@@ -959,7 +862,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"iure\"
+    \"email\": \"delectus\"
 }"
 </code></pre></div>
 
@@ -975,7 +878,7 @@ const headers = {
 };
 
 let body = {
-    "email": "iure"
+    "email": "delectus"
 };
 
 fetch(url, {
@@ -1053,7 +956,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-password-forgot-password"
-               value="iure"
+               value="delectus"
                data-component="body" hidden>
     <br>
 
@@ -1077,9 +980,9 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"ea\",
-    \"token\": \"sit\",
-    \"password\": \"voluptatibus\"
+    \"email\": \"voluptatem\",
+    \"token\": \"voluptate\",
+    \"password\": \"ut\"
 }"
 </code></pre></div>
 
@@ -1095,9 +998,9 @@ const headers = {
 };
 
 let body = {
-    "email": "ea",
-    "token": "sit",
-    "password": "voluptatibus"
+    "email": "voluptatem",
+    "token": "voluptate",
+    "password": "ut"
 };
 
 fetch(url, {
@@ -1175,7 +1078,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-password-reset"
-               value="ea"
+               value="voluptatem"
                data-component="body" hidden>
     <br>
 
@@ -1185,7 +1088,7 @@ fetch(url, {
                 <input type="text"
                name="token"
                data-endpoint="POSTapi-auth-password-reset"
-               value="sit"
+               value="voluptate"
                data-component="body" hidden>
     <br>
 
@@ -1195,7 +1098,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-password-reset"
-               value="voluptatibus"
+               value="ut"
                data-component="body" hidden>
     <br>
 
@@ -1219,22 +1122,22 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"account_type\": \"sed\",
-    \"phone\": \"est\",
-    \"gender\": \"blanditiis\",
-    \"birthday\": \"est\",
-    \"address\": \"saepe\",
-    \"house_number\": \"quas\",
-    \"street\": \"amet\",
-    \"lga\": \"exercitationem\",
-    \"lcda\": \"consequatur\",
-    \"company_name\": \"fuga\",
-    \"company_phone\": \"quam\",
-    \"country\": \"quidem\",
-    \"postal_code\": \"sunt\",
-    \"rc_number\": \"consequatur\",
-    \"city\": \"eligendi\",
-    \"state\": \"ut\"
+    \"account_type\": \"voluptatem\",
+    \"phone\": \"assumenda\",
+    \"gender\": \"incidunt\",
+    \"birthday\": \"tempora\",
+    \"address\": \"eos\",
+    \"house_number\": \"veritatis\",
+    \"street\": \"hic\",
+    \"lga\": \"rem\",
+    \"lcda\": \"voluptatem\",
+    \"company_name\": \"qui\",
+    \"company_phone\": \"eos\",
+    \"country\": \"facere\",
+    \"postal_code\": \"deleniti\",
+    \"rc_number\": \"illum\",
+    \"city\": \"debitis\",
+    \"state\": \"cupiditate\"
 }"
 </code></pre></div>
 
@@ -1250,22 +1153,22 @@ const headers = {
 };
 
 let body = {
-    "account_type": "sed",
-    "phone": "est",
-    "gender": "blanditiis",
-    "birthday": "est",
-    "address": "saepe",
-    "house_number": "quas",
-    "street": "amet",
-    "lga": "exercitationem",
-    "lcda": "consequatur",
-    "company_name": "fuga",
-    "company_phone": "quam",
-    "country": "quidem",
-    "postal_code": "sunt",
-    "rc_number": "consequatur",
-    "city": "eligendi",
-    "state": "ut"
+    "account_type": "voluptatem",
+    "phone": "assumenda",
+    "gender": "incidunt",
+    "birthday": "tempora",
+    "address": "eos",
+    "house_number": "veritatis",
+    "street": "hic",
+    "lga": "rem",
+    "lcda": "voluptatem",
+    "company_name": "qui",
+    "company_phone": "eos",
+    "country": "facere",
+    "postal_code": "deleniti",
+    "rc_number": "illum",
+    "city": "debitis",
+    "state": "cupiditate"
 };
 
 fetch(url, {
@@ -1337,7 +1240,7 @@ fetch(url, {
                 <input type="text"
                name="account_type"
                data-endpoint="POSTapi-setup"
-               value="sed"
+               value="voluptatem"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1347,7 +1250,7 @@ fetch(url, {
                 <input type="text"
                name="phone"
                data-endpoint="POSTapi-setup"
-               value="est"
+               value="assumenda"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1357,7 +1260,7 @@ fetch(url, {
                 <input type="text"
                name="gender"
                data-endpoint="POSTapi-setup"
-               value="blanditiis"
+               value="incidunt"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1367,7 +1270,7 @@ fetch(url, {
                 <input type="text"
                name="birthday"
                data-endpoint="POSTapi-setup"
-               value="est"
+               value="tempora"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1377,7 +1280,7 @@ fetch(url, {
                 <input type="text"
                name="address"
                data-endpoint="POSTapi-setup"
-               value="saepe"
+               value="eos"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1387,7 +1290,7 @@ fetch(url, {
                 <input type="text"
                name="house_number"
                data-endpoint="POSTapi-setup"
-               value="quas"
+               value="veritatis"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1397,7 +1300,7 @@ fetch(url, {
                 <input type="text"
                name="street"
                data-endpoint="POSTapi-setup"
-               value="amet"
+               value="hic"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1407,7 +1310,7 @@ fetch(url, {
                 <input type="text"
                name="lga"
                data-endpoint="POSTapi-setup"
-               value="exercitationem"
+               value="rem"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1417,7 +1320,7 @@ fetch(url, {
                 <input type="text"
                name="lcda"
                data-endpoint="POSTapi-setup"
-               value="consequatur"
+               value="voluptatem"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1427,7 +1330,7 @@ fetch(url, {
                 <input type="text"
                name="company_name"
                data-endpoint="POSTapi-setup"
-               value="fuga"
+               value="qui"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1437,7 +1340,7 @@ fetch(url, {
                 <input type="text"
                name="company_phone"
                data-endpoint="POSTapi-setup"
-               value="quam"
+               value="eos"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1447,7 +1350,7 @@ fetch(url, {
                 <input type="text"
                name="country"
                data-endpoint="POSTapi-setup"
-               value="quidem"
+               value="facere"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1457,7 +1360,7 @@ fetch(url, {
                 <input type="text"
                name="postal_code"
                data-endpoint="POSTapi-setup"
-               value="sunt"
+               value="deleniti"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1467,7 +1370,7 @@ fetch(url, {
                 <input type="text"
                name="rc_number"
                data-endpoint="POSTapi-setup"
-               value="consequatur"
+               value="illum"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1477,7 +1380,7 @@ fetch(url, {
                 <input type="text"
                name="city"
                data-endpoint="POSTapi-setup"
-               value="eligendi"
+               value="debitis"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1487,7 +1390,7 @@ fetch(url, {
                 <input type="text"
                name="state"
                data-endpoint="POSTapi-setup"
-               value="ut"
+               value="cupiditate"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -1994,8 +1897,8 @@ access-control-allow-origin: *
             &quot;email_verified_at&quot;: null,
             &quot;account_type&quot;: &quot;individual&quot;,
             &quot;pawn_master&quot;: 0,
-            &quot;plan_id&quot;: null,
-            &quot;subscription_id&quot;: null,
+            &quot;plan_id&quot;: 2,
+            &quot;subscription_id&quot;: 3,
             &quot;gender&quot;: &quot;male&quot;,
             &quot;birthday&quot;: &quot;1999-04-22&quot;,
             &quot;phone&quot;: &quot;phone&quot;,
@@ -2575,16 +2478,16 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://phythaph.herokuapp.com/api/file-upload/maiores" \
+    "http://phythaph.herokuapp.com/api/file-upload/omnis" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "title=voluptate" \
-    --form "file=@C:\Users\USER\AppData\Local\Temp\phpFE41.tmp" </code></pre></div>
+    --form "title=porro" \
+    --form "file=@C:\Users\USER\AppData\Local\Temp\php541.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/file-upload/maiores"
+    "http://phythaph.herokuapp.com/api/file-upload/omnis"
 );
 
 const headers = {
@@ -2593,7 +2496,7 @@ const headers = {
 };
 
 const body = new FormData();
-body.append('title', 'voluptate');
+body.append('title', 'porro');
 body.append('file', document.querySelector('input[name="file"]').files[0]);
 
 fetch(url, {
@@ -2671,7 +2574,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="POSTapi-file-upload--id--"
-               value="maiores"
+               value="omnis"
                data-component="url" hidden>
     <br>
 <p>The ID of the .</p>
@@ -2692,7 +2595,7 @@ fetch(url, {
                 <input type="text"
                name="title"
                data-endpoint="POSTapi-file-upload--id--"
-               value="voluptate"
+               value="porro"
                data-component="body" hidden>
     <br>
 
@@ -2716,8 +2619,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"category_id\": \"assumenda\",
-    \"item_features\": \"enim\"
+    \"category_id\": \"magni\",
+    \"item_features\": \"consectetur\"
 }"
 </code></pre></div>
 
@@ -2733,8 +2636,8 @@ const headers = {
 };
 
 let body = {
-    "category_id": "assumenda",
-    "item_features": "enim"
+    "category_id": "magni",
+    "item_features": "consectetur"
 };
 
 fetch(url, {
@@ -2814,7 +2717,7 @@ fetch(url, {
                 <input type="text"
                name="category_id"
                data-endpoint="POSTapi-pawn"
-               value="assumenda"
+               value="magni"
                data-component="body" hidden>
     <br>
 
@@ -2824,7 +2727,7 @@ fetch(url, {
                 <input type="text"
                name="item_features"
                data-endpoint="POSTapi-pawn"
-               value="enim"
+               value="consectetur"
                data-component="body" hidden>
     <br>
 
@@ -2946,14 +2849,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://phythaph.herokuapp.com/api/pawn/odio" \
+    --get "http://phythaph.herokuapp.com/api/pawn/a" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://phythaph.herokuapp.com/api/pawn/odio"
+    "http://phythaph.herokuapp.com/api/pawn/a"
 );
 
 const headers = {
@@ -3039,12 +2942,149 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETapi-pawn--id-"
-               value="odio"
+               value="a"
                data-component="url" hidden>
     <br>
 <p>The ID of the pawn.</p>
             </p>
                     </form>
+
+            <h2 id="pawn-apis-POSTapi-sell-upload--id--">Upload sell file</h2>
+
+<p>
+</p>
+
+<p>The title parameter can either be ('image' or 'file')</p>
+
+<span id="example-requests-POSTapi-sell-upload--id--">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://phythaph.herokuapp.com/api/sell-upload/alias" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "title=qui" \
+    --form "file=@C:\Users\USER\AppData\Local\Temp\php553.tmp" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/sell-upload/alias"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('title', 'qui');
+body.append('file', document.querySelector('input[name="file"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-sell-upload--id--">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;File Uploaded Successfully&quot;,
+   }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Failure):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;No file uploaded&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-sell-upload--id--" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-sell-upload--id--"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-sell-upload--id--"></code></pre>
+</span>
+<span id="execution-error-POSTapi-sell-upload--id--" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-sell-upload--id--"></code></pre>
+</span>
+<form id="form-POSTapi-sell-upload--id--" data-method="POST"
+      data-path="api/sell-upload/{id?}"
+      data-authed="0"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"multipart\/form-data","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-sell-upload--id--', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-sell-upload--id--"
+                    onclick="tryItOut('POSTapi-sell-upload--id--');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-sell-upload--id--"
+                    onclick="cancelTryOut('POSTapi-sell-upload--id--');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-sell-upload--id--" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/sell-upload/{id?}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="id"
+               data-endpoint="POSTapi-sell-upload--id--"
+               value="alias"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the .</p>
+            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>file</code></b>&nbsp;&nbsp;<small>file</small>  &nbsp;
+                <input type="file"
+               name="file"
+               data-endpoint="POSTapi-sell-upload--id--"
+               value=""
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>title</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="title"
+               data-endpoint="POSTapi-sell-upload--id--"
+               value="qui"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
 
         <h1 id="payment-apis">Payment APIs</h1>
 
@@ -3067,10 +3107,10 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"amount\": \"aut\",
-    \"type\": \"nihil\",
-    \"scope\": \"consectetur\",
-    \"description\": \"at\"
+    \"amount\": \"dolores\",
+    \"type\": \"omnis\",
+    \"scope\": \"qui\",
+    \"description\": \"aspernatur\"
 }"
 </code></pre></div>
 
@@ -3086,10 +3126,10 @@ const headers = {
 };
 
 let body = {
-    "amount": "aut",
-    "type": "nihil",
-    "scope": "consectetur",
-    "description": "at"
+    "amount": "dolores",
+    "type": "omnis",
+    "scope": "qui",
+    "description": "aspernatur"
 };
 
 fetch(url, {
@@ -3187,7 +3227,7 @@ fetch(url, {
                 <input type="text"
                name="amount"
                data-endpoint="GETapi-transaction-initialize"
-               value="aut"
+               value="dolores"
                data-component="body" hidden>
     <br>
 
@@ -3197,7 +3237,7 @@ fetch(url, {
                 <input type="text"
                name="type"
                data-endpoint="GETapi-transaction-initialize"
-               value="nihil"
+               value="omnis"
                data-component="body" hidden>
     <br>
 
@@ -3207,7 +3247,7 @@ fetch(url, {
                 <input type="text"
                name="scope"
                data-endpoint="GETapi-transaction-initialize"
-               value="consectetur"
+               value="qui"
                data-component="body" hidden>
     <br>
 
@@ -3217,12 +3257,226 @@ fetch(url, {
                 <input type="text"
                name="description"
                data-endpoint="GETapi-transaction-initialize"
-               value="at"
+               value="aspernatur"
                data-component="body" hidden>
     <br>
 
         </p>
         </form>
+
+        <h1 id="wallet-apis">Wallet APIs</h1>
+
+    
+
+            <h2 id="wallet-apis-GETapi-wallet-history">Fetch Wallet History</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-wallet-history">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/wallet/history" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/wallet/history"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-wallet-history">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+   &quot;success&quot;: true,
+   &quot;message&quot;: &quot;Request successful&quot;,
+   &quot;data&quot;: {
+         &quot;walletHistory&quot;: {...}
+     }
+ }</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&quot; {
+   &quot;success&quot;: false,
+   &quot;message&quot;: Error&quot;
+ }</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-wallet-history" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-wallet-history"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-wallet-history"></code></pre>
+</span>
+<span id="execution-error-GETapi-wallet-history" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-wallet-history"></code></pre>
+</span>
+<form id="form-GETapi-wallet-history" data-method="GET"
+      data-path="api/wallet/history"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-wallet-history', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-wallet-history"
+                    onclick="tryItOut('GETapi-wallet-history');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-wallet-history"
+                    onclick="cancelTryOut('GETapi-wallet-history');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-wallet-history" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/wallet/history</code></b>
+        </p>
+                    </form>
+
+            <h2 id="wallet-apis-GETapi-wallet-withdraw--amount-">Withdraw Funds</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-wallet-withdraw--amount-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://phythaph.herokuapp.com/api/wallet/withdraw/adipisci" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://phythaph.herokuapp.com/api/wallet/withdraw/adipisci"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-wallet-withdraw--amount-">
+            <blockquote>
+            <p>Example response (200, Ok):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Withdrawal successful&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&quot; {
+   &quot;success&quot;: false,
+   &quot;message&quot;: Error&quot;
+ }</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-wallet-withdraw--amount-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-wallet-withdraw--amount-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-wallet-withdraw--amount-"></code></pre>
+</span>
+<span id="execution-error-GETapi-wallet-withdraw--amount-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-wallet-withdraw--amount-"></code></pre>
+</span>
+<form id="form-GETapi-wallet-withdraw--amount-" data-method="GET"
+      data-path="api/wallet/withdraw/{amount}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-wallet-withdraw--amount-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-wallet-withdraw--amount-"
+                    onclick="tryItOut('GETapi-wallet-withdraw--amount-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-wallet-withdraw--amount-"
+                    onclick="cancelTryOut('GETapi-wallet-withdraw--amount-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-wallet-withdraw--amount-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/wallet/withdraw/{amount}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>amount</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="amount"
+               data-endpoint="GETapi-wallet-withdraw--amount-"
+               value="adipisci"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
 
     
 

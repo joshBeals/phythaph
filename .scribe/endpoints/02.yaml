@@ -1,12 +1,12 @@
-name: 'Open (No Auth) APIs'
+name: Endpoints
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/categories
+    uri: api/filter/currencies
     metadata:
-      title: 'Fetch Categories'
+      title: ''
       description: ''
       authenticated: false
       custom: []
@@ -19,33 +19,21 @@ endpoints:
     responses:
       -
         status: 200
-        content: |-
-          {
-             "success": true,
-             "message": "",
-             "data": {
-                "categories": {
-                    ...
-                }
-             }
-        headers: []
-        description: '200, Ok'
-      -
-        status: 400
-        content: |-
-          {
-             "success": false,
-             "message": "Error"
-           }
-        headers: []
-        description: '400, Error'
+        content: '{"current_page":1,"data":[{"id":1,"name":"Naira","iso":"ngn","exchange_rate":"0.00","created_at":"2022-08-16T20:11:48.000000Z","updated_at":"2022-08-16T20:11:48.000000Z"},{"id":2,"name":"Dollar","iso":"usd","exchange_rate":"630.00","created_at":"2022-08-16T20:12:06.000000Z","updated_at":"2022-08-16T20:12:06.000000Z"}],"first_page_url":"http:\/\/phythaph.herokuapp.com\/api\/filter\/currencies?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/phythaph.herokuapp.com\/api\/filter\/currencies?page=1","links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"http:\/\/phythaph.herokuapp.com\/api\/filter\/currencies?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/phythaph.herokuapp.com\/api\/filter\/currencies","per_page":10,"prev_page_url":null,"to":2,"total":2}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+        description: null
     responseFields: []
   -
     httpMethods:
       - GET
-    uri: api/faqs
+    uri: api/filter/users
     metadata:
-      title: 'Fetch Faqs'
+      title: ''
       description: ''
       authenticated: false
       custom: []
@@ -58,63 +46,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: |-
-          {
-             "success": true,
-             "message": "",
-             "data": {
-                "faqs": {
-                    ...
-                }
-             }
-        headers: []
-        description: '200, Ok'
-      -
-        status: 400
-        content: |-
-          {
-             "success": false,
-             "message": "Error"
-           }
-        headers: []
-        description: '400, Error'
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: api/subscription-plans
-    metadata:
-      title: 'Fetch Subscription Plans'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-             "success": true,
-             "message": "",
-             "data": {
-                "plans": {
-                    ...
-                }
-             }
-        headers: []
-        description: '200, Ok'
-      -
-        status: 400
-        content: |-
-          {
-             "success": false,
-             "message": "Error"
-           }
-        headers: []
-        description: '400, Error'
+        content: '{"current_page":1,"data":[{"id":290800,"first_name":"Testing","last_name":"Love","email":"alelebealsjoshua@gmail.com","email_verified_at":null,"account_type":"individual","pawn_master":0,"plan_id":2,"subscription_id":3,"gender":"male","birthday":"1999-04-22","phone":"phone","address":"ghjklskla","company_name":"ghjklskla","company_phone":"ghjklskla","rc_number":null,"country":null,"postal_code":"ghjklskla","house_number":"ghjklskla","street":"ghjklskla","lcda":"ghjklskla","lga":"ghjklskla","city":"ghjklskla","state":"ghjklskla","avatar":null,"avatar_thumb":null,"is_active":0,"is_blocked":0,"must_change_password":0,"referral_code":"2yDdc3O4","referred_by":null,"created_at":"2022-08-12T16:34:45.000000Z","updated_at":"2022-08-23T21:40:58.000000Z","name":"Testing Love","avatar_url":"https:\/\/phythaph.s3.amazonaws.com\/users\/_user_default.svg","name_with_email":"Testing Love - alelebealsjoshua@gmail.com"},{"id":290802,"first_name":"Testing","last_name":"Love","email":"alelebealsjoshua1@gmail.com","email_verified_at":null,"account_type":"individual","pawn_master":0,"plan_id":null,"subscription_id":null,"gender":null,"birthday":null,"phone":"08092834743","address":null,"company_name":null,"company_phone":null,"rc_number":null,"country":null,"postal_code":null,"house_number":null,"street":null,"lcda":null,"lga":null,"city":null,"state":null,"avatar":null,"avatar_thumb":null,"is_active":0,"is_blocked":0,"must_change_password":0,"referral_code":"EP2kpt1y","referred_by":null,"created_at":"2022-08-12T16:46:21.000000Z","updated_at":"2022-08-22T13:54:40.000000Z","name":"Testing Love","avatar_url":"https:\/\/phythaph.s3.amazonaws.com\/users\/_user_default.svg","name_with_email":"Testing Love - alelebealsjoshua1@gmail.com"},{"id":290803,"first_name":"Testing","last_name":"Love","email":"alelebealsjoshua10@gmail.com","email_verified_at":null,"account_type":"individual","pawn_master":0,"plan_id":null,"subscription_id":null,"gender":null,"birthday":null,"phone":null,"address":null,"company_name":null,"company_phone":null,"rc_number":null,"country":null,"postal_code":null,"house_number":null,"street":null,"lcda":null,"lga":null,"city":null,"state":null,"avatar":null,"avatar_thumb":null,"is_active":0,"is_blocked":0,"must_change_password":0,"referral_code":"rkCoOjx4","referred_by":null,"created_at":"2022-08-12T16:46:46.000000Z","updated_at":"2022-08-13T17:35:59.000000Z","name":"Testing Love","avatar_url":"https:\/\/phythaph.s3.amazonaws.com\/users\/_user_default.svg","name_with_email":"Testing Love - alelebealsjoshua10@gmail.com"},{"id":290804,"first_name":"Testing","last_name":"Love","email":"alelebealsjoshua101@gmail.com","email_verified_at":"2022-08-12T16:49:00.000000Z","account_type":"individual","pawn_master":0,"plan_id":null,"subscription_id":null,"gender":null,"birthday":null,"phone":null,"address":null,"company_name":null,"company_phone":null,"rc_number":null,"country":null,"postal_code":null,"house_number":null,"street":null,"lcda":null,"lga":null,"city":null,"state":null,"avatar":null,"avatar_thumb":null,"is_active":0,"is_blocked":0,"must_change_password":0,"referral_code":"w6snHTrK","referred_by":null,"created_at":"2022-08-12T16:47:34.000000Z","updated_at":"2022-08-12T16:52:25.000000Z","name":"Testing Love","avatar_url":"https:\/\/phythaph.s3.amazonaws.com\/users\/_user_default.svg","name_with_email":"Testing Love - alelebealsjoshua101@gmail.com"},{"id":290805,"first_name":"Testing","last_name":"Love","email":"alelebealsjoshua0@gmail.com","email_verified_at":null,"account_type":"individual","pawn_master":0,"plan_id":null,"subscription_id":null,"gender":null,"birthday":null,"phone":null,"address":null,"company_name":null,"company_phone":null,"rc_number":null,"country":null,"postal_code":null,"house_number":null,"street":null,"lcda":null,"lga":null,"city":null,"state":null,"avatar":null,"avatar_thumb":null,"is_active":0,"is_blocked":0,"must_change_password":0,"referral_code":"0fmZMKYs","referred_by":null,"created_at":"2022-08-13T18:58:42.000000Z","updated_at":"2022-08-15T09:11:32.000000Z","name":"Testing Love","avatar_url":"https:\/\/phythaph.s3.amazonaws.com\/users\/_user_default.svg","name_with_email":"Testing Love - alelebealsjoshua0@gmail.com"}],"first_page_url":"http:\/\/phythaph.herokuapp.com\/api\/filter\/users?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/phythaph.herokuapp.com\/api\/filter\/users?page=1","links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"http:\/\/phythaph.herokuapp.com\/api\/filter\/users?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/phythaph.herokuapp.com\/api\/filter\/users","per_page":10,"prev_page_url":null,"to":5,"total":5}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '58'
+          access-control-allow-origin: '*'
+        description: null
     responseFields: []
