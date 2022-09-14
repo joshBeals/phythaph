@@ -14,7 +14,7 @@ class AddColumnsToSubscriptionPlansTable extends Migration
     public function up()
     {
         Schema::table('subscription_plans', function (Blueprint $table) {
-            $table->decimal('min_balance', 10, 2);
+            $table->decimal('min_balance', 10, 2)->nullable()->after('renewal_fee');
             $table->decimal('max_balance', 10, 2)->nullable()->after('min_balance');
         });
     }

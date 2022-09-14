@@ -37,5 +37,21 @@ class UserSubscriptionHistory extends Model
     {
         return Helper::readableDate($this->created_at);
     }
+    
+    public function decorate()
+    {
+        $this->_from = Helper::formatDate($this->from);
+        $this->_to = Helper::formatDate($this->to);
+        $this->plan = $this->plan()->first();
+        $this->transaction = $this->transaction()->first();
+        if ($this->plan) {
+            $this->plan->decorate();
+        }
+        if ($this->transaction) {
+            $this->transaction->decorate();
+        }
+
+        return $this;
+    }
 
 }

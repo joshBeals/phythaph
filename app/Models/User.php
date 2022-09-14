@@ -74,6 +74,10 @@ class User extends UserBase implements MustVerifyEmail, JWTSubject
         $this->walletBalance = UserWallet::getWalletBalaceForUserFormated('ngn', $this);
         $this->walletBalanceNumber = UserWallet::getWalletBalaceForUser('ngn', $this);
         $this->totalPawned = UserPawns::getTotalPawned($this);
+        $sub = $this->subscription()->first();
+        if ($sub) {
+            $this->subscription = $sub->decorate();
+        }
 
         foreach ([
             'created_at',
