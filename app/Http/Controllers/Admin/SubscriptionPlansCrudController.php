@@ -43,6 +43,8 @@ class SubscriptionPlansCrudController extends CrudController
         CRUD::column('description');
         CRUD::column('signon_fee')->type('amount');
         CRUD::column('renewal_fee')->type('amount');
+        CRUD::column('min_balance')->type('amount')->label('Minimum Wallet Balance');
+        CRUD::column('max_balance')->type('amount')->label('Maximum Wallet Balance');
         CRUD::column('created_at');
 
         /**
@@ -66,6 +68,8 @@ class SubscriptionPlansCrudController extends CrudController
         CRUD::field('description')->type('summernote');
         CRUD::field('signon_fee');
         CRUD::field('renewal_fee');
+        CRUD::field('min_balance');
+        CRUD::field('max_balance');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

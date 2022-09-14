@@ -29,6 +29,8 @@ class SubscriptionPlansRequest extends FormRequest
             'description' => 'required',
             'signon_fee' => 'required',
             'renewal_fee' => 'required',
+            'min_balance' => 'required',
+            'max_balance' => 'required',
         ];
     }
 
