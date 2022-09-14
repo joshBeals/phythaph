@@ -98,15 +98,15 @@ class ResearchProductCrudController extends CrudController
             'new_item_label' => 'Add Feature',
             'subfields' => [
                 [
-                    'wrapper' => ['class' => 'form-group col-md-6'],
+                    'wrapper' => ['class' => 'form-group col-md-12'],
                     'name' => 'name',
                     'type' => 'text',
                     'label' => 'Name',
                 ],
                 [
-                    'wrapper' => ['class' => 'form-group col-md-6'],
+                    'wrapper' => ['class' => 'form-group col-md-12'],
                     'name' => 'description',
-                    'type' => 'text',
+                    'type' => 'summernote',
                     'label' => 'Description',
                 ]
             ],
