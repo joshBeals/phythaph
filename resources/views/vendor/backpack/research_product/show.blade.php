@@ -85,7 +85,7 @@ $breadcrumbs = $breadcrumbs ?? $defaultBreadcrumbs;
                                 <tr>
                                 @foreach($feature as $key => $value)
                                     @if($value)
-                                        <td>{{ Helper::titleCase($value) }}</td>
+                                        <td>{!! Helper::titleCase($value) !!}</td>
                                     @else
                                         <td>-</td>
                                     @endif
