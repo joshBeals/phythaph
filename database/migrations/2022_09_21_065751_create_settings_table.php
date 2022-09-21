@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResearchProducts extends Migration
+class CreateSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateResearchProducts extends Migration
      */
     public function up()
     {
-        Schema::create('research_products', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->longtext('features')->nullable();
+            $table->string('name')->nullable();
+            $table->longtext('content')->nullable();
             $table->timestamps();
-            $table->softDeletes();
-
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
@@ -31,6 +28,6 @@ class CreateResearchProducts extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('research_products');
+        Schema::dropIfExists('settings');
     }
 }
