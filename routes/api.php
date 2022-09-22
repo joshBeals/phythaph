@@ -63,7 +63,7 @@ Route::group([
     Route::get('/me', "AuthController@me")->name('user_detail');
     Route::post('/fund', "WalletController@fundWallet")->name('hide');
 
-    Route::middleware('registration_completion_api')->group(function () {
+    // Route::middleware('registration_completion_api')->group(function () {
         Route::get('/referrals', "ReferralController@index")->name('referrals');
         Route::prefix('pawn')->group(function () {
             Route::post('/', "PawnController@create")->name('pawn.create');
@@ -74,6 +74,6 @@ Route::group([
             Route::get('/history', "WalletController@index")->name('history');
             Route::get('/withdraw/{amount}', "WalletController@withdrawFunds")->name('withdraw');
         });
-    });
+    // });
     
 });
