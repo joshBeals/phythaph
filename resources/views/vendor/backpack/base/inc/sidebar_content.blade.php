@@ -42,4 +42,10 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('withdrawal') }}"><i class="nav-icon la la-money"></i> Withdrawals</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('transaction') }}"><i class="nav-icon la la-credit-card"></i> Transactions</a></li>
 <!-- <li class="nav-item"><a class="nav-link" href="{{ backpack_url('faq') }}"><i class="nav-icon la la-question-circle"></i> Faqs</a></li> -->
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('settings') }}"><i class="nav-icon la la-sliders"></i> Settings</a></li>
+<li class="nav-item nav-dropdown">
+    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-lg la-sliders"></i> System</a>
+    <ul class="nav-dropdown-items">
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('settings') }}"><i class="nav-icon la la-sliders"></i> Settings</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('promos') }}"><i class="nav-icon la la-gift"></i> Promos</a></li>
+    </ul>
+</li>
