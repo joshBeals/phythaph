@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Classes\GlobalVars;
 use App\Classes\Helper;
 use App\Models\SubscriptionPlans;
+use App\Models\Promos;
 
 /**
  * @group Open (No Auth) APIs
@@ -35,7 +36,8 @@ class SubscriptionController extends Controller
     {
         try {
             $plans = SubscriptionPlans::all();
-            return Helper::apiSuccess(['plans' => $plans]);
+            $promos = Promos::all();
+            return Helper::apiSuccess(['plans' => $plans, 'promos' => $promos]);
 
         } catch (\Throwable $th) {
             return Helper::apiException($th);
